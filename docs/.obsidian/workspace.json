@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CTF - Challenges/htb/Photobomb.md",
+                "file": "CTF - Challenges/htb/MetaTwo.md",
                 "mode": "source",
                 "source": false
               }
@@ -158,7 +158,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CTF - Challenges/htb/Photobomb.md",
+                "file": "CTF - Challenges/htb/MetaTwo.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -175,7 +175,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "CTF - Challenges/htb/Photobomb.md",
+                "file": "CTF - Challenges/htb/MetaTwo.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -198,7 +198,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CTF - Challenges/htb/Photobomb.md"
+                "file": "CTF - Challenges/htb/MetaTwo.md"
               }
             }
           }
@@ -222,6 +222,7 @@
   },
   "active": "2676342a0d6c9d50",
   "lastOpenFiles": [
+    "CTF - Challenges/htb/Photobomb.md",
     "CTF - Challenges/htb/BroScience.md",
     "CTF - Challenges/htb/MetaTwo.md",
     "CTF - Challenges/htb/Investigation.md",
