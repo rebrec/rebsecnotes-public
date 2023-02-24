@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "zz Templates/B2R.md",
+                "file": "CTF - Challenges/htb/Stocker.md",
                 "mode": "source",
                 "source": false
               }
@@ -96,7 +96,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "public:",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -113,8 +113,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -134,7 +133,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "zz Templates/B2R.md",
+                "file": "CTF - Challenges/htb/Stocker.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +150,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "zz Templates/B2R.md",
+                "file": "CTF - Challenges/htb/Stocker.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -174,7 +173,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "zz Templates/B2R.md"
+                "file": "CTF - Challenges/htb/Stocker.md"
               }
             }
           }
@@ -198,15 +197,15 @@
   },
   "active": "32487cc5cdf2d6a7",
   "lastOpenFiles": [
+    "CTF - Challenges/htb/Interface.md",
+    "zz Templates/B2R.md",
     "test.md",
     "CTF - Challenges/htb/Investigation.md",
-    "zz Templates/B2R.md",
     "CTF - Challenges/htb/Stocker.md",
     "public.md",
     "CTF - Challenges/htb/MetaTwo.md",
     "CTF - Challenges/htb/Photobomb.md",
     "CTF - Challenges/htb/BroScience.md",
-    "CTF - Challenges/htb/Interface.md",
     "CTF - Challenges/htb/Bagel.md",
     "CTF - Challenges/htbe/squashed/Squashed.md",
     "Pasted image 20230223215358.png",
