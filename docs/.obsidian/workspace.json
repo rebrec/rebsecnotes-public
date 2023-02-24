@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CTF - Challenges/htb/Photobomb.md",
+                "file": "CTF - Challenges/htb/BroScience.md",
                 "mode": "source",
                 "source": false
               }
@@ -158,7 +158,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CTF - Challenges/htb/Photobomb.md",
+                "file": "CTF - Challenges/htb/BroScience.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -175,7 +175,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "CTF - Challenges/htb/Photobomb.md",
+                "file": "CTF - Challenges/htb/BroScience.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -198,7 +198,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CTF - Challenges/htb/Photobomb.md"
+                "file": "CTF - Challenges/htb/BroScience.md"
               }
             }
           }
@@ -216,16 +216,15 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "templater-obsidian:Templater": false
+      "command-palette:Open command palette": false
     }
   },
   "active": "2676342a0d6c9d50",
   "lastOpenFiles": [
-    "CTF - Challenges/htb/BroScience.md",
     "CTF - Challenges/htb/MetaTwo.md",
     "CTF - Challenges/htb/Investigation.md",
     "CTF - Challenges/htb/Interface.md",
+    "CTF - Challenges/htb/BroScience.md",
     "CTF - Challenges/htb/Bagel.md",
     "CTF - Challenges/htbe/squashed/Squashed.md",
     "CTF - Challenges/htb/Stocker.md",
