@@ -1,0 +1,243 @@
+{
+  "main": {
+    "id": "dd2e3e04075b4c56",
+    "type": "split",
+    "children": [
+      {
+        "id": "1f9f63ca0bbd388a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6878267e035e342e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "CTF - Challenges/htb/Stocker.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "32487cc5cdf2d6a7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "CTF - Challenges/htb/Investigation.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2676342a0d6c9d50",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "CTF - Challenges/htb/Photobomb.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "3ae00edf5026c305",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_Environnement/Programmation CSharp/Installation d'un environnement de développement CSharp.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5ad15f7b83b36079",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "CTF - Challenges/htb/BroScience.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6c15443a1c3cc304",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "CTF - Challenges/htb/Interface.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "3391fbfe32ee34e5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "CheatSheets/Attacks/Password Attacks.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "794ed610c204195c",
+    "type": "split",
+    "children": [
+      {
+        "id": "187eebc53505a2be",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fc56afe7344baeab",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "f1c200f22da31f6d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "usern",
+                "matchingCase": true,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0341a0d8a38dab15",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f83a3d0874bbacac",
+    "type": "split",
+    "children": [
+      {
+        "id": "f08d5c308f1b93ab",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a7b766dce6659c52",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "CTF - Challenges/htb/Photobomb.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c05f9e97817b18f0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "CTF - Challenges/htb/Photobomb.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0be26272fa11466d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "cbbdb559a0694623",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "CTF - Challenges/htb/Photobomb.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "templater-obsidian:Templater": false
+    }
+  },
+  "active": "2676342a0d6c9d50",
+  "lastOpenFiles": [
+    "CTF - Challenges/htb/BroScience.md",
+    "CTF - Challenges/htb/MetaTwo.md",
+    "CTF - Challenges/htb/Investigation.md",
+    "CTF - Challenges/htb/Interface.md",
+    "CTF - Challenges/htb/Bagel.md",
+    "CTF - Challenges/htbe/squashed/Squashed.md",
+    "CTF - Challenges/htb/Stocker.md",
+    "Pasted image 20230223215358.png",
+    "Pasted image 20230223213155.png",
+    "Pasted image 20230223194904.png",
+    "CTF - Challenges/htbe/squashed",
+    "Untitled.canvas",
+    "_Environnement/Programmation CSharp/Installation d'un environnement de développement CSharp.md",
+    "zz Templates/B2R.md",
+    "CheatSheets/Attacks/Password Attacks.md",
+    "_ Notes Générales/_A Lire.md",
+    "CheatSheets/Enumeration/OS/Windows/Windows Remote Enumeration.md"
+  ]
+}
