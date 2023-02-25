@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "f83a3d0874bbacac",
@@ -150,12 +149,19 @@
   },
   "active": "32487cc5cdf2d6a7",
   "lastOpenFiles": [
+    "CTF - Challenges/htbe/squashed/Squashed.md",
+    "CTF - Challenges/htb/Investigation.md",
+    "Pasted image 20230225152013.png",
+    "Pasted image 20230225151916.png",
+    "Pasted image 20230225151303.png",
+    "Pasted image 20230225151232.png",
+    "Pasted image 20230225151202.png",
+    "Pasted image 20230225151014.png",
     "CTF - Challenges/htb/Stocker.md",
     "CTF - Challenges/htb/Soccer.md",
     "CTF - Challenges/htb/Precious.md",
     "CTF - Challenges/htb/Photobomb.md",
     "CTF - Challenges/htb/MetaTwo.md",
-    "CTF - Challenges/htb/Investigation.md",
     "CTF - Challenges/htb/Interface.md",
     "CTF - Challenges/htb/BroScience.md",
     "_Environnement/Programmation CSharp/Installation d'un environnement de développement CSharp.md",
@@ -163,7 +169,6 @@
     "CheatSheets/Attacks/Password Attacks.md",
     "Untitled.md",
     "CTF - Challenges/htb/Bagel.md",
-    "CTF - Challenges/htbe/squashed/Squashed.md",
     "Pasted image 20230223215358.png",
     "Pasted image 20230223213155.png",
     "Pasted image 20230223194904.png",
