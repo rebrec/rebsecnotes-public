@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "32487cc5cdf2d6a7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "CTF - Challenges/htb/Investigation.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "6509a8cca2adff90",
             "type": "leaf",
             "state": {
@@ -30,9 +18,20 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "e6e457ebb8271809",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "CheatSheets/Enumeration/OS/Windows/Windows Remote Enumeration.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -61,7 +60,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "usern",
+                "query": "whoami",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,12 +77,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "f83a3d0874bbacac",
@@ -161,14 +160,17 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "6509a8cca2adff90",
+  "active": "f1c200f22da31f6d",
   "lastOpenFiles": [
+    "CheatSheets/Enumeration/OS/Windows/Windows Remote Enumeration.md",
+    "CTF - Challenges/htb/Escape.md",
+    "CTF - Challenges/htb/BroScience.md",
+    "CTF - Challenges/htb/MetaTwo.md",
+    "zz Templates/B2R.md",
+    "CTF - Challenges/htb/Investigation.md",
     "Pasted image 20230226164848.png",
     "Pasted image 20230226144842.png",
     "Pasted image 20230226144832.png",
-    "CTF - Challenges/htb/Investigation.md",
-    "CTF - Challenges/htb/Escape.md",
-    "zz Templates/B2R.md",
     "_Tools/Data Manipulation/Data Manipulation.md",
     "_Tools/Information Gathering/Lecture de fichiers.md",
     "_Tools/Information Gathering",
@@ -181,21 +183,17 @@
     "Pasted image 20230225152013.png",
     "Pasted image 20230225151916.png",
     "Pasted image 20230225151303.png",
-    "Pasted image 20230225151232.png",
     "CTF - Challenges/htb/Stocker.md",
     "CTF - Challenges/htb/Soccer.md",
     "CTF - Challenges/htb/Precious.md",
     "CTF - Challenges/htb/Photobomb.md",
-    "CTF - Challenges/htb/MetaTwo.md",
     "CTF - Challenges/htb/Interface.md",
-    "CTF - Challenges/htb/BroScience.md",
     "_Environnement/Programmation CSharp/Installation d'un environnement de développement CSharp.md",
     "CheatSheets/Attacks/Password Attacks.md",
     "Untitled.md",
     "CTF - Challenges/htb/Bagel.md",
     "CTF - Challenges/htbe/squashed",
     "Untitled.canvas",
-    "_ Notes Générales/_A Lire.md",
-    "CheatSheets/Enumeration/OS/Windows/Windows Remote Enumeration.md"
+    "_ Notes Générales/_A Lire.md"
   ]
 }
