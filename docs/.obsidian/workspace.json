@@ -77,8 +77,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -160,7 +159,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "f1c200f22da31f6d",
+  "active": "fc56afe7344baeab",
   "lastOpenFiles": [
     "CheatSheets/Enumeration/OS/Windows/Windows Remote Enumeration.md",
     "CTF - Challenges/htb/Escape.md",
