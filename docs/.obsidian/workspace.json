@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_ Notes Générales/_A FAIRE.md",
+                "file": "_ Notes Générales/_A Lire.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_ Notes Générales/_A FAIRE.md",
+                "file": "_ Notes Générales/_A Lire.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_ Notes Générales/_A FAIRE.md",
+                "file": "_ Notes Générales/_A Lire.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_ Notes Générales/_A FAIRE.md"
+                "file": "_ Notes Générales/_A Lire.md"
               }
             }
           }
@@ -161,6 +161,7 @@
   },
   "active": "6509a8cca2adff90",
   "lastOpenFiles": [
+    "_ Notes Générales/_A FAIRE.md",
     "Pasted image 20230301230219.png",
     "CTF - Challenges/htb/Escape.md",
     "CTF - Challenges/htb/Interface.md",
@@ -183,7 +184,6 @@
     "CTF - Challenges/htbe/squashed/Squashed.md",
     "Pasted image 20230225152013.png",
     "Pasted image 20230225151916.png",
-    "Pasted image 20230225151303.png",
     "CTF - Challenges/htb/Stocker.md",
     "CTF - Challenges/htb/Soccer.md",
     "CTF - Challenges/htb/Precious.md",
