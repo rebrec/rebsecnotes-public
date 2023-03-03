@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CTF - Challenges/htb/Escape.md",
+                "file": "CTF - Challenges/htb/Bagel.md",
                 "mode": "source",
                 "source": false
               }
@@ -56,7 +56,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -122,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_Tools/PKI Windows/PKI Windows.md",
+                "file": "CTF - Challenges/htb/Escape.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_Tools/PKI Windows/PKI Windows.md",
+                "file": "CTF - Challenges/htb/Escape.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_Tools/PKI Windows/PKI Windows.md"
+                "file": "CTF - Challenges/htb/Escape.md"
               }
             }
           }
@@ -184,9 +184,14 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "064a632602814d0a",
+  "active": "39c444da48a14c11",
   "lastOpenFiles": [
+    "CTF - Challenges/htb/Bagel.md",
+    "Pasted image 20230303214612.png",
     "CTF - Challenges/htb/Escape.md",
+    "Pasted image 20230303213324.png",
+    "Pasted image 20230303213008.png",
+    "Certify.exe",
     "_Tools/PKI Windows/PKI Windows.md",
     "_Tools/PKI Windows",
     "CTF - Challenges/htb/BroScience.md",
@@ -209,10 +214,7 @@
     "Pasted image 20230226141342.png",
     "Pasted image 20230226141323.png",
     "Pasted image 20230226140624.png",
-    "Pasted image 20230226134649.png",
     "CTF - Challenges/htbe/squashed/Squashed.md",
-    "Pasted image 20230225152013.png",
-    "Pasted image 20230225151916.png",
     "CTF - Challenges/htb/Stocker.md",
     "CTF - Challenges/htb/Soccer.md",
     "CTF - Challenges/htb/Precious.md",
@@ -220,7 +222,6 @@
     "_Environnement/Programmation CSharp/Installation d'un environnement de développement CSharp.md",
     "CheatSheets/Attacks/Password Attacks.md",
     "Untitled.md",
-    "CTF - Challenges/htb/Bagel.md",
     "CTF - Challenges/htbe/squashed",
     "Untitled.canvas"
   ]
