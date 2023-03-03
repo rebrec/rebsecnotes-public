@@ -32,6 +32,18 @@
             }
           },
           {
+            "id": "064a632602814d0a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_Tools/PKI Windows/PKI Windows.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "e6e457ebb8271809",
             "type": "leaf",
             "state": {
@@ -44,7 +56,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -110,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CTF - Challenges/htb/Escape.md",
+                "file": "_Tools/PKI Windows/PKI Windows.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "CTF - Challenges/htb/Escape.md",
+                "file": "_Tools/PKI Windows/PKI Windows.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CTF - Challenges/htb/Escape.md"
+                "file": "_Tools/PKI Windows/PKI Windows.md"
               }
             }
           }
@@ -172,11 +184,13 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "39c444da48a14c11",
+  "active": "064a632602814d0a",
   "lastOpenFiles": [
+    "CTF - Challenges/htb/Escape.md",
+    "_Tools/PKI Windows/PKI Windows.md",
+    "_Tools/PKI Windows",
     "CTF - Challenges/htb/BroScience.md",
     "_Tools/A Classer.md",
-    "CTF - Challenges/htb/Escape.md",
     "_ Notes Générales/_A Lire.md",
     "_ Notes Générales/_A FAIRE.md",
     "Pasted image 20230301230219.png",
