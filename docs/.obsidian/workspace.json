@@ -32,16 +32,6 @@
             }
           },
           {
-            "id": "55b5a88d19b0b7da",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.1.16"
-              }
-            }
-          },
-          {
             "id": "064a632602814d0a",
             "type": "leaf",
             "state": {
@@ -66,7 +56,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -194,7 +184,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "55b5a88d19b0b7da",
+  "active": "39c444da48a14c11",
   "lastOpenFiles": [
     "CTF - Challenges/htb/Bagel.md",
     "Pasted image 20230303214612.png",
