@@ -109,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CTF - Challenges/htb/Escape.md",
+                "file": "Méthodologie/Windows/Active Directory.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "CTF - Challenges/htb/Escape.md",
+                "file": "Méthodologie/Windows/Active Directory.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CTF - Challenges/htb/Escape.md"
+                "file": "Méthodologie/Windows/Active Directory.md"
               }
             }
           }
@@ -171,11 +171,51 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "39c444da48a14c11",
+  "floating": {
+    "id": "09d2bc51ef96d505",
+    "type": "floating",
+    "children": [
+      {
+        "id": "6b1ed39a4111068c",
+        "type": "window",
+        "children": [
+          {
+            "id": "90cd32a50a26a2b7",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "f5ed50fe8586c37d",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Méthodologie/Windows/Active Directory.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 638,
+        "y": 17,
+        "width": 1576,
+        "height": 1000,
+        "maximize": true,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "f5ed50fe8586c37d",
   "lastOpenFiles": [
+    "CTF - Challenges/htb/Escape.md",
+    "Méthodologie/Windows/Active Directory.md",
+    "Méthodologie/Windows",
+    "Méthodologie",
     "_ Notes Générales/_A Lire.md",
     "CTF - Challenges/htb/Bagel.md",
-    "CTF - Challenges/htb/Escape.md",
     "Pasted image 20230303214612.png",
     "Pasted image 20230303213324.png",
     "Pasted image 20230303213008.png",
