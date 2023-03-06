@@ -1,4 +1,7 @@
 {
   "trashOption": "local",
-  "alwaysUpdateLinks": false
+  "alwaysUpdateLinks": false,
+  "newFileLocation": "current",
+  "useMarkdownLinks": true,
+  "attachmentFolderPath": "./"
 }
