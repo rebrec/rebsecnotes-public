@@ -8,48 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "7525b00c7d5372fc",
+            "id": "8c58a31ad737416e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Untitled.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c07e690730a898cb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_Tools/test/test note 123.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "6ed55ac490b9a3ba",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "CTF - Challenges/htb/Escape.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "064a632602814d0a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_Tools/PKI Windows/PKI Windows.md",
+                "file": "CTF - Challenges/Flight.md",
                 "mode": "source",
                 "source": false
               }
@@ -67,8 +31,7 @@
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -118,8 +81,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "f83a3d0874bbacac",
@@ -135,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CTF - Challenges/htb/Escape.md",
+                "file": "CTF - Challenges/Flight.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "CTF - Challenges/htb/Escape.md",
+                "file": "CTF - Challenges/Flight.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -175,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CTF - Challenges/htb/Escape.md"
+                "file": "CTF - Challenges/Flight.md"
               }
             }
           }
@@ -197,8 +159,14 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "fc56afe7344baeab",
+  "active": "8c58a31ad737416e",
   "lastOpenFiles": [
+    "Pasted image 20230307155702.png",
+    "Flight-1.png",
+    "CheatSheets/Enumeration/OS/Windows/Windows Remote Enumeration.md",
+    "CTF - Challenges/Flight.md",
+    "_Tools/PKI Windows/PKI Windows.md",
+    "CTF - Challenges/htb/Escape.md",
     "test note 123-1.png",
     "Untitled.md",
     "_Tools/test/test note 123.md",
@@ -211,7 +179,6 @@
     "Pasted image 20230206223100.png",
     "Pasted image 20230205220948.png",
     "Pasted image 20230205210006.png",
-    "Pasted image 20230205205940.png",
     "CTF - Challenges/htbe/squashed/Squashed.md",
     "CTF - Challenges/htb/Stocker.md",
     "CTF - Challenges/htb/Soccer.md",
@@ -220,7 +187,6 @@
     "CTF - Challenges/htb/MetaTwo.md",
     "CTF - Challenges/htb/Investigation.md",
     "CTF - Challenges/htb/Interface.md",
-    "CTF - Challenges/htb/Escape.md",
     "CTF - Challenges/htb/BroScience.md",
     "CTF - Challenges/htb/Bagel.md",
     "_Tools/test/test note.md",
@@ -232,14 +198,11 @@
     "Méthodologie",
     "_ Notes Générales/_A Lire.md",
     "Certify.exe",
-    "_Tools/PKI Windows/PKI Windows.md",
     "_Tools/PKI Windows",
     "_Tools/A Classer.md",
     "_ Notes Générales/_A FAIRE.md",
-    "CheatSheets/Enumeration/OS/Windows/Windows Remote Enumeration.md",
     "zz Templates/B2R.md",
     "_Tools/Data Manipulation/Data Manipulation.md",
-    "_Tools/Information Gathering/Lecture de fichiers.md",
     "_Tools/Information Gathering",
     "CTF - Challenges/htbe/squashed",
     "Untitled.canvas"
