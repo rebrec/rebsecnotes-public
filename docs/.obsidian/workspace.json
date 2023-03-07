@@ -35,9 +35,11 @@
             "id": "6ed55ac490b9a3ba",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "test note 123-1.png"
+                "file": "CTF - Challenges/htb/Escape.md",
+                "mode": "source",
+                "source": false
               }
             }
           },
@@ -95,7 +97,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "winrm",
+                "query": "escape",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -116,7 +118,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "f83a3d0874bbacac",
@@ -132,7 +135,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Untitled.md",
+                "file": "CTF - Challenges/htb/Escape.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -149,7 +152,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Untitled.md",
+                "file": "CTF - Challenges/htb/Escape.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -172,7 +175,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Untitled.md"
+                "file": "CTF - Challenges/htb/Escape.md"
               }
             }
           }
@@ -196,9 +199,9 @@
   },
   "active": "fc56afe7344baeab",
   "lastOpenFiles": [
-    "_Tools/test/test note 123.md",
     "test note 123-1.png",
     "Untitled.md",
+    "_Tools/test/test note 123.md",
     "test.md",
     "Investigation-1.png",
     "Pasted image 20230219182813.png",
