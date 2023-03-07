@@ -7,7 +7,7 @@ Status: pending
 public: true
 IP: 10.10.11.196
 ---
-![[Pasted image 20230206230039.png]]
+![[Stocker-1.png]]
 
 
 

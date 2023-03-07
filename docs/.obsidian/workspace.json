@@ -8,14 +8,36 @@
         "type": "tabs",
         "children": [
           {
-            "id": "39c444da48a14c11",
+            "id": "7525b00c7d5372fc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CTF - Challenges/htb/Escape.md",
+                "file": "Untitled.md",
                 "mode": "source",
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "c07e690730a898cb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_Tools/test/test note 123.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6ed55ac490b9a3ba",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "test note 123-1.png"
               }
             }
           },
@@ -43,7 +65,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -109,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Méthodologie/Windows/Active Directory.md",
+                "file": "Untitled.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +149,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Méthodologie/Windows/Active Directory.md",
+                "file": "Untitled.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +172,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Méthodologie/Windows/Active Directory.md"
+                "file": "Untitled.md"
               }
             }
           }
@@ -171,84 +194,50 @@
       "templater-obsidian:Templater": false
     }
   },
-  "floating": {
-    "id": "09d2bc51ef96d505",
-    "type": "floating",
-    "children": [
-      {
-        "id": "6b1ed39a4111068c",
-        "type": "window",
-        "children": [
-          {
-            "id": "90cd32a50a26a2b7",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "f5ed50fe8586c37d",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "Méthodologie/Windows/Active Directory.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": 638,
-        "y": 17,
-        "width": 1576,
-        "height": 1000,
-        "maximize": true,
-        "zoom": 0
-      }
-    ]
-  },
-  "active": "f5ed50fe8586c37d",
+  "active": "fc56afe7344baeab",
   "lastOpenFiles": [
-    "CTF - Challenges/htb/Escape.md",
-    "Méthodologie/Windows/Active Directory.md",
-    "Méthodologie/Windows",
-    "Méthodologie",
-    "_ Notes Générales/_A Lire.md",
-    "CTF - Challenges/htb/Bagel.md",
-    "Pasted image 20230303214612.png",
-    "Pasted image 20230303213324.png",
-    "Pasted image 20230303213008.png",
-    "Certify.exe",
-    "_Tools/PKI Windows/PKI Windows.md",
-    "_Tools/PKI Windows",
-    "CTF - Challenges/htb/BroScience.md",
-    "_Tools/A Classer.md",
-    "_ Notes Générales/_A FAIRE.md",
-    "Pasted image 20230301230219.png",
-    "CTF - Challenges/htb/Interface.md",
-    "CheatSheets/Enumeration/OS/Windows/Windows Remote Enumeration.md",
-    "CTF - Challenges/htb/MetaTwo.md",
-    "zz Templates/B2R.md",
-    "CTF - Challenges/htb/Investigation.md",
-    "Pasted image 20230226164848.png",
-    "Pasted image 20230226144842.png",
-    "Pasted image 20230226144832.png",
-    "_Tools/Data Manipulation/Data Manipulation.md",
-    "_Tools/Information Gathering/Lecture de fichiers.md",
-    "_Tools/Information Gathering",
-    "_Tools/Shellcode/Shellcodes.md",
-    "Pasted image 20230226141342.png",
-    "Pasted image 20230226141323.png",
-    "Pasted image 20230226140624.png",
+    "_Tools/test/test note 123.md",
+    "test note 123-1.png",
+    "Untitled.md",
+    "test.md",
+    "Investigation-1.png",
+    "Pasted image 20230219182813.png",
+    "Pasted image 20230222223130.png",
+    "Pasted image 20230215223638.png",
+    "Pasted image 20230215222750.png",
+    "Pasted image 20230206223100.png",
+    "Pasted image 20230205220948.png",
+    "Pasted image 20230205210006.png",
+    "Pasted image 20230205205940.png",
     "CTF - Challenges/htbe/squashed/Squashed.md",
     "CTF - Challenges/htb/Stocker.md",
     "CTF - Challenges/htb/Soccer.md",
     "CTF - Challenges/htb/Precious.md",
     "CTF - Challenges/htb/Photobomb.md",
-    "_Environnement/Programmation CSharp/Installation d'un environnement de développement CSharp.md",
-    "CheatSheets/Attacks/Password Attacks.md",
-    "Untitled.md",
+    "CTF - Challenges/htb/MetaTwo.md",
+    "CTF - Challenges/htb/Investigation.md",
+    "CTF - Challenges/htb/Interface.md",
+    "CTF - Challenges/htb/Escape.md",
+    "CTF - Challenges/htb/BroScience.md",
+    "CTF - Challenges/htb/Bagel.md",
+    "_Tools/test/test note.md",
+    "Méthodologie/Windows/Active Directory.md",
+    "index.md",
+    "_Tools/test/assets",
+    "_Tools/test",
+    "Méthodologie/Windows",
+    "Méthodologie",
+    "_ Notes Générales/_A Lire.md",
+    "Certify.exe",
+    "_Tools/PKI Windows/PKI Windows.md",
+    "_Tools/PKI Windows",
+    "_Tools/A Classer.md",
+    "_ Notes Générales/_A FAIRE.md",
+    "CheatSheets/Enumeration/OS/Windows/Windows Remote Enumeration.md",
+    "zz Templates/B2R.md",
+    "_Tools/Data Manipulation/Data Manipulation.md",
+    "_Tools/Information Gathering/Lecture de fichiers.md",
+    "_Tools/Information Gathering",
     "CTF - Challenges/htbe/squashed",
     "Untitled.canvas"
   ]

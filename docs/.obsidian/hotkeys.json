@@ -1,1 +1,11 @@
-{}
+{
+  "obsidian-paste-image-rename:batch-rename-all-images": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "R"
+    }
+  ]
+}

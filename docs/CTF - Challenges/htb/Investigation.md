@@ -7,8 +7,8 @@ Difficulty: Medium
 Tags: eventlogs, linux, ghydra
 Status: Finished
 ---
-![[Pasted image 20230226134649.png]]
-
+![[Investigation-1.png]]
+obsidi
 ## Résumé 
 Cette machine Linux expose un service d'analyse de photo utilisant une version d'exiftools vulnérable à une éxécution de code arbitraire à distance (RCE).
 Après l'obtention d'un shell sur la machine, une analyse d'un log de l'observateur d'évènement Windows révèle le mot de passe (suite à une erreur de saisie) d'un utilisateur de la machine nous permettant d'élever nos privilèges à ceux de l'utilisateur local.
@@ -47,13 +47,13 @@ Le nom de domaine rajouté dans le fichier `/etc/hosts`, nous découvrons un sit
 #### Mode de fonctionnement du service d'upload de fichiers
 La page http://eforenzics.htb/service.html propose un formulaire d'envoie de fichiers.
 
-![[Pasted image 20230225151014.png]]
+![[Investigation-2.png]]
 
 Après avoir envoyé un fichier image, un lien temporaire nous est proposé :
-![[Pasted image 20230225151202.png]]
+![[Investigation-3.png]]
 
 La page générée correspond à la sortie standard de l'outil `exiftool`
-![[Pasted image 20230225151303.png]]
+![[Investigation-4.png]]
 
 Les données générées nous permettent de découvrir la version de l'outil : **12.37**
 
@@ -66,10 +66,10 @@ Pour l'exploiter, la documentation nous explique qu'il suffit de fournir un nom 
 On commence par vérifier qu'il nous possible d'exploiter cette vulnérabilité :
 - on lance un tcpdump avec un filtre n'affichant que le traffic icmp dans une fenêtre avec la commande `sudo tcpdump -i tun0 icmp`
 - on tente l'exécution au travers de **BURP** de la commande ping vers notre ip en fournissant le nom de fichier `ping <IP_DU_VPN> |`
-![[Pasted image 20230225151916.png]]
+![[Investigation-5.png]]
 
 On constate bien la réception de nos paquets ICMP : la RCE fonctionne donc correctement !
-![[Pasted image 20230225152013.png]]
+![[Investigation-6.png]]
 
 ### Obtention d'un reverse shell
 Les reverse shell classiques ne fonctionnent pas correctement : cela est dû au fait que la charge utile (payload) que l'on souhaite exécuter doit représenter un nom de fichier valide.
@@ -103,12 +103,12 @@ exiftool img.php | grep -i comment
 ```
 
 On récupère le nom du dossier temporaire qui contient notre image à l'aide du serveur python qui nous offre la possibilité de parcourir chaque dossier temporaire généré.
-![[Pasted image 20230226140624.png]]
+![[Investigation-7.png]]
 
 ##### Exécution du reverse shell
 On lance un listener netcat : `nc -nlvp 1337`
 On accède ensuite à notre image depuis le serveur PHP :
-![[Pasted image 20230226141342.png]]
+![[Investigation-8.png]]
 
 Le reverse shell fonctionne :
 ```shell
@@ -162,7 +162,7 @@ Tom
 En cherchant des évènements Windows 4625 (Authentication failed) on tombe sur ce qui ressemble à un mot de passe saisit dans le champs utilisateur.
 L'audit de succès présent juste après cette évènement est une connexion de l'utilisateur `smorton`
 Il semble donc que cet utilisateur ait saisit son mot de passe dans la case "mot de passe" (ce qui a généré un audit d'echec) puis s'est authentifié correctement juste après.
-![[Pasted image 20230222220238.png]]
+![[Investigation-9.png]]
 
 ### Exploitation
 On essaie et réussi à s'authentifier localement en tant qu'utilisateur `smorton` à l'aide du mot de passe `Def@ultf0r3nz!csPa$$` via la commande `su - smorton`
