@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "8c58a31ad737416e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "CTF - Challenges/Flight.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "e6e457ebb8271809",
             "type": "leaf",
             "state": {
@@ -97,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CTF - Challenges/Flight.md",
+                "file": "CheatSheets/Enumeration/OS/Windows/Windows Remote Enumeration.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "CTF - Challenges/Flight.md",
+                "file": "CheatSheets/Enumeration/OS/Windows/Windows Remote Enumeration.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CTF - Challenges/Flight.md"
+                "file": "CheatSheets/Enumeration/OS/Windows/Windows Remote Enumeration.md"
               }
             }
           }
@@ -159,12 +147,13 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "8c58a31ad737416e",
+  "active": "e6e457ebb8271809",
   "lastOpenFiles": [
+    "Untitled.canvas",
+    "CTF - Challenges/Flight.md",
     "Pasted image 20230307155702.png",
     "Flight-1.png",
     "CheatSheets/Enumeration/OS/Windows/Windows Remote Enumeration.md",
-    "CTF - Challenges/Flight.md",
     "_Tools/PKI Windows/PKI Windows.md",
     "CTF - Challenges/htb/Escape.md",
     "test note 123-1.png",
@@ -178,7 +167,6 @@
     "Pasted image 20230215222750.png",
     "Pasted image 20230206223100.png",
     "Pasted image 20230205220948.png",
-    "Pasted image 20230205210006.png",
     "CTF - Challenges/htbe/squashed/Squashed.md",
     "CTF - Challenges/htb/Stocker.md",
     "CTF - Challenges/htb/Soccer.md",
@@ -204,7 +192,6 @@
     "zz Templates/B2R.md",
     "_Tools/Data Manipulation/Data Manipulation.md",
     "_Tools/Information Gathering",
-    "CTF - Challenges/htbe/squashed",
-    "Untitled.canvas"
+    "CTF - Challenges/htbe/squashed"
   ]
 }
