@@ -65,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -148,7 +147,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "e6e457ebb8271809",
+  "active": "fc56afe7344baeab",
   "lastOpenFiles": [
     "CTF - Challenges/htb/Escape.md",
     "CTF - Challenges/htb/Flight.md",
