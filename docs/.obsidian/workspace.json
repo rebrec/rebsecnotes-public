@@ -43,8 +43,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -111,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CheatSheets/Payloads/Shellcode/Metasploit.md",
+                "file": "CTF - Challenges/htb/Flight.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "CheatSheets/Payloads/Shellcode/Metasploit.md",
+                "file": "CTF - Challenges/htb/Flight.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CheatSheets/Payloads/Shellcode/Metasploit.md"
+                "file": "CTF - Challenges/htb/Flight.md"
               }
             }
           }
@@ -173,8 +172,9 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "2077627640cd6f20",
+  "active": "e6e457ebb8271809",
   "lastOpenFiles": [
+    "CheatSheets/Payloads/Shellcode/Metasploit.md",
     "conflict-files-obsidian-git.md",
     "CTF - Challenges/htb/Reel.md",
     "Reel-3.png",
@@ -217,6 +217,7 @@
     "Certify.exe",
     "_Tools/PKI Windows",
     "_Tools/A Classer.md",
-    "_ Notes Générales/_A FAIRE.md",
     "_Tools/Information Gathering",
-    
+    "CTF - Challenges/htbe/squashed"
+  ]
+}
