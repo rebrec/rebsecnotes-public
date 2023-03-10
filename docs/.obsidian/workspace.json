@@ -18,8 +18,33 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "2077627640cd6f20",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "CTF - Challenges/htb/Reel.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e1f85027e386bc31",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Méthodologie/Windows/Active Directory.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -48,7 +73,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "responder",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,11 +90,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "f83a3d0874bbacac",
@@ -85,7 +112,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CTF - Challenges/htb/Flight.md",
+                "file": "CTF - Challenges/htb/Reel.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +129,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "CTF - Challenges/htb/Flight.md",
+                "file": "CTF - Challenges/htb/Reel.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +152,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CTF - Challenges/htb/Flight.md"
+                "file": "CTF - Challenges/htb/Reel.md"
               }
             }
           }
@@ -147,10 +174,15 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "fc56afe7344baeab",
+  "active": "2077627640cd6f20",
   "lastOpenFiles": [
-    "CTF - Challenges/htb/Escape.md",
+    "Reel-3.png",
+    "Reel-2.png",
+    "Reel-1.png",
+    "Méthodologie/Windows/Active Directory.md",
+    "CTF - Challenges/htb/Reel.md",
     "CTF - Challenges/htb/Flight.md",
+    "CTF - Challenges/htb/Escape.md",
     "Flight-4.png",
     "Flight-3.png",
     "Flight-2.png",
@@ -166,8 +198,6 @@
     "test.md",
     "Investigation-1.png",
     "Pasted image 20230219182813.png",
-    "Pasted image 20230222223130.png",
-    "Pasted image 20230215223638.png",
     "CTF - Challenges/htbe/squashed/Squashed.md",
     "CTF - Challenges/htb/Stocker.md",
     "CTF - Challenges/htb/Soccer.md",
@@ -179,7 +209,6 @@
     "CTF - Challenges/htb/BroScience.md",
     "CTF - Challenges/htb/Bagel.md",
     "_Tools/test/test note.md",
-    "Méthodologie/Windows/Active Directory.md",
     "index.md",
     "_Tools/test/assets",
     "_Tools/test",
@@ -190,7 +219,6 @@
     "_Tools/PKI Windows",
     "_Tools/A Classer.md",
     "_ Notes Générales/_A FAIRE.md",
-    "zz Templates/B2R.md",
     "_Tools/Information Gathering",
     "CTF - Challenges/htbe/squashed"
   ]
