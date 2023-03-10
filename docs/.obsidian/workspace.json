@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CTF - Challenges/htb/Reel.md",
+                "file": "CheatSheets/Payloads/Shellcode/Metasploit.md",
                 "mode": "source",
                 "source": false
               }
@@ -73,7 +73,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "handler",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -95,8 +95,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "f83a3d0874bbacac",
@@ -112,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CTF - Challenges/htb/Reel.md",
+                "file": "CheatSheets/Payloads/Shellcode/Metasploit.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "CTF - Challenges/htb/Reel.md",
+                "file": "CheatSheets/Payloads/Shellcode/Metasploit.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -152,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CTF - Challenges/htb/Reel.md"
+                "file": "CheatSheets/Payloads/Shellcode/Metasploit.md"
               }
             }
           }
@@ -176,11 +175,12 @@
   },
   "active": "2077627640cd6f20",
   "lastOpenFiles": [
+    "conflict-files-obsidian-git.md",
+    "CTF - Challenges/htb/Reel.md",
     "Reel-3.png",
     "Reel-2.png",
     "Reel-1.png",
     "Méthodologie/Windows/Active Directory.md",
-    "CTF - Challenges/htb/Reel.md",
     "CTF - Challenges/htb/Flight.md",
     "CTF - Challenges/htb/Escape.md",
     "Flight-4.png",
@@ -197,7 +197,6 @@
     "_Tools/test/test note 123.md",
     "test.md",
     "Investigation-1.png",
-    "Pasted image 20230219182813.png",
     "CTF - Challenges/htbe/squashed/Squashed.md",
     "CTF - Challenges/htb/Stocker.md",
     "CTF - Challenges/htb/Soccer.md",
@@ -220,6 +219,4 @@
     "_Tools/A Classer.md",
     "_ Notes Générales/_A FAIRE.md",
     "_Tools/Information Gathering",
-    "CTF - Challenges/htbe/squashed"
-  ]
-}
+    
