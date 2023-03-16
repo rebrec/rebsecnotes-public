@@ -2,5 +2,6 @@
   "templater-obsidian",
   "obsidian-git",
   "obsidian-paste-image-rename",
-  "oz-clear-unused-images"
+  "oz-clear-unused-images",
+  "wikilinks-to-mdlinks-obsidian"
 ]
