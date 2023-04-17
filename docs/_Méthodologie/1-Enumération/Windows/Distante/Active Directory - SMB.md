@@ -68,7 +68,6 @@ enum4linux -a -u "guest" -p "" $TARGET_IP
 smbmap -u $AD_USER -p $AD_PASSWORD -d $AD_DOMAIN -H $TARGET_IP
 ```
 
-```
 
 ### Accès à un partage 
 
@@ -83,6 +82,10 @@ Password:       <==== Appuyer sur Entrer
 # ls / cd  / cat [...]
 ```
 
+#### smbclient
+```
+smbclient -U guest%'' //$TARGET_IP/WorkShares 
+```
 #### smbmap
 ```shell
 # Liste de façon récursive les fichiers d'un partage (indique si les droits sont en écriture ou en lecture)

