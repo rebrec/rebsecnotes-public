@@ -16,4 +16,4 @@ gobuster dns -d $TARGET_VHOST -r $TARGET_IP -t 50 -w /usr/share/seclists/Discove
 # Recherche d'un sous domaine (VHOST)
 gobuster vhost --append-domain --url $TARGET_VHOST -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -t 50 
 
-```
+``` 
