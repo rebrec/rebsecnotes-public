@@ -41,6 +41,7 @@ cme smb $TARGET_IP -u users.txt -p $AD_PASSWORD --continue-on-success
 ##### Enumération
 
 ```shell
+cme smb $TARGET -u "" -p "" --shares
 cme smb $TARGET_IP -u "sql_svc" -p "REGGIE1234ronnie" -d "sequel"  --shares | cut -c60-
 ```
 
@@ -91,6 +92,9 @@ smbclient -N -L //$TARGET_IP   # liste les partages
 ```
 #### smbmap
 ```shell
+# Liste des partages 
+smbmap -u "" -p "" -H $TARGET_IP   
+
 # Liste de façon récursive les fichiers d'un partage (indique si les droits sont en écriture ou en lecture)
 smbmap -u $AD_USER -p $AD_PASSWORD -d $AD_DOMAIN -H $TARGET_IP -R "$SHARE/"
 
