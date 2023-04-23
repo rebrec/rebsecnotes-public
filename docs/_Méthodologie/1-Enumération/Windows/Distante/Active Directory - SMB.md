@@ -99,6 +99,9 @@ smbmap -u "" -p "" -H $TARGET_IP
 # Liste de façon récursive les fichiers d'un partage (indique si les droits sont en écriture ou en lecture)
 smbmap -u $AD_USER -p $AD_PASSWORD -d $AD_DOMAIN -H $TARGET_IP -R "$SHARE/"
 
+# Téléchargement d'un fichier 
+$ smbmap -u "" -p "" -H $TARGET_IP --download  "sambashare\contents\flag.txt"
+
 # Upload d'un fichier 
 smbmap -u $AD_USER -p $AD_PASSWORD -d $AD_DOMAIN -H $TARGET_IP --upload desktop.ini Share/desktop.ini
 ```
