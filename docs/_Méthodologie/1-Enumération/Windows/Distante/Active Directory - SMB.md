@@ -85,6 +85,9 @@ Password:       <==== Appuyer sur Entrer
 #### smbclient
 ```
 smbclient -U guest%'' //$TARGET_IP/WorkShares 
+
+# null authentication
+smbclient -N -L //$TARGET_IP   # liste les partages
 ```
 #### smbmap
 ```shell
