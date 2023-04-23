@@ -74,6 +74,7 @@ smbmap -u $AD_USER -p $AD_PASSWORD -d $AD_DOMAIN -H $TARGET_IP
 
 #### smbclient.py
 ```shell
+smbclient.py -no-pass $TARGET_IP  # null bind
 smbclient.py "$AD_DOMAIN/$AD_USER:$AD_PASSWORD@$TARGET_IP"    
 
 smbclient.py guest@sequel.htb
