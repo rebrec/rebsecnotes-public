@@ -121,7 +121,7 @@ smbmap -u $AD_USER -p $AD_PASSWORD -d $AD_DOMAIN -H $TARGET_IP --upload desktop.
 rm -rf /tmp/cme_spider_plus # dossier contenant les résultats du module spider_plus
 cme smb $TARGET_IP -u $AD_USER -p "$AD_PASSWORD" -M spider_plus 
 cat /tmp/cme_spider_plus/*.json | jq '. | to_entries | .[] | {share: .key, file: .value | to_entries | .[].key} | "\(.share) | \(.file)"' | tee $TARGET_IP-share_files.txt
-# récuperer le chemin d'accès
+
 ```
 
 ## Shell
