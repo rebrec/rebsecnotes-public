@@ -113,6 +113,11 @@ $ smbmap -u "" -p "" -H $TARGET_IP --download  "sambashare\contents\flag.txt"
 smbmap -u $AD_USER -p $AD_PASSWORD -d $AD_DOMAIN -H $TARGET_IP --upload desktop.ini Share/desktop.ini
 ```
 
+
+### Explorer les partages 
+
+
+
 ## Shell
 ```shell
 # Vérification d'accès WINRM
