@@ -69,6 +69,8 @@ cme smb $TARGET_IP  -u 'guest' -p '' --shares | cut -c60-
 # Authentification NULL
 enum4linux -a -u "" -p "" $TARGET_IP
 
+enum4linux-ng -A -R -C <IP>
+
 # Authentification avec le compte Guest (si non désactivé)
 enum4linux -a -u "guest" -p "" $TARGET_IP
 
