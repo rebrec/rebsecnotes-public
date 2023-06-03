@@ -10,6 +10,11 @@ reg save hklm\system system.save
 reg save hklm\security security.save
 ```
 
+### Mimikatz
+
+```
+
+```
 ## A distance 
 
 ```
