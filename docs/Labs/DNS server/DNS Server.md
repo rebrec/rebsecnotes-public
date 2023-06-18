@@ -45,7 +45,7 @@ Edit `db.$DOMAIN` file with your favorite text editor
 ## Run the DNS server
 
 ```bash
-docker run --name lab_bind --rm  -v $PWD/db.$DOMAIN:/etc/bind/db.$DOMAIN -v $PWD/named.conf.local:/etc/bind/named.conf.local --expose 53 -ti ubuntu/bind9 
+sudo docker run --name lab_bind --rm  -v $PWD/db.$DOMAIN:/etc/bind/db.$DOMAIN -v $PWD/named.conf.local:/etc/bind/named.conf.local --expose 53 -ti ubuntu/bind9 
 ```
 
 ## Test the DNS setup
