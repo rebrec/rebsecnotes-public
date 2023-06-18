@@ -6,7 +6,7 @@ Basic DNS setup in a docker container to test your DNS enumeration tools for ins
 
 ## Initial Setup
 ```bash
-export DOMAIN=myzone.local
+export DOMAIN=rebrec.local
 mkdir dns_lab 
 cd $_
 
