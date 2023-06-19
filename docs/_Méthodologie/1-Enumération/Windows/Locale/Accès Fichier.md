@@ -1,5 +1,6 @@
 ---
-public: true # set to true to make the article publishable
+public: true 
+#Tags: tag1, tag2
 ---
 
 ```

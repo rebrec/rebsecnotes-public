@@ -1,6 +1,8 @@
 ---
-public: true # set to true to make the article publishable
+public: true 
+#Tags: tag1, tag2
 ---
+
 ```shell
 # Pour toutes les commandes gobuster, on peut voir ce qui se passe en ajoutant 
 # le paramètre :     --proxy http://127.0.0.1:8080

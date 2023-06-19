@@ -1,6 +1,8 @@
 ---
-public: true # set to true to make the article publishable
+public: true 
+#Tags: tag1, tag2
 ---
+
 
 ```
 PS C:\> Get-NetTCPConnection -State Listen | Select-Object -Property @{'Name' = 'ProcessName';'Expression'={(Get-Process -Id $_.OwningProcess).Name}},LocalPort
