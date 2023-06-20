@@ -61,3 +61,19 @@ $ rlwrap -g LOGIN openssl s_client -connect $TARGET_IP:imaps -quiet -crlf
 1 FETCH 1 BODY.PEEK[TEXT]    <== affiche le corps du mail
 ```
 
+## Exploitation
+
+### Enumération d'utilisateurs
+
+```
+telnet $TARGET_IP 110
+[...]
+USER baduser1
+
+-ERR
+
+
+USER existinguser
+
++OK
+```
