@@ -83,3 +83,5 @@ USER existinguser
 
 +OK
 ```
+
+### Password spraying
