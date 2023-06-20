@@ -37,6 +37,7 @@ openssl s_client -connect $TARGET_IP:imaps
 
 Tutoriel : https://nickb.dev/blog/introduction-to-imap/
 
+**ATTENTION** : certain client IMAP semble n'accepter que des commandes qui se terminent par \r\n. `nc` n'envoie qu'un `\n`
 ```
 $ rlwrap -g LOGIN openssl s_client -connect $TARGET_IP:imaps -quiet -crlf
 
