@@ -18,7 +18,9 @@ sudo nmap -Pn -sV -sC -p25,465 $TARGET_IP
 
 Peut être utilisé pour énumérer des comptes utilisateurs valides via les paramètres `VRFY`, `EXPN` et `RCPT TO` 
 
-#### VRFY
+#### Manuelle
+
+##### VRFY
 
 ```
 telnet $TARGET_IP 25
@@ -32,7 +34,7 @@ VRFY rebrec
 550 5.1.1 <rebrec>: Recipient address rejected: User unknown in local recipient table
 ```
 
-#### EXPN
+##### EXPN
 
 Peut afficher la liste des membres d'une liste de distribution.
 
