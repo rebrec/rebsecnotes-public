@@ -18,6 +18,10 @@ sudo nmap -Pn -sV -sC -p25,465 $TARGET_IP
 
 Peut être utilisé pour énumérer des comptes utilisateurs valides via les paramètres `VRFY`, `EXPN` et `RCPT TO` 
 
+#### Automatisée
+
+[[Enumération d'utilisateurs à distance via la messagerie]]
+
 #### Manuelle
 
 ##### VRFY
@@ -52,7 +56,7 @@ EXPN company-members
 250 2.1.5 existinguser1@superdomain.com
 ```
 
-#### RCPT TO
+##### RCPT TO
 
 ```
 telnet $TARGET_IP 25
