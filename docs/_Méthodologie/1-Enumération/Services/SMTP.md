@@ -10,6 +10,7 @@ Ports :
 
 ```
 sudo nmap -Pn -sV -sC -p25,465 $TARGET_IP
+sudo nmap -Pn -sC -p25 --script smtp-open-relay $TARGET_IP
 ```
 
 ## Exploitation
