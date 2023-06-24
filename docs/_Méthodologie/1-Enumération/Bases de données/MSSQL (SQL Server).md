@@ -64,7 +64,7 @@ USE master
 -- Get table names
 SELECT table_name FROM <databaseName>.INFORMATION_SCHEMA.TABLES;
 
--- ist Linked Servers
+-- List Linked Servers
 EXEC sp_linkedservers
 SELECT * FROM sys.servers;
 
@@ -189,10 +189,10 @@ sqlcmd -S SRVMSSQL -U julio -P 'MyPassword!' -y 30 -Y 30
 #### sqsh (Linux)
 ```
 # Authentificatino Interne (SQL Server)
-sqsh -S 10.129.203.7 -U julio -P 'MyPassword!' -h
+sqsh -S $TARGET_IP -U $AD_USER -P $AD_PASSWORD
 
 # Authentification locale ou domaine
-sqsh -S 10.129.203.7 -U .\\julio -P 'MyPassword!' -h
+sqsh -S $TARGET_IP -U .\\$AD_USER -P $AD_PASSWORD 
 ```
 
 #### mssqlclient.py (Impacket)
