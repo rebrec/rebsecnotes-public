@@ -51,6 +51,8 @@ mssqlclient.py -p 1433 -windows-auth WIN-02/mssqlsvc:princess1@$TARGET_IP
 select @@version;
 -- Get user
 select user_name();
+-- List admin users
+SELECT   name,type_desc,is_disabled FROM     master.sys.server_principals WHERE    IS_SRVROLEMEMBER ('sysadmin',name) = 1 ORDER BY name
 
 -- Check if we are sysadmin
 SELECT SYSTEM_USER;
