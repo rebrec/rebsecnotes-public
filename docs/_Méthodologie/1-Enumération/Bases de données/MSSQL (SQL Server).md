@@ -36,7 +36,55 @@ msf6 auxiliary(scanner/mssql/mssql_ping) > run
 
 ### Avec accès 
 
-Si on dispose d'un accès via un des outils présentés plus bas sur cette page, on pourra utiliser les commandes suivantes pour découvrir
+Si on dispose d'un accès via un des outils présentés plus bas sur cette page, on pourra utiliser les commandes suivantes pour découvrir l'environnement de base de données accessible.
+
+#### Requêtes utiles
+
+##### Informations générales
+```sql
+-- Get version
+select @@version;
+-- Get user
+select user_name();
+select SYSTEM_USER;
+-- List admin users
+select name,type_desc,is_disabled FROM master.sys.server_principals WHERE IS_SRVROLEMEMBER ('sysadmin',name) = 1 ORDER BY name;
+-- Check if we are sysadmin
+SELECT IS_SRVROLEMEMBER('sysadmin'); -- retourne 0 si nous ne sommes pas membre
+--
+-- List users
+select sp.name as login, sp.type_desc as login_type, sl.password_hash, sp.create_date, sp.modify_date, case when sp.is_disabled = 1 then 'Disabled' else 'Enabled' end as status from sys.server_principals sp left join sys.sql_logins sl on sp.principal_id = sl.principal_id where sp.type not in ('G', 'R') order by sp.name;
+
+-- List Linked servers
+SELECT srvname, isremote FROM sysservers;
+```
+
+##### Exploration de l'instance de base de donnée
+```
+-- Get databases
+select name from sys.databases;
+SELECT name FROM master.dbo.sysdatabases;
+
+-- Use database
+USE master;
+
+-- Get table names
+SELECT table_name FROM <databaseName>.INFORMATION_SCHEMA.TABLES;
+
+-- Identify Linked Servers
+1> 
+2> GO
+
+srvname                             isremote
+----------------------------------- --------
+DESKTOP-MFERMN4\SQLEXPRESS          1
+10.0.0.12\SQLEXPRESS                0        <== isremote = 0 ===> LINKED SERVER
+
+-- List Linked Servers
+EXEC sp_linkedservers
+SELECT * FROM sys.servers;
+
+```
 
 ## Outils utiles
 
@@ -70,46 +118,7 @@ mssqlclient.py -p 1433 -windows-auth WIN-02/mssqlsvc:princess1@$TARGET_IP
 ```
 
 ## Commandes utiles
-### Enumeration / Exploration
-```sql
--- Get version
-select @@version;
--- Get user
-select user_name();
--- List admin users
-SELECT   name,type_desc,is_disabled FROM     master.sys.server_principals WHERE    IS_SRVROLEMEMBER ('sysadmin',name) = 1 ORDER BY name
 
--- Check if we are sysadmin
-SELECT SYSTEM_USER;
-SELECT IS_SRVROLEMEMBER('sysadmin'); -- retourne 0 si nous ne sommes pas membre
--- Get databases
-SELECT name FROM master.dbo.sysdatabases;
-select name from sys.databases
--- Use database
-USE master
-
--- Get table names
-SELECT table_name FROM <databaseName>.INFORMATION_SCHEMA.TABLES;
-
-
-
--- List users
-select sp.name as login, sp.type_desc as login_type, sl.password_hash, sp.create_date, sp.modify_date, case when sp.is_disabled = 1 then 'Disabled' else 'Enabled' end as status from sys.server_principals sp left join sys.sql_logins sl on sp.principal_id = sl.principal_id where sp.type not in ('G', 'R') order by sp.name;
-
--- Identify Linked Servers
-1> SELECT srvname, isremote FROM sysservers
-2> GO
-
-srvname                             isremote
------------------------------------ --------
-DESKTOP-MFERMN4\SQLEXPRESS          1
-10.0.0.12\SQLEXPRESS                0        <== isremote = 0 ===> LINKED SERVER
-
--- List Linked Servers
-EXEC sp_linkedservers
-SELECT * FROM sys.servers;
-
-```
 
 ### Exploitation
 #### Création de compte
