@@ -7,12 +7,14 @@ Port : 1433
 
 ## Enumeration
 
-### nmap
+### Sans accès initial
+
+#### nmap
 ```shell-session
 sudo nmap --script ms-sql-info,ms-sql-empty-password,ms-sql-xp-cmdshell,ms-sql-config,ms-sql-ntlm-info,ms-sql-tables,ms-sql-hasdbaccess,ms-sql-dac,ms-sql-dump-hashes --script-args mssql.instance-port=1433,mssql.username=sa,mssql.password=,mssql.instance-name=MSSQLSERVER -sV -p 1433 $TARGET_IP
 ```
 
-### metasploit
+#### metasploit
 ```shell-session
 msf6 auxiliary(scanner/mssql/mssql_ping) > set rhosts 10.129.201.248
 
@@ -32,7 +34,30 @@ msf6 auxiliary(scanner/mssql/mssql_ping) > run
 [*] Auxiliary module execution completed
 ```
 
-### Mssqlclient.py (impacket)
+### Avec accès 
+
+Si on dispose d'un accès via un des outils présentés plus bas sur cette page, on pourra utiliser les commandes suivantes pour découvrir
+
+## Outils utiles
+
+#### sqlcmd (Windows)
+```
+# -y 30 -Y 30 augmentent la visibilité des résultat (attention aux performances)
+sqlcmd -S SRVMSSQL -U julio -P 'MyPassword!' -y 30 -Y 30
+
+# ATTENTION : cet utilitaire nécessite la saisie du mot GO à la ligne terminant chaque requête ! (pas besoin de ';' dans cet outil)
+```
+
+#### sqsh (Linux)
+```
+# Authentificatino Interne (SQL Server)
+sqsh -S $TARGET_IP -U $AD_USER -P $AD_PASSWORD
+
+# Authentification locale ou domaine
+sqsh -S $TARGET_IP -U .\\$AD_USER -P $AD_PASSWORD 
+```
+
+#### Mssqlclient.py (impacket)
 ```sql
 -- Internal Authentication (no fomzin prefix)
 mssqlclient.py -p 1433  $USER:$PASS@$TARGET_IP 
@@ -176,30 +201,6 @@ EXECUTE('select @@servername, @@version, system_user, is_srvrolemember(''sysadmi
 2> GO
 ```
 
-## Outils utiles
-
-#### sqlcmd (Windows)
-```
-# -y 30 -Y 30 augmentent la visibilité des résultat (attention aux performances)
-sqlcmd -S SRVMSSQL -U julio -P 'MyPassword!' -y 30 -Y 30
-
-# ATTENTION : cet utilitaire nécessite la saisie du mot GO à la ligne terminant chaque requête ! (pas besoin de ';' dans cet outil)
-```
-
-#### sqsh (Linux)
-```
-# Authentificatino Interne (SQL Server)
-sqsh -S $TARGET_IP -U $AD_USER -P $AD_PASSWORD
-
-# Authentification locale ou domaine
-sqsh -S $TARGET_IP -U .\\$AD_USER -P $AD_PASSWORD 
-```
-
-#### mssqlclient.py (Impacket)
-
-```
- mssqlclient.py -p 1433 julio@10.129.203.7 
-```
 
 
 
