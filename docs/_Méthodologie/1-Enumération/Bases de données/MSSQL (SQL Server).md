@@ -197,7 +197,7 @@ EXEC sp_addsrvrolemember 'hacker', 'sysadmin';
 
 #### User Impersonate
 
-Si l'énumération présentée plus haut nous liste des utilisateurs que l'on peut "impersonate" (usurper l'identité), on peut alors utiliser les commande
+Si l'énumération présentée plus haut nous liste des utilisateurs que l'on peut "impersonate" (usurper l'identité), on peut alors utiliser les commandes suivantes :
 
 ```
 -- Exploitation
