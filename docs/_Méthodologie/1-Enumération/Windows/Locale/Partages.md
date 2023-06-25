@@ -1,6 +1,7 @@
 ---
 public: true # set to true to make the article publishable
 ---
+## Liste des partages laucaux
 
 ```powershell
 # Liste des partages actifs sur la machine
