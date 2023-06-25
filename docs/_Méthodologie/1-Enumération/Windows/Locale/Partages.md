@@ -1,7 +1,7 @@
 ---
 public: true # set to true to make the article publishable
 ---
-## Liste des partages laucaux
+## Liste des partages locaux
 
 ```powershell
 # Liste des partages actifs sur la machine
@@ -17,7 +17,21 @@ Shared   *         C:\Shared
 SYSVOL   *         C:\Windows\SYSVOL\sysvol                    Logon server share 
 Users    *         C:\Users                                                        
 
+```
 
+## Accès à un partage distant depuis Windows
+
+```powershell
+$username = 'someuser'
+$password = 'somepass'
+$secpassword = ConvertTo-SecureString $password -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential $username, $secpassword
+New-PSDrive -Name "S" -Root "\\192.168.10.10\Common" -PSProvider "FileSystem" -Credential $cred
+```
+
+## Liste des restrictions FSRM présentes sue un partage
+
+```
 # Liste des type de fichiers filtrés sur les partages (FSRM File Screening)
 PS > Get-FsrmFileScreen| select -expandproperty IncludeGroup
 
