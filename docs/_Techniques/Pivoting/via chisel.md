@@ -10,6 +10,8 @@ git clone https://github.com/jpillora/chisel.git
 cd chisel
 # stripping
 go build -ldflags="-s -w"  # réduction de 10 Mo à 6 Mo
+# sinon "static linking" (rend plus portable mais plus gros)
+go build -gccgoflags="-s -w --static"
 # compression
 upx brute chisel # réduction de 6 à 1.5Mo
 ```
