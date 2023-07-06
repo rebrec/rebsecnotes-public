@@ -25,7 +25,7 @@ crackmapexec smb $TARGET_IP --local-auth -u $LOCAL_USER -p $LOCAL_PASS --sam
 
 ### SAM
 ```
-secretdump.py local -sam sam.save -security security.save -system system.save LOCAL
+secretsdump.py local -sam sam.save -security security.save -system system.save LOCAL
 ```
 
 
