@@ -58,3 +58,7 @@ Une fois configuré, il ne reste plus qu'à préfixer nos commandes favorites de
 # Connexion SSH via le tunnel socks
 proxychains ssh user@<IP_HOTE_ACCESSIBLE_DANS_LE_LAN_DE_NOTRE_CIBLE>
 ```
+
+```
+ssh webadmin@$TARGET_IP -i loot/id_rsa1 -D 1080  -R 1234:0.0.0.0:443 -v   
+```
