@@ -23,3 +23,8 @@ On peut également chercher des documents (filetype:pdf, etc.) dans un moteur de
 
 ## Génération d'une liste d'utilisateurs
 On peut, à partir d'une liste d'employés générer une liste de compte potentiels (voir [[Générer une Wordlist]]) basé sur des conventions de nommages souvent appliquées (si on n'a pas réussi à la déterminer)
+
+## Outil : LinkedIn2Username
+
+https://github.com/initstring/linkedin2username
+
