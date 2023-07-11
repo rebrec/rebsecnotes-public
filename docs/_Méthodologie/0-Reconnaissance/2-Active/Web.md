@@ -22,7 +22,7 @@ whatweb -a3 https://www.facebook.com -v
 ```
 
 ### Wappalyzer 
-L'installation de cette extension de navigateur permet d'obtenir un rapide appercu des technologies utilisées sur un site web.
+L'installation de cette extension de navigateur permet d'obtenir un rapide aperçu des technologies utilisées sur un site web.
 
 
 ### Identification d'un WAF
