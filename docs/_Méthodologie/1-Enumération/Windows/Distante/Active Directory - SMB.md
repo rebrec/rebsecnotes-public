@@ -13,10 +13,13 @@ public: true
 cme smb $TARGET_IP -u "sql_svc" -p "qsdqsd" -d "domain"  --pass-pol | cut -c60-
 
 # enum4linux
-enum4linux -P $TARGET_IP
+enum4linux -u "" -p "" -P $TARGET_IP
 
 # rpcclient
 rpcclient $> querydominfo
+
+# ldapsearch
+ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "*" | grep -m 1 -B 10 pwdHistoryLength
 ```
 
 ## Comptes utilisateurs
@@ -24,7 +27,11 @@ rpcclient $> querydominfo
 ### SMB
 
 ```shell
+# crackmapexec
 cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users
+
+# enum4linux
+
 
 # Creation d'une liste d'utilisateurs
 cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt

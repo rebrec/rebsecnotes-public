@@ -9,7 +9,7 @@ Port CIFS : 445 exclusivement
 
 On peut obtenir des informations sur des partages, des utilisateurs, des groupes, etc.
 
-Voir aussi : [[Active Directory - SMB]]
+Voir aussi : [[docs/_Méthodologie/1-Enumération/Windows/Distante/Active Directory - SMB]]
 
 Cheatsheet du SANS : https://www.willhackforsushi.com/sec504/SMB-Access-from-Linux.pdf
 
