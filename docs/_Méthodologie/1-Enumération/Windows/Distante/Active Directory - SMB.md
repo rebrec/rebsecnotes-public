@@ -31,6 +31,9 @@ ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "*" | grep -m 1 -B 10
 cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users
 
 # enum4linux
+enum4linux -u "" -p "" -U $TARGET_IP
+
+# rpcclient
 
 
 # Creation d'une liste d'utilisateurs
