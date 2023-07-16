@@ -38,19 +38,14 @@ ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "*" | grep -m 1 -B 10
 
 ```shell
 # crackmapexec
-cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users
-cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d "\ " -f 2 | tee users.txt
-
+cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
+```
+```shell
 # enum4linux
-enum4linux -u "" -p "" -U $TARGET_IP
-enum4linux -u "" -p "" -U $TARGET_IP | grep user: | cut -d '[' -f2 | cut -d ']' -f1 > users.txt
+enum4linux -u "" -p "" -U $TARGET_IP | grep user: | cut -d '[' -f2 | cut -d ']' -f1  | tee users.txt
 
 # rpcclient
-rpcclient -U "" -N $TARGET_IP
-$> enumdomusers
-
-# Creation d'une liste d'utilisateurs
-cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
+rpcclient -U "" -N $TARGET_IP -c 'enumdomusers;quit' | grep user: | cut -d '[' -f2 | cut -d ']' -f1  | tee users.txt
 ```
 
 #### LDAP
@@ -87,11 +82,6 @@ Lorsqu'on dispose d'une liste de comptes utilisateurs, on peut ensuite essayer d
 - toujours vérifier la politique de mot de passe en place (voir plus haut) avant de tenter un password spraying.
 - ne pas tenter le nombre maximum de tentatives autorisées !
 - `cme [...] --users`  affiche le nombre de mauvaise saisie des compteurs d'authentification (a exécuter sur le PDC emulator pour avoir l'information centralisée de tous les DCs)
-
-```shell
-# Collect users
-cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
-```
 
 Attaque à partir d'une liste d'utilisateurs avec un mot de passe `$AD_PASSWORD`
 
