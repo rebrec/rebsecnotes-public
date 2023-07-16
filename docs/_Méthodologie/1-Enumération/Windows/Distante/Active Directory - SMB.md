@@ -30,7 +30,7 @@ $> querydominfo
 ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "*" | grep -m 1 -B 10 pwdHistoryLength
 ```
 
-## Comptes utilisateurs
+## Découverte de comptes utilisateurs
 
 ### Listing
 
@@ -63,11 +63,17 @@ ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "(&(objectclass=user)
 
 ### Découverte par bruteforce
 
-On pourra utiliser la liste des 
+On pourra utiliser la liste des noms d'utilisateurs les plus communs provenant de https://github.com/insidetrust/statistically-likely-usernames
+Par exemple le fichier : https://raw.githubusercontent.com/insidetrust/statistically-likely-usernames/master/jsmith.txt
 
 ```shell
+# kerbrute
 kerbrute userenum -d DOMAIN.LOCAL --dc $TARGET_IP userbiglist.Txt
 ```
+
+Cet utilitaire tente très rapidement tous les mots de passes de la liste.
+Il ne génère par d'évènement dans un AD configuré avec les options par défaut.
+
 
 ### Comptes utilisateurs
 
