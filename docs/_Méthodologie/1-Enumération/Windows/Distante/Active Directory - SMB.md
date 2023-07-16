@@ -16,7 +16,8 @@ cme smb $TARGET_IP -u "sql_svc" -p "qsdqsd" -d "domain"  --pass-pol | cut -c60-
 enum4linux -u "" -p "" -P $TARGET_IP
 
 # rpcclient
-rpcclient $> querydominfo
+rpcclient -U "" -N $TARGET_IP
+$> querydominfo
 
 # ldapsearch
 ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "*" | grep -m 1 -B 10 pwdHistoryLength
@@ -34,7 +35,8 @@ cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users
 enum4linux -u "" -p "" -U $TARGET_IP
 
 # rpcclient
-
+rpcclient -U "" -N $TARGET_IP
+$> enumdomusers
 
 # Creation d'une liste d'utilisateurs
 cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
@@ -43,7 +45,11 @@ cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 
 ### LDAP
 
 ```
-$ cme ldap -u $AD_USER -p $AD_PASSWORD $TARGET_IP -dc-ip $TARGET_IP --users
+# crackmapexec
+cme ldap -u $AD_USER -p $AD_PASSWORD $TARGET_IP -dc-ip $TARGET_IP --users
+
+# ldapsearch
+ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "(&(objectclass=user))"  | grep sAMAccountName: | cut -d ' ' -f2
 ```
 
 ```
