@@ -9,10 +9,17 @@ public: true
 
 ## Politique de mot de passe
 ```shell
-cme smb $TARGET_IP -u "sql_svc" -p "REGGIE1234ronnie" -d "sequel"  --pass-pol | cut -c60-
+# crackmapexec
+cme smb $TARGET_IP -u "sql_svc" -p "qsdqsd" -d "domain"  --pass-pol | cut -c60-
+
+# enum4linux
+enum4linux -P $TARGET_IP
+
+# rpcclient
+rpcclient $> querydominfo
 ```
 
-## Comptes utlisateurs
+## Comptes utilisateurs
 
 ### SMB
 
