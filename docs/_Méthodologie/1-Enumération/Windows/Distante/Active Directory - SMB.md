@@ -75,9 +75,17 @@ Cet utilitaire tente très rapidement tous les mots de passes de la liste.
 Il ne génère par d'évènement dans un AD configuré avec les options par défaut.
 
 
-### Comptes utilisateurs
+## Attaques sur des comptes utilisateurs
 
-#### Password Spraying
+Lorsqu'on dispose d'une liste de comptes utilisateurs, on peut ensuite essayer de trouver leur mots de passe associés.
+
+### Password Spraying
+
+**Attention** :
+- toujours vérifier la politique de mot de passe en place (voir plus haut) avant de tenter un password spraying.
+- ne pas tenter le nombre maximum de tentatives autorisées !
+- `cme [...] --users`  affiche le nombre de mauvaise saisie des compteurs d'authentification (a exécuter sur le PDC emulator pour avoir une info)
+
 ```
 # Collect users
 cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
