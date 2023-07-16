@@ -43,3 +43,5 @@ hashcat -m 1800 -a 0 /tmp/unshadowed.hashes rockyou.txt -o /tmp/unshadowed.crack
 hashcat -m 5600 hash.txt rockyou.txt
 
 ```
+
+La liste des hash est disponible ici : https://hashcat.net/wiki/doku.php?id=example_hashes
