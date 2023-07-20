@@ -246,7 +246,7 @@ wmiexec.py $AD_DOMAIN/$AD_USER:"$AD_PASSWORD"@$TARGET_IP
 
 ## Bloodhound
 
-# Bloodhound python injector available as a docker image (python2)
+Bloodhound python injector available as a docker image (python2)
 sudo docker run --rm -v ${PWD}:/bloodhound-data -it bloodhound 
 $ bloodhound-python  -u 'svc_apache' -p 'S@Ss!K@*t13' -c All -d 'flight.htb' -v -ns 10.10.11.187
 ```
