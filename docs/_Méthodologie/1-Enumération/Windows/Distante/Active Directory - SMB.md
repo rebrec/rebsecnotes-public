@@ -63,6 +63,13 @@ cme ldap -u $AD_USER -p $AD_PASSWORD $TARGET_IP -dc-ip $TARGET_IP --users
 
 # ldapsearch
 ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "(&(objectclass=user))"  | grep sAMAccountName: | cut -d ' ' -f2
+
+# windapsearch
+# liste des administrateurs du domaine
+windapsearch.py --dc-ip $TARGET_IP -u $AD_USER@$AD_DOMAIN -p $AD_PASSWORD --da
+# liste d'utilisateurs potentiellement à privilèges
+windapsearch.py --dc-ip $TARGET_IP -u $AD_USER@$AD_DOMAIN -p $AD_PASSWORD --PU
+
 ```
 
 #### Bruteforce
