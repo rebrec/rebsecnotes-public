@@ -13,6 +13,16 @@ public: true # set to true to make the article publishable
 ## Méthodologie
 ### Locale
 
+#### Manuelle
+
+```shell
+# Enumérer tous les SPNs
+setspn.exe -q */*
+```
+
+```powershell
+# Demander un TGS pour le 
+```
 #### Utiliser Rubeus.exe
 
 Il réalise les opérations suivantes :
