@@ -42,6 +42,8 @@ hashcat -m 1800 -a 0 /tmp/unshadowed.hashes rockyou.txt -o /tmp/unshadowed.crack
 # Hash NetNTLMv2
 hashcat -m 5600 hash.txt rockyou.txt
 
+# Hash de TGS    $krb5tgs$23$*user1$DOMAIN...
+hashcat -m 13100 hash.txt rockyou.txt
 ```
 
 La liste des hash est disponible ici : https://hashcat.net/wiki/doku.php?id=example_hashes

