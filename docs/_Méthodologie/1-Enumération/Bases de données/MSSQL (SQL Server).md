@@ -9,6 +9,7 @@ Port : 1433
 
 ### Sans accès initial
 
+
 #### nmap
 ```shell-session
 sudo nmap --script ms-sql-info,ms-sql-empty-password,ms-sql-xp-cmdshell,ms-sql-config,ms-sql-ntlm-info,ms-sql-tables,ms-sql-hasdbaccess,ms-sql-dac,ms-sql-dump-hashes --script-args mssql.instance-port=1433,mssql.username=sa,mssql.password=,mssql.instance-name=MSSQLSERVER -sV -p 1433 $TARGET_IP
@@ -84,7 +85,9 @@ SELECT table_name FROM <databaseName>.INFORMATION_SCHEMA.TABLES;
 
 ## Outils utiles
 
-#### sqlcmd (Windows)
+### Windows
+
+#### sqlcmd
 
 Utilitaire installer avec SQLServer
 Il faudra ajouter le mot clé `GO` à chaque requête afin qu'elle soit exécutée.
@@ -95,7 +98,9 @@ sqlcmd -S SRVMSSQL -U julio -P 'MyPassword!' -y 30 -Y 30
 # ATTENTION : cet utilitaire nécessite la saisie du mot GO à la ligne terminant chaque requête ! (pas besoin de ';' dans cet outil)
 ```
 
-#### sqsh (Linux)
+### Linux
+
+#### sqsh
 
 Equivalent de sqlcmd sous Windows, pour Linux.
 Comme sous windows, on ajoutera le mot clé `GO` à chaque requête afin qu'elle soit exécutée.
