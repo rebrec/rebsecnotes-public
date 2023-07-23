@@ -8,8 +8,8 @@ public: true # set to true to make the article publishable
 # ACLs intéressantes (très long)
 Find-InterestingDomainAcl
 
-# ACLs liées à un compte spécifique (targetUserName)
-$sid = Convert-NameToSid targetUserName 
+# ACLs liées à un compte spécifique ($targetUserName)
+$sid = Convert-NameToSid $targetUserName 
 # peu prendre beaucoup de temps (plusieures minutes vois dizaines de minutes)
 Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $sid} 
 ```
