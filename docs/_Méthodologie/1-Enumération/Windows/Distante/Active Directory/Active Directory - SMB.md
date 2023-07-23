@@ -244,6 +244,11 @@ Fourni un accès avec le compte utilisateur utilisé ($AD_USER)
 wmiexec.py $AD_DOMAIN/$AD_USER:"$AD_PASSWORD"@$TARGET_IP
 ```
 
+### DECRPC
+
+SCShell
+https://github.com/Mr-Un1k0d3r/SCShell
+
 ## Bloodhound
 
 Bloodhound python injector available as a docker image (python2)
