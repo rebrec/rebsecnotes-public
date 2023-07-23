@@ -47,7 +47,7 @@ Set-DomainUserPassword -Identity Target_AD_User -Password $pass
 
 Permet :
 - l'ajout d'un utitilisateur comme membre d'un groupe sur le quel on dispose de ce droit
-
+- la modification du script de login pour tenter une exécution de code à distance (au prochain logon)
 ```powershell
 Add-DomainGroupMember -Identity "Target Group With GenericWrite right" -Members 'compromised'
 # Verification
@@ -72,4 +72,5 @@ Set-DomainObject -Identity $targetedUser -Clear serviceprincipalname
 
 ### WriteDacl
 
-Permet d'ajouter des DACL sur un compte
+Permet d'ajouter des DACL sur un compte utilisateur.
+Cela peut permettre d'ajouter les permissions `DS-Replication-Get-Changes`, `DS-Replication-Get-Changes-All` et `DS-Replication-Get-Changes-In-Filtered-Set` qui permettent de réaliser une attaque ([[DCSync]])
