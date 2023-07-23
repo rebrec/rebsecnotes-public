@@ -5,7 +5,9 @@ public: true # set to true to make the article publishable
 ```powershell
 # Récupération du SID d'un utilisateur
 . .\PowerView.ps1
-$sid = Convert-NameToSid "tom"
+$targetUser = "tom"
+$sid = Convert-NameToSid $targetUser # Powerview
+$sid = (Get-ADUser "wley").SID.Value # module Active Directory
 ```
 
 
