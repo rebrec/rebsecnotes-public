@@ -17,7 +17,13 @@ Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $si
 ## Exploitation de privilèges en notre possession
 
 On s'appuiera souvent sur des informations d'identification différentes d'un compte préalablement compris. 
-Dans ce cas, on utilisera le parametre `-Credential`
+Dans ce cas, on utilisera le parametre `-Credential $creds` avec un objet PSCredential créé de la façon suivante :
+
+```powershell
+$pass = "somePass"
+$user = "DOMAIN\someuser"
+$creds = New-Object System.Management.Automation.PSCredential($user, (ConvertTo-SecureString $pass -AsPlainText -Force))
+```
 
 ### WriteOwner (appropriation d'un objet)
 
