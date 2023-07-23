@@ -69,3 +69,7 @@ Get-DomainUser $targetedUser | Get-DomainSPNTicket | fl
 # Cleanup
 Set-DomainObject -Identity $targetedUser -Clear serviceprincipalname
 ```
+
+### WriteDacl
+
+Permet d'ajouter des DACL sur un compte
