@@ -2,12 +2,16 @@
 public: true # set to true to make the article publishable
 ---
 
+
 ```powershell
-# Récupération du SID d'un utilisateur
 . .\PowerView.ps1
-$targetUser = "tom"
-$sid = Convert-NameToSid $targetUser # Powerview
-$sid = (Get-ADUser "wley").SID.Value # module Active Directory
+# ACLs intéressantes (très long)
+Find-InterestingDomainAcl
+
+# ACLs liées à un compte spécifique (targetUserName)
+$sid = Convert-NameToSid targetUserName 
+# peu prendre beaucoup de temps (plusieures minutes vois dizaines de minutes)
+Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $sid} 
 ```
 
 ## Exemples 
