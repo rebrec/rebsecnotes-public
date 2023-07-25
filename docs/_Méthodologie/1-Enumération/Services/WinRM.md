@@ -27,3 +27,4 @@ Utiliser le cmdlet `Test-WsMan`
 ```shell-session
 evil-winrm -i $TARGET_IP -u $AD_USER -p $AD_PASSWORD
 ```
+
