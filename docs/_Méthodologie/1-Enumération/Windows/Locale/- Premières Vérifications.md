@@ -10,7 +10,11 @@ net user Compromised_Account
 net localgroup
 ```
 
+regarder les descriptions des utilisateurs AD
 
+```powershell
+ Get-DomainUser * | Select-Object samaccountname,description |Where-Object {$_.Description -ne $null}
+```
 
  
 ```
