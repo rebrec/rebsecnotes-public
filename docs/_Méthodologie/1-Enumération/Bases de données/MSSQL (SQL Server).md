@@ -65,6 +65,8 @@ SELECT distinct b.name FROM sys.server_permissions a INNER JOIN sys.server_princ
 SELECT srvname, isremote FROM sysservers WHERE isremote = 0; -- 0 means linked server
 EXEC sp_linkedservers
 SELECT * FROM sys.servers;
+SELECT name,is_linked,is_remote_login_enabled, FROM sys.servers WHERE isremote = 0; -- 0 means linked server
+
 
 ```
 
