@@ -1,4 +1,7 @@
 {
   "trashOption": "local",
-  "alwaysUpdateLinks": false
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "current",
+  "useMarkdownLinks": false,
+  "attachmentFolderPath": "assets"
 }

@@ -1,0 +1,9 @@
+{
+	"nodes":[
+		{"id":"bf4e1ae7bb3b5252","x":-160,"y":-180,"width":560,"height":394,"type":"file","file":"CTF - Challenges/htb/Escape.md"},
+		{"id":"98618abd59939201","x":-410,"y":-380,"width":250,"height":60,"type":"text","text":"aeaze"}
+	],
+	"edges":[
+		{"id":"01de695f3e5b0d4a","fromNode":"98618abd59939201","fromSide":"bottom","toNode":"bf4e1ae7bb3b5252","toSide":"left"}
+	]
+}
