@@ -1,5 +1,5 @@
 ---
-title: Bienvenue sur rebsecnotes
+title: Bienvenu sur rebsecnotes
 public: true
 ---
 
