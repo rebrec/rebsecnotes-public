@@ -1,10 +1,10 @@
 site_name: Rebrec's Sec Notes
 site_description: 'Various notes from CTF experience'
 site_author: 'rebrec'
-site_url: 'https://rebrec.github.io/rebsecnotes/'
+site_url: 'https://rebrec.github.io/rebsecnotes-public/'
 docs_dir: docs/
-repo_name: 'rebrec/rebsecnotes'
-repo_url: 'https://github.com/rebrec/rebsecnotes'
+repo_name: 'rebrec/rebsecnotes-public/'
+repo_url: 'https://github.com/rebrec/rebsecnotes-public/'
 edit_uri: 'edit/main/docs/'
 theme:
  name: 'material'
