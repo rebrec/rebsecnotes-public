@@ -88,7 +88,7 @@ Clients : `xfreerdp`, `rdesktop`, ou `Remmina`
 
  ```shell-session
 
-xfreerdp /u:$AD_USER /p:$AD_PASSWORD /v:$TARGET_IP
+xfreerdp /u:$AD_USER /p:$AD_PASSWORD /v:$TARGET_IP /drive:shareName,/tmp /size:1900x900 
 
 rdesktop -u $AD_USER -p $AD_PASSWORD $TARGET_IP
 
