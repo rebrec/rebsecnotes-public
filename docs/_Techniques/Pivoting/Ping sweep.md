@@ -32,7 +32,7 @@ function Get-PingSweep {
     ForEach-Object {
         if ($_.Status -eq 'Success') {
             if (!$ResolveName) {
-                $_
+                Write-Output $_
             } else {
                 $_ | Select-Object Address, @{Expression={ResolveIp($_.Address)};Label='Name'}, Status, RoundtripTime
             }
