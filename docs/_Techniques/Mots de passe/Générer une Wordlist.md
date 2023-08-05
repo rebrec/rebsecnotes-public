@@ -16,6 +16,7 @@ cewl https://www.company.com -d 2 -m 7 --lowercase -w inlane.wordlist
 On pourra générer, à partir de nom / prénoms collectés une liste de compte utilisateurs potentiels.
 
 L'outil [Username Anarchy](https://github.com/urbanadventurer/username-anarchy) offre notamment cette possibilité
+./username-anarchy John doe > .txt
 
 ## Créer une wordlist personnalisée
 
