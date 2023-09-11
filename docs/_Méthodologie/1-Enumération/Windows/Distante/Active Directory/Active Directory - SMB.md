@@ -49,7 +49,7 @@ cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --loggedon-users
 
 ```shell
 # enum4linux
-enum4linux -u "" -p "" -U $TARGET_IP | grep user: | cut -d '[' -f2 | cut -d ']' -f1  | tee users.txt
+enum4linux -u "$AD_USER" -p "$AD_PASSWORD" -U $TARGET_IP | grep user: | cut -d '[' -f2 | cut -d ']' -f1  | tee users.txt
 
 # rpcclient
 rpcclient -U "" -N $TARGET_IP -c 'enumdomusers;quit' | grep user: | cut -d '[' -f2 | cut -d ']' -f1  | tee users.txt
