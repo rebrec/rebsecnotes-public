@@ -39,8 +39,11 @@ ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "*" | grep -m 1 -B 10
 
 ```shell
 # crackmapexec
+## Accès guest restreint
+cme smb $TARGET_IP -u "guest" -p "" --rid-brute 10000  # Max RID a adapter
+
 ## Utilisateurs connus (AD / Station)
-cme smb $TARGET_IP -u "$AD_USER" -p "$AD_PASSWORD"01 --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
+cme smb $TARGET_IP -u "$AD_USER" -p "$AD_PASSWORD" --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
 ```
 ```shell
 ## Utilisateurs connectés sur la station
