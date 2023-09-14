@@ -55,7 +55,7 @@ Get-DomainGroupMember -Identity "Target Group With GenericWrite right" | ?{$_.Me
 ```
 
 ### GenericAll
-Sur un compte utilisateur :
+#### Sur un compte utilisateur
 - Permet de récupérer le hash du mot de passe d'un utilisateur sur lequel on dispose de ce privilège.
 - L'attaque se nomme "Targetted Kerberoasting".
 - Elle conciste en la création d'un SPN sur le compte cible afin de récupérer un TGS à cracker hors ligne.
@@ -70,9 +70,12 @@ Get-DomainUser $targetedUser | Get-DomainSPNTicket | fl
 Set-DomainObject -Identity $targetedUser -Clear serviceprincipalname
 ```
 
-Sur un groupe :
+#### Sur un groupe
 - elle permet de s'ajouter comme membre du groupe
-- 
+
+#### Sur une OU
+- elle permet d'ajouter un controle total sur l'OU et disposer d'un controle totale sur les objets qui sont dedans
+
 ### WriteDacl
 
 Permet d'ajouter des DACL sur un compte utilisateur.
