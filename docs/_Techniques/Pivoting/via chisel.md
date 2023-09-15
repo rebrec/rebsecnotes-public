@@ -1,7 +1,6 @@
 ---
 public: true # set to true to make the article publishable
 ---
-C'est le principe d'utiliser une machine compromise pour relayer notre attaque vers 
 
 ## Installation et réduction de la taille
 
