@@ -24,6 +24,9 @@ mysql -h $TARGET_IP -u root  -pLeMotDePasseSansEspace
 ## Commandes utiles
 
 ```Mysql
+-- Voir les privilèges dont on dispose
+show grants; 
+
 select version();
 
 show databases;
