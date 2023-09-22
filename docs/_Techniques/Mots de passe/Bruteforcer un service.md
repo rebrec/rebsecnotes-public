@@ -1,10 +1,18 @@
 ---
 public: true # set to true to make the article publishable
 ---
+
 ## Sans connaitre un identifiant ou mot de passe
 
-Selon le service à attaquer, on pourra utiliser hydra avec le paramètre `-C` et fournir un dictionnaire (wordlist) contenant des couples `utilisateur:mot_de_passe` séparés par `:`
+### Comptes par défaut ou très fréquemment utilisés
+
+Selon le service à attaquer, on pourra utiliser hydra avec le paramètre `-C` et fournir un dictionnaire (wordlist) contenant des couples `utilisateur:mot_de_passe` séparés par un `:`
+
 Plusieures wordlist de ce type sont disponibles dans `/usr/share/seclists/Passwords/Default-Credentials/` (notamment `ftp-betterdefaultpasslist.txt`)
+
+### Tenter des utilisateurs et mots de passe communs
+
+On pourra générer des comptes utilisateurs connus
 
 
 ```
