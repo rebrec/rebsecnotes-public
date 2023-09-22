@@ -12,7 +12,8 @@ Plusieures wordlist de ce type sont disponibles dans `/usr/share/seclists/Passwo
 
 ### Tenter des utilisateurs et mots de passe communs
 
-On pourra générer des comptes utilisateurs connus
+####  Liste de comptes utilisateurs
+On 
 
 
 ```
