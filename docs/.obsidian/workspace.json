@@ -1,0 +1,219 @@
+{
+  "main": {
+    "id": "dd2e3e04075b4c56",
+    "type": "split",
+    "children": [
+      {
+        "id": "b95c672089ca93e6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5c1fc56a429f5c99",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_Environnement/Parrot VM.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "794ed610c204195c",
+    "type": "split",
+    "children": [
+      {
+        "id": "187eebc53505a2be",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fc56afe7344baeab",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "f1c200f22da31f6d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "hydra",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0341a0d8a38dab15",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "55ce9ad6cb9e3ac6",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 418.5
+  },
+  "right": {
+    "id": "f83a3d0874bbacac",
+    "type": "split",
+    "children": [
+      {
+        "id": "f08d5c308f1b93ab",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a7b766dce6659c52",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "_Environnement/Parrot VM.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c05f9e97817b18f0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "_Environnement/Parrot VM.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0be26272fa11466d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "cbbdb559a0694623",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "_Environnement/Parrot VM.md"
+              }
+            }
+          },
+          {
+            "id": "a5288b6088b0dada",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 311.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "command-palette:Open command palette": false,
+      "templates:Insert template": false,
+      "templater-obsidian:Templater": false
+    }
+  },
+  "active": "5c1fc56a429f5c99",
+  "lastOpenFiles": [
+    "_Environnement/Accès à Distance à sa VM Linux.md",
+    "_Environnement/Parrot VM.md",
+    "_Techniques/Mots de passe/Password Spraying.md",
+    "_Environnement/Exegol/Personnalisation.md",
+    "_Environnement/Exegol/Untitled.md",
+    "_Environnement/Exegol",
+    "_Environnement/Untitled",
+    "_Techniques/Mots de passe/Bruteforcer un service.md",
+    "_ Notes Générales/_A Regarder.md",
+    "_Techniques/Pivoting.md",
+    "_Méthodologie/1-Enumération/Windows/Locale/Infrastructure à clés publiqués (PKI).md",
+    "_Tools/Hydra.md",
+    "_Méthodologie/1-Enumération/Services/SMB.md",
+    "_Méthodologie/1-Enumération/Services/RDP.md",
+    "_Méthodologie/2-Obtention d'accès/Shells.md",
+    "_Méthodologie/1-Enumération/Services/SSH.md",
+    "_Méthodologie/1-Enumération/Services/FTP.md",
+    "CTF - Challenges/htb/BroScience.md",
+    "CTF - Challenges/htb/Flight.md",
+    "_Méthodologie/1-Enumération/Windows/Locale/Accès Fichier.md",
+    "_Techniques/Windows/icacls.md",
+    "conflict-files-obsidian-git.md",
+    "CTF - Challenges/htb/Stocker.md",
+    "CTF - Challenges/htb/Interface.md",
+    "CTF - Challenges/htb/Bagel.md",
+    "CTF - Challenges/htb/Escape.md",
+    "CTF - Challenges/htb/Sekhmet.md",
+    "zz Templates/test.md",
+    "Sekhmet-8.png",
+    "Sekhmet-7.png",
+    "Sekhmet-6.png",
+    "Sekhmet-5.png",
+    "Sekhmet-4.png",
+    "Sekhmet-3.png",
+    "Sekhmet-2.png",
+    "Sekhmet-1.png",
+    "Flight-13.png",
+    "Flight-12.png",
+    "_Méthodologie/1-Enumération/Web/Distante",
+    "_Méthodologie/2-Obtention d'accès",
+    "_Méthodologie/1-Enumération/Windows/Distante",
+    "_Méthodologie/1-Enumération/Windows/Locale",
+    "_Méthodologie/1-Enumération/Web",
+    "_Techniques/Windows",
+    "_Techniques",
+    "Untitled.canvas",
+    "Untitled 1.canvas",
+    "_Méthodologie/Enumération/Windows/Accès Fichier"
+  ]
+}
