@@ -12,7 +12,7 @@ public: true # set to true to make the article publishable
 
 ```
 # enregistrer la DLL de Socks Over RDP
-# exécuter en privilèges élevés (UAC)
+# exécuter en privilèges élevés (UAC)  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   <=== ATTENTION
 regsvr32 /i SocksOverRDP-Plugin.dll
 
 # Apres avoir lancé mstsc.exe et validé la connexion vers un serveur
