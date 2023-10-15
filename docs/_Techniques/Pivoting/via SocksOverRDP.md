@@ -17,11 +17,15 @@ regsvr32 /i SocksOverRDP-Plugin.dll
 
 # Apres avoir lancé mstsc.exe et validé la connexion vers un serveur
 # une boite de dialogue confirme que la DLL est bien fonctionnelle
+
+# Une fois que la partie serveur est réalisée (voir paragraphe plus bas), le serveur confirmera qu'il est bien connecté.
+# A ce moment là, on peut voir localement sur le client que le port 1080 est bien en écoute
+# On lance ensuite proxifier et on ajoute un serveu
 ```
 
 ### Sur le serveur RDP distant (pivot)
 
 ```
-# Lancer proxifier en écoute sur le port 1080
+
 # Lancer ensuite le serveur  (SocksOverRDP-Server.exe)
 ```
