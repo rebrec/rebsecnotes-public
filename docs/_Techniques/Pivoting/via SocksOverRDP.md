@@ -23,5 +23,5 @@ regsvr32 /i SocksOverRDP-Plugin.dll
 
 ```
 # Lancer proxifier en écoute sur le port 1080
-# Lancer ensuite le serveur
+# Lancer ensuite le serveur  (SocksOverRDP-Server.exe)
 ```
