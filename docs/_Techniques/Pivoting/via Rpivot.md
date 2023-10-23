@@ -11,9 +11,10 @@ sudo apt-get install python2.7
 
 ## Fonctionnement
 
-Cet outil s'appuie sur le protocole HTTP et peut même se connecter au proxy de l'entreprise en utilisant une authentification NTLM 
+Cet outil s'appuie sur le protocole HTTP et peut même se connecter au proxy de l'entreprise en utilisant une authentification NTLM
 
-2 composants : 
+2 composants :
+
 - `server.py` à installer sur la machine de l'attaquant : il écoute localement sur 2 ports
 	- 1 port sur lequel le `client.py` va se connecter
 	- 1 port sur lequel il expose un service **socks4**

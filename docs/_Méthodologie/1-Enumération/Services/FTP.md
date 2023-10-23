@@ -2,6 +2,7 @@
 public: true 
 #Tags: tag1, tag2
 ---
+
 Ports par défaut : 21, 20
 
 ## Méthodes de connexion
@@ -48,11 +49,13 @@ ftp> ls
 ```
 
 ## Télécharger un dossier entier
+
 ```
 wget -m --no-passive ftp://anonymous:anonymous@10.129.14.136
 ```
 
-## Brute force avec hydra 
+## Brute force avec hydra
+
 ```
  hydra  -l ceil -P rockyou.txt ftp://$TARGET_IP:2121 -t 48
 ```

@@ -2,9 +2,11 @@
 public: true 
 #Tags: tag1, tag2
 ---
+
 Ports : 111 (RPC), 2049 (NFS)
 
 ## nmap
+
 ```
 # enumeration de la version et du script rpcinfo
 sudo nmap -Pn $TARGET_IP -p111,2049 -sV -sC
@@ -23,6 +25,7 @@ Export list for 10.129.14.128:
 ```
 
 ## Montage d'un partage NFS
+
 ```
 mkdir target-NFS
 sudo mount -t nfs $TARGET_IP:/Remote_Share ./target-NFS/ -o nolock
@@ -30,7 +33,9 @@ cd target-NFS
 ```
 
 ## Démontage d'un partage NFS hors ligne
+
 Si le serveur ne répond plus on pourra utiliser :
+
 ```
 umount -f -l /mnt/monDossier
 ```
@@ -46,7 +51,8 @@ total 16
 -rw-r--r-- 1    0    0 1872 Sep 19 17:27 id_rsa
 ```
 
-## Obtenir le bon UID 
+## Obtenir le bon UID
+
 ```
 $ sudo su -s /bin/bash <username>
 ```
@@ -60,9 +66,11 @@ sudo su <username>
 ```
 
 ## Solution alternative : nfsshell
+
 Cette solution permet d'émuler les uid et gid de notre choix
 
-### installation 
+### installation
+
 ```
 https://github.com/NetDirect/nfsshell
 Tutorial : 

@@ -2,13 +2,15 @@
 public: true 
 #Tags: tag1, tag2
 ---
-Ports : 
+
+Ports :
+
 - 110 (POP3)
 - 143 (IMAP avec ou sans TLS)
 - 993 (IMAP (avec TLS)
 - 995 (POP3 avec TLS)
 
-## Enumeration 
+## Enumeration
 
 ### Via NMAP
 
@@ -35,10 +37,9 @@ openssl s_client -connect $TARGET_IP:imaps
 
 ## Commandes IMAP
 
-Tutoriel : https://nickb.dev/blog/introduction-to-imap/
+Tutoriel : <https://nickb.dev/blog/introduction-to-imap/>
 
 **ATTENTION** : certain client IMAP semble n'accepter que des commandes qui se terminent par `\r\n`. L'utilitaire  `nc` n'envoie qu'un `\n`. Mais on peut utiliser `ncat --crlf $TARGET_IP 143` qui enverra des sauts de ligne de type `\r\n`
-
 
 ```
 $ rlwrap -g LOGIN openssl s_client -connect $TARGET_IP:imaps -quiet -crlf
@@ -86,4 +87,3 @@ USER existinguser
 
 +OK
 ```
-

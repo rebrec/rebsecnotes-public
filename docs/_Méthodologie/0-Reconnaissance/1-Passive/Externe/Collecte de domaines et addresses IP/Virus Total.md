@@ -2,9 +2,10 @@
 public: true 
 ---
 
-On peut trouver des liens depuis https://www.virustotal.com/
+On peut trouver des liens depuis <https://www.virustotal.com/>
 
 On saisie le nom de domaine dans l'onglet `SEARCH`
+
 Puis on regarde l'onglet `Relations` dans les résultats
 
 ![[Virus Total-1.png]]

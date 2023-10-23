@@ -1,8 +1,11 @@
 ---
 public: true # set to true to make the article publishable
 ---
+
 Cet outil utilise des requêtes ICMP echo et reply pour établir un tunnel entre le client et le serveur.
+
 Il expose un port locale du serveur au travers du tunnel.
+
 Si l'on souhaite disposer d'un proxy socks, il faudra d'abord exposer un service ssh par exemple, puis s'y connecter au travers du tunnel avec l'option `-D`
 
 ## Installation
@@ -16,11 +19,10 @@ sudo ./autogen.sh
 
 ## Utilisation
 
-
-
 ### Etablissement du tunnel ICMP
 
 On exécute le serveur sur la cible et le client sur la machine de l'attaquant.
+
 On commence par exposer le service SSH (port 22) s'exécutant sur la cible dont l'IP est `$PIVOT_IP`
 
 ```
@@ -48,4 +50,3 @@ Il ne reste ensuite plus qu'à se connecter au service SSH et créer un tunnel s
 ```
 ssh ubuntu@$PIVOT_IP -D 1080
 ```
-

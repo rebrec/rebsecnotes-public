@@ -2,6 +2,7 @@
 public: true # set to true to make the article publishable
 ---
 ## Fichier de règles de permutations (Word Mangling)
+
 Les symboles suivants peuvent être utilisés pour réaliser des modifications à partir d'un mot initialement présent dans un dictionnaire (wordlist).
 
 ### Fonctions de transformation
@@ -12,7 +13,7 @@ Les symboles suivants peuvent être utilisés pour réaliser des modifications �
 - `sXY` : remplace X par Y (exemple : sa@)
 - `$!` : ajoute un point d'exclamation à la fin du mot
 
-### Exemple de règles 
+### Exemple de règles
 
 ```
 :               <=== LeMotDorigine
@@ -46,4 +47,4 @@ hashcat -m 5600 hash.txt rockyou.txt
 hashcat -m 13100 hash.txt rockyou.txt
 ```
 
-La liste des hash est disponible ici : https://hashcat.net/wiki/doku.php?id=example_hashes
+La liste des hash est disponible ici : <https://hashcat.net/wiki/doku.php?id=example_hashes>

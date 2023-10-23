@@ -13,7 +13,6 @@ dir c:\*secret* /s /b
 Get-ChildItem -Recurse -Path C:\ -Include *cred* -File
 ```
 
-
 ## Contenus de fichiers intéressants
 
 ```
@@ -37,7 +36,4 @@ n:\Contracts\private\secret.txt
 
 ## Snaffler
 
-https://github.com/SnaffCon/Snaffler/releases/download/1.0.132/Snaffler.exe
-
-
-
+<https://github.com/SnaffCon/Snaffler/releases/download/1.0.132/Snaffler.exe>

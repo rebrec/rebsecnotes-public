@@ -6,7 +6,6 @@ public: true # set to true to make the article publishable
 for i in {1..254} ;do (ping -c 1 172.16.5.$i | grep "bytes from" &) ;done
 ```
 
-
 ```powershell
 # slow
 1..254 | % {"172.16.5.$($_): $(Test-Connection -count 1 -comp 172.15.5.$($_) -quiet)"}

@@ -2,20 +2,22 @@
 public: true 
 #Tags: tag1, tag2
 ---
-Ports : 
+
+Ports :
+
 - 512/tcp
 - 513/tcp
 - 514/tcp
 
 ## R-commandes
 
--   rcp (`remote copy`)
--   rexec (`remote execution`)
--   rlogin (`remote login`)
--   rsh (`remote shell`)
--   rstat
--   ruptime
--   rwho (`remote who`)
+- rcp (`remote copy`)
+- rexec (`remote execution`)
+- rlogin (`remote login`)
+- rsh (`remote shell`)
+- rstat
+- ruptime
+- rwho (`remote who`)
 
 ## Authentification
 
@@ -44,8 +46,7 @@ Last login: Fri Dec  2 16:11:21 from localhost
 [michel@localhost ~]$
 ```
 
-
-## Lister les utilisateurs connecté au serveur 
+## Lister les utilisateurs connecté au serveur
 
 ```shell-session
 $ rwho

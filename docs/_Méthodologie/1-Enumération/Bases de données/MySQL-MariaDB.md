@@ -6,11 +6,13 @@ public: true
 Port : 3306
 
 ## Enumeration
+
 ```shell-session
 sudo nmap $TARGET_IP -sV -sC -p3306 --script mysql*
 ```
 
 ## Connexion
+
 ```
 # Connexion en tant qu'utilisateur 'root'
 

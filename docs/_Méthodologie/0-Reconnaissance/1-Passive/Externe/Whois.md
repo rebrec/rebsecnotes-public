@@ -3,6 +3,7 @@ public: true
 ---
 
 On peut récupérer des informations concernant :
+
 - L'entreprise
 - Les administrateurs
 - Des adresses email

@@ -6,6 +6,7 @@ public: true
 Port par défaut : 6379
 
 Commandes utiles
+
 ```
 redis-cli -h <HOSTNAME>
 
@@ -34,4 +35,3 @@ db0:keys=4,expires=0,avg_ttl=0
 > GET flag
 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
-

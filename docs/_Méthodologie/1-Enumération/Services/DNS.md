@@ -2,10 +2,12 @@
 public: true 
 #Tags: tag1, tag2
 ---
+
 Ports :  53 (tcp/udp)
+
 Le port TCP/53 est utilisé dans les transferts de zone
 
-Popular types of DNS attacks : https://securitytrails.com/blog/most-popular-types-dns-attacks
+Popular types of DNS attacks : <https://securitytrails.com/blog/most-popular-types-dns-attacks>
 
 ## Enumeration
 
@@ -14,10 +16,13 @@ nmap -p53 -Pn -sV -sC $TARGET_IP
 ```
 
 ### Version
+
 En plus de l'énumération classique nmap ou l'usage du script NSE dns-id, on peut parfois utiliser dig
+
 ```shell-session
 dig CH TXT version.bind $TARGET_IP
 ```
+
 ou `host`
 
 ```
@@ -25,6 +30,7 @@ host -c CH -t TXT version.bind $TARGET_IP
 ```
 
 ### Liste des serveurs DNS d'une Zone
+
 ```shell-session
 # récupère la liste des nameserver depuis le serveur DNS $TARGET_IP
 dig ns inlanefreight.htb @$TARGET_IP
@@ -48,18 +54,21 @@ dig axfr inlanefreight.htb @$TARGET_IP
 ### Bruteforce des sous domaines
 
 #### Manuelle
+
 ```shell-session
 $ for sub in $(cat /usr/share/secLists/Discovery/DNS/subdomains-top1million-110000.txt);do dig $sub.inlanefreight.htb @10.129.14.128 | grep -v ';\|SOA' | sed -r '/^\s*$/d' | grep $sub | tee -a subdomains.txt;done
 ```
 
 ##### dnsenum
+
 ```
 $ dnsenum --dnsserver $TARGET_IP --enum -p 0 -s 0 -o subdomains.txt -f /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-110000.txt $DOMAIN
 ```
- 
+
 ##### gobuster
 
-On peut brute forcer des sous domaines selon un motif (pattern) 
+On peut brute forcer des sous domaines selon un motif (pattern)
+
 ```title="patterns.txt"
 lert-api-shv-{GOBUSTER}-sin6
 atlas-pp-shv-{GOBUSTER}-sin6
@@ -92,11 +101,12 @@ fierce --domain $DOMAIN --dns-servers $TARGET_IP --subdomain-file names.txt
 ./subfinder -d inlanefreight.com -v   
 ```
 
-https://github.com/aboul3la/Sublist3r
+<https://github.com/aboul3la/Sublist3r>
 
 ##### subbrute
 
 On peut utiliser subbrute pour trouver des sous domaines qui pourront ensuite reservir à trouver d'autres sous domaines.
+
 Au lancement, subbrute essaie de faire une requête `ANY`. Si elle ne fonctionne pas, on obtiens une message : `Warning: No nameservers found, trying fallback list.`
 
 Dans ce cas, on peut passer au domaine suivant.

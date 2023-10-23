@@ -2,7 +2,8 @@
 public: true 
 #Tags: tag1, tag2
 ---
-## Découverte de la banière 
+## Découverte de la banière
+
 ```shell
 curl -IL https://$TARGET_VHOST
 ```
@@ -16,4 +17,3 @@ echo | openssl s_client -showcerts -servername <domaine> -connect <domaine>:443 
 ## Robots.txt
 
 ## Source Code
-

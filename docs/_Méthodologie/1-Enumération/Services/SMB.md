@@ -2,24 +2,25 @@
 public: true 
 #Tags: tag1, tag2
 ---
+
 Ports : 135, 137, 139, 445
 
 CIFS est une implémentation de SMB
+
 Port CIFS : 445 exclusivement
 
 On peut obtenir des informations sur des partages, des utilisateurs, des groupes, etc.
 
 Voir aussi : [[docs/_Méthodologie/1-Enumération/Windows/Distante/Active Directory/Active Directory - SMB]]
 
-Cheatsheet du SANS : https://www.willhackforsushi.com/sec504/SMB-Access-from-Linux.pdf
-
+Cheatsheet du SANS : <https://www.willhackforsushi.com/sec504/SMB-Access-from-Linux.pdf>
 
 ```
 $ sudo nmap $TARGET_IP  -sV -sC -p139,445
 ```
 
+## rpcclient
 
-## rpcclient 
 ```
 $ rpcclient -U "" $TARGET_IP 
 
@@ -27,7 +28,8 @@ Enter WORKGROUP\'s password:
 rpcclient $> 
 ```
 
-### commandes utiles :
+### commandes utiles
+
 ```
 rpcclient $> srvinfo
 
@@ -105,6 +107,7 @@ DACL
 ```
 
 ### User enumeration
+
 ```
 # user list
 rpcclient $> enumdomusers
@@ -121,9 +124,8 @@ $ for i in $(seq 500 1100);do rpcclient -N -U "" 10.129.14.128 -c "queryuser 0x$
 
 ```
 
-
-
 ### Group enumeration
+
 ```
 # rpcclient
 rpcclient $> enumdomgroups
@@ -156,11 +158,13 @@ enum4linux -u $AD_USER -p "$AD_PASSWORD" -G $TARGET_IP
 ```
 
 ## Impacket : samrdump.py
+
 ```shell-session
 $ samrdump.py 10.129.14.128
 ```
 
 ## smbmap
+
 ```shell-session
 # Auth Null Session
 smbmap -H $TARGET_IP

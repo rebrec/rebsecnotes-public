@@ -1,6 +1,7 @@
 ---
 public: true # set to true to make the article publishable
 ---
+
 Dans un environnement ayant mis en oeuvre des mesures de sécurité, l'utilisation des User-Agents par défaut pourrait être détecté assez facilement.
 
 Lors du téléchargement ou de l'envoie de nos payloads, il peut être utile de modifier le User-Agent pour parraître légitime.

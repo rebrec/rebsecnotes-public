@@ -37,4 +37,4 @@ for p in $(ls / | grep -vE '^(bin|boot|dev|lib|lib32|lib64|libx32|proc|sys|usr)$
 for ext in $(echo ".xls .xls* .xltx .csv .od* .doc .doc* .pdf .pot .pot* .pp*");do echo -e "\nFile extension: " $ext; find / -name *$ext 2>/dev/null | grep -v "lib\|fonts\|share\|core" ;done
 ```
 
-## 
+##

@@ -2,6 +2,7 @@
 public: true 
 #Tags: tag1, tag2
 ---
+
 Si on a accès à des partages SMB, on peut monter le partage et utiliser `find` pour chercher des fichiers intéressants.
 
 ## Montage du partage SMB

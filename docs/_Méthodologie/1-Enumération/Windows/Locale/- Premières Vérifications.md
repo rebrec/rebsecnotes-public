@@ -16,5 +16,4 @@ regarder les descriptions des utilisateurs AD
  Get-DomainUser * | Select-Object samaccountname,description |Where-Object {$_.Description -ne $null}
 ```
 
- 
 ```

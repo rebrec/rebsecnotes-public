@@ -2,9 +2,9 @@
 public: true # set to true to make the article publishable
 ---
 
-## Sources 
-- https://github.com/nccgroup/SocksOverRDP/releases
-- https://www.proxifier.com/download/ProxifierPE.zip
+## Sources
+- <https://github.com/nccgroup/SocksOverRDP/releases>
+- <https://www.proxifier.com/download/ProxifierPE.zip>
 
 ## Installation
 

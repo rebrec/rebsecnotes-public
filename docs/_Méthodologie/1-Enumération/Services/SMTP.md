@@ -2,7 +2,9 @@
 public: true 
 #Tags: tag1, tag2
 ---
-Ports : 
+
+Ports :
+
 - 25 (non chiffré)
 - 465 (chiffré)
 
@@ -17,7 +19,7 @@ sudo nmap -Pn -sC -p25 --script smtp-open-relay $TARGET_IP
 
 ### Enumération d'utilisateurs
 
-Peut être utilisé pour énumérer des comptes utilisateurs valides via les paramètres `VRFY`, `EXPN` et `RCPT TO` 
+Peut être utilisé pour énumérer des comptes utilisateurs valides via les paramètres `VRFY`, `EXPN` et `RCPT TO`
 
 #### Automatisée
 

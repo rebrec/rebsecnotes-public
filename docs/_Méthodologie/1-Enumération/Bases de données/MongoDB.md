@@ -18,4 +18,3 @@ $ mongo
 > db.current.find({"username":"admin"}) #Find in current db the username admin
 > db.<collection>.update({"_id":ObjectId("61ce278f46e0fb0012d47ee4")}, {$set:{"attributeXXX":"valueXXX"}})'
 ```
-

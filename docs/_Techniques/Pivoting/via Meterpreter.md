@@ -25,7 +25,6 @@ run
 
 ```
 
-
 ## Pivot via Meterpreter
 
 ```
@@ -51,7 +50,6 @@ run
 proxychains nmap $TARGET_IP -p3389 -sT -v -Pn
 
 ```
-
 
 ## Redirection de port via Meterpreter
 

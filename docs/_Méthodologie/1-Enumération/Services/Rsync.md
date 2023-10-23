@@ -2,11 +2,12 @@
 public: true 
 #Tags: tag1, tag2
 ---
+
 Port : 873/tcp
 
-Pentesting guide : https://book.hacktricks.xyz/network-services-pentesting/873-pentesting-rsync
+Pentesting guide : <https://book.hacktricks.xyz/network-services-pentesting/873-pentesting-rsync>
 
-## Enumeration 
+## Enumeration
 
 ```shell-session
 sudo nmap -sV -p 873 127.0.0.1
@@ -48,4 +49,4 @@ total size is 0  speedup is 0.00
 rsync -av rsync://127.0.0.1/dev
 ```
 
-Si rsync est configuré pour utiliser SSH pour transférer les fichiers, on peut ajouter `-e ssh` ou `-e "ssh -p1234" ` (voir https://phoenixnap.com/kb/how-to-rsync-over-ssh)
+Si rsync est configuré pour utiliser SSH pour transférer les fichiers, on peut ajouter `-e ssh` ou `-e "ssh -p1234" ` (voir <https://phoenixnap.com/kb/how-to-rsync-over-ssh>)

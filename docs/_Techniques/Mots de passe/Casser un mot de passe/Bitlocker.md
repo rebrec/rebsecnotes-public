@@ -1,6 +1,7 @@
 ---
 public: true # set to true to make the article publishable
 ---
+
 Exemple pour un fichier VHD qui est chiffré par bitlocker :
 
 ```

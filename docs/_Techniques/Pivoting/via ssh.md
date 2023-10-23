@@ -2,6 +2,7 @@
 public: true # set to true to make the article publishable
 ---
 ## Client SSH
+
 ```
 # Redirection simple : expose le service mysql de la Cible sur le port 1234 de l'attaquant
 ssh -L 1234:localhost:3306 user@$TARGET_IP
@@ -15,7 +16,6 @@ ssh -R $PIVOT_IP_IN_INTERNAL_NETWORK:8080:0.0.0.0:1234  user@$TARGET_IP -vN
 # -v : verbeux, on verra les tunnels
 # -N : on ne lance pas de shell
 ```
-
 
 ## Client Sshuttle
 

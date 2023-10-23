@@ -12,7 +12,6 @@ accesschk.exe -uws "Users" "C:\Program Files"
 # -s : récursif
 ```
 
-
 ```powershell
 Get-ChildItem "C:\Program Files" -Recurse | Get-ACL | ? {$_.AccessToString -match "Everyone\sAllow\s\sModify"}
 Get-ChildItem "C:\Program Files" -Recurse | Get-ACL | ? {$_.AccessToString -match "Users\sAllow\s\sModify"}
