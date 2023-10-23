@@ -7,8 +7,4 @@ public: true # set to true to make the article publishable
 icacls c:\rebrec /grant "Everyone:(OI)(CI)F"
 ```
 
-
 icacls /grant rebrec:F /T
-
-
-

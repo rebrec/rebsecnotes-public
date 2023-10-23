@@ -2,9 +2,11 @@
 public: true
 Tags: Lab
 ---
+
 Basic DNS setup in a docker container to test your DNS enumeration tools for instance.
 
 ## Initial Setup
+
 ```bash
 export DOMAIN=rebrec.local
 mkdir dns_lab 

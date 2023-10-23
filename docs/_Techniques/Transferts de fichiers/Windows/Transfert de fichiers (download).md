@@ -87,6 +87,7 @@ PS> (New-Object Net.WebClient).DownloadFile('ftp://192.168.49.128/file.txt', 'ft
 ```
 
 ## Transfert de tous les fichiers d'un dossier
+
 ```
 # on lance un listener HTTP sur la machine où se trouve le dossier à copier
 python -m http.server 8001
@@ -97,6 +98,7 @@ wget -m --no-passive ftp://anonymous:anonymous@10.129.14.136
 ```
 
 ## Base 64
+
 ```
 # si on veut transférer le fichier shell
 base64 shell -w 0
@@ -104,6 +106,7 @@ base64 shell -w 0
 # puis on le colle dans la machine distante
 $ echo xxxxxxxxxxxxxxxxxxx | base64 -d > shell
 ```
+
 #### Windows
 
 ```powershell

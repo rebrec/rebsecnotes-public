@@ -7,7 +7,7 @@ Il est intéressant de vérifier les méthodes autorisées par les serveur SMTP 
 
 Après avoir vérifier les méthodes supportées, on pourra utiliser `smtp-user-enum` avec la méthode fonctionnelle (RCPT, VRFY, etc)
 
-### Vérification des méthodes fonctionnelles :
+### Vérification des méthodes fonctionnelles
 
 ```
 ncat --crlf  $TARGET_IP 25
@@ -32,6 +32,7 @@ RCPT TO: aze@domain.com <== /!\ message lorsqu'on précise un domaine a relayer
 RCPT TO:aze@maildomain.com  <== /!\ message lorsqu'on précise le domaine de l'entreprise
 550 Unknown user   <== la méthode RCPT TO fonctionne donc
 ```
+
 ```
 # https://github.com/pentestmonkey/smtp-user-enum
 smtp-user-enum -M RCPT -U userlist.txt -D maildomain.com -t $TARGET_IP

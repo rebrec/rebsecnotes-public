@@ -1,6 +1,7 @@
 ---
 public: true # set to true to make the article publishable
 ---
+
 Lorsque l'on trouve un exploit prêt à l'emploi sur Internet et que cet exploit est conçu en tant que module metasploit il faut réaliser l'opération suivante pour qu'il soit disponible dans la console `msfconsole` :
 
 ## Création du dossier contenant les modules personnalisés
@@ -28,16 +29,17 @@ Copied to: /root/.msf4/modules/exploits/php/webapps/50064.rb
 
 ## Mise à jour de la base de donnée MSF
 
-Fermer la console msfconsole si elle est lancée puis lancer en tant que root : 
+Fermer la console msfconsole si elle est lancée puis lancer en tant que root :
 
 ```
 updatedb
 ```
 
 Patienter un moment
+
 Puis relancer la console `msfconsole`
 
-## Profit !
+## Profit
 
 Il ne reste plusp qu'à sélectioner son module depuis la console :
 

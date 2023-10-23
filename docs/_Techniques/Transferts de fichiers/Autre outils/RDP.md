@@ -1,7 +1,9 @@
 ---
 public: true # set to true to make the article publishable
 ---
+
 On peut en général utiliser le copier / coller à travers une session RDP.
+
 Lorsque cela ne fonctionne pas, on peut mapper un dossier sous forme de partage accessible depuis l'hote virtuel `\\tsclient`
 
 ```

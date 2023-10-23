@@ -1,11 +1,12 @@
 ---
 public: true # set to true to make the article publishable
 ---
+
 Il réalise les opérations suivantes :
+
 - découverte des SPNs
 - Dump des TGS
 - Obtention des Hashs
-
 
 ```shell
 # affiche un récapitulatif des comptes avec des SPNs 

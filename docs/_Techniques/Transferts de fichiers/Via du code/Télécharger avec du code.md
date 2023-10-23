@@ -1,6 +1,7 @@
 ---
 public: true # set to true to make the article publishable
 ---
+
 ```
 python2.7 -c 'import urllib;urllib.urlretrieve ("https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh", "LinEnum.sh")'
 

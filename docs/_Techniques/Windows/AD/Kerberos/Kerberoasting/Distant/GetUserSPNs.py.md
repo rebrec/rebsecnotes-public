@@ -6,6 +6,7 @@ public: true # set to true to make the article publishable
 ### Utiliser GetUserSPNs.py
 
  Il réalise les opérations suivantes :
+
 - découverte des SPNs
 - Dump des TGS
 - Obtention des Hashs
