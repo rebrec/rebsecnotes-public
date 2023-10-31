@@ -43,6 +43,8 @@ set
 
 [[Services en écoute]]
 
+[[Canaux nommés (Named Pipes)]]
+
 [[Logiciels installés]]]]
 
 regarder les descriptions des utilisateurs AD
