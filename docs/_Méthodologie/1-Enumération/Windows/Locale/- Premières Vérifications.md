@@ -12,6 +12,8 @@ arp -a
 
 
 # Liste des privilèges et informations AD
+whoami /priv
+whoami /groups
 net user Compromised_Account
 # Liste des groupes
 net localgroup
