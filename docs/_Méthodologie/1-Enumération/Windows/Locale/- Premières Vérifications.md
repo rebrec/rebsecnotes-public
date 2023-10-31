@@ -19,10 +19,12 @@ net localgroup
 ```
 
 [[Elements de protections]]
-[[Système d'exploitation]]
-[[Services]]
-[[Processus]]
 
+[[Système d'exploitation]]
+
+[[Services]]
+
+[[Processus]]
 
 regarder les descriptions des utilisateurs AD
 
