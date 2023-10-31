@@ -27,10 +27,13 @@ net localgroup
 # variables d'environnement
 set
 
-
 ```
 
 [[Services]]
+
+[[Correctifs de Sécurité
+
+[[Logiciels installés]]]]
 
 regarder les descriptions des utilisateurs AD
 
