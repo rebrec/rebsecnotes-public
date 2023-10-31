@@ -1,6 +1,5 @@
 ---
-public: true 
-#Tags: tag1, tag2
+public: true
 ---
 
 ```shell
@@ -22,9 +21,16 @@ net localgroup
 
 [[Système d'exploitation]]
 
-[[Services]]
+[[Processus]] / services
 
-[[Processus]]
+```shell
+# variables d'environnement
+set
+
+
+```
+
+[[Services]]
 
 regarder les descriptions des utilisateurs AD
 
