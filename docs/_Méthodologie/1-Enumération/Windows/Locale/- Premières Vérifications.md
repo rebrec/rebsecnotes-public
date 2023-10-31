@@ -18,6 +18,8 @@ net user Compromised_Account
 net localgroup
 ```
 
+[[Elements de protections]]
+
 regarder les descriptions des utilisateurs AD
 
 ```powershell
