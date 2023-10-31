@@ -19,6 +19,10 @@ net localgroup
 ```
 
 [[Elements de protections]]
+[[Système d'exploitation]]
+[[Services]]
+[[Processus]]
+
 
 regarder les descriptions des utilisateurs AD
 
@@ -26,4 +30,6 @@ regarder les descriptions des utilisateurs AD
  Get-DomainUser * | Select-Object samaccountname,description |Where-Object {$_.Description -ne $null}
 ```
 
-```
+Références :
+
+- <https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands>
