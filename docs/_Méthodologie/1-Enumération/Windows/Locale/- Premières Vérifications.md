@@ -15,8 +15,14 @@ arp -a
 whoami /priv
 whoami /groups
 net user Compromised_Account
+
+# liste des utilisateurs
+net user
 # Liste des groupes
 net localgroup
+
+# politique de mot de passe
+net accounts
 ```
 
 [[Elements de protections]]
