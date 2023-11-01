@@ -47,7 +47,7 @@ DISKSHADOW> exit
 
 ##### Copier à partir du cliché instantanné
 
-**Remarque** :  Si le fichier n'est pas accessible et que l'on est membre du groupe *Backup Operator*, on pourra y accéder via le privilège **SeBackupPrivilege** (voir [[Privilèges Windows Exploitables]])
+**Remarque** :  Si le fichier n'est pas accessible et que l'on est membre du groupe *Backup Operator*, on pourra y accéder via le privilège **SeBackupPrivilege** (voir [[Exploitation des privilèges Windows]])
 
 ```
 # cas 1 : Robocopy "sait" utiliser le privilège SeBackupPrivilege
