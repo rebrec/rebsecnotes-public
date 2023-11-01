@@ -28,24 +28,31 @@ net accounts
 [[Elements de protections]]
 
 [[Système d'exploitation]]
-
+[[Firewall]]
 [[Processus]] / services
 
 ```shell
 # variables d'environnement
 set
-
 ```
 
 [[Services]]
+
+[[Partages]]
 
 [[Correctifs de Sécurité
 
 [[Services en écoute]]
 
+[[Infrastructure à clés publiqués (PKI)]]
+
 [[Canaux nommés (Named Pipes)]]
 
 [[Logiciels installés]]]]
+
+[[Recherche de fichiers intéressants depuis Windows]]
+
+[[Taches plannifiées]]
 
 regarder les descriptions des utilisateurs AD
 
@@ -56,4 +63,3 @@ regarder les descriptions des utilisateurs AD
 Références :
 
 - <https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands>
-
