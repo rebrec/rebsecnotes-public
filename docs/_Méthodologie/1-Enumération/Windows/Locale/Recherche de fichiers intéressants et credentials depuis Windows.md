@@ -33,16 +33,23 @@ findstr /s /i cred n:\*.*
 n:\Contracts\private\secret.txt
 ```
 
-
 ## Observateur d'évènement
 
 Si on est membre du groupe `Event Log Readers`, on pourra consulter l'observateur d'évènnement.
+
 Si les Event ID 4688 (Un nouveau processus a été créé) sont audités, on pourra potentiellement trouver lignes de commandes incluant des nom de compte utilisateur (voir des mots de passe).
 
 ```shell
- wevtutil qe Security /rd:true /f:text | Select-String "/user"
- wevtutil qe Security /rd:true /f:text | Select-String "-user"
- 
+# nécessite d'être membre du gruope "Event Log Readers"
+wevtutil qe Security /rd:true /f:text | Select-String "/user"
+# avec credentials alternatifs
+wevtutil qe Security /rd:true /f:text /r:share01 /u:julie.clay /p:Welcome1 | findstr "/user"
+```
+
+Version Powershell (**Nécessite d'être Administrateur local**)
+
+```powershell
+Get-WinEvent -LogName security | where { $_.ID -eq 4688 -and $_.Properties[8].Value -like '*/user*'} | Select-Object @{name='CommandLine';expression={ $_.Properties[8].Value }}
 ```
 
 ## Snaffler
