@@ -28,7 +28,9 @@ net accounts
 [[Elements de protections]]
 
 [[Système d'exploitation]]
+
 [[Firewall]]
+
 [[Processus]] / services
 
 ```shell
@@ -50,7 +52,7 @@ set
 
 [[Logiciels installés]]]]
 
-[[Recherche de fichiers intéressants depuis Windows]]
+[[Recherche de fichiers intéressants et credentials depuis Windows]]
 
 [[Taches plannifiées]]
 
