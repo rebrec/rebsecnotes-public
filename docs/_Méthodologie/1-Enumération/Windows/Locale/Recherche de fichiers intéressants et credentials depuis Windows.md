@@ -35,12 +35,15 @@ n:\Contracts\private\secret.txt
 
 ## Observateur d'évènement
 
-Si on est membre du groupe `Event Log Readers`, on pourra consulter l'observateur d'évènnement.
+Si on est membre du groupe `Event Log Readers`, on pourra consulter l'observateur d'évènements.
 
 Si les Event ID 4688 (Un nouveau processus a été créé) sont audités, on pourra potentiellement trouver lignes de commandes incluant des nom de compte utilisateur (voir des mots de passe).
 
 ```shell
-# nécessite d'être membre du gruope "Event Log Readers"
+###### nécessite d'être membre du gruope "Event Log Readers"
+# Affiche toutes les lignes de commande auditées
+wevtutil qe Security /rd:true /f:text | Select-String "line"
+# Affiche les lignes contenant '/user'
 wevtutil qe Security /rd:true /f:text | Select-String "/user"
 # avec credentials alternatifs
 wevtutil qe Security /rd:true /f:text /r:share01 /u:julie.clay /p:Welcome1 | findstr "/user"
