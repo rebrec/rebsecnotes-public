@@ -15,6 +15,13 @@ arp -a
 whoami /priv
 whoami /groups
 net user Compromised_Account
+```
+
+Selon les groupes et privilèges dont on dispose, on pourra potentiellement exploiter certains d'entre eux :
+
+- [[Privilèges Windows Exploitables]]
+
+```shell
 
 # liste des utilisateurs
 net user
