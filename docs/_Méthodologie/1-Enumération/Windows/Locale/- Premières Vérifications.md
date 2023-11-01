@@ -20,7 +20,7 @@ net user Compromised_Account
 Selon les groupes et privilèges dont on dispose, on pourra potentiellement exploiter certains d'entre eux :
 
 - [[Exploitation des privilèges Windows]]
-- [[Exploitables des groupes Windows]]
+- [[Exploitation des groupes Windows]]
 
 ```shell
 
