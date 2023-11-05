@@ -37,6 +37,9 @@ net accounts
 
 [[Système d'exploitation]]
 
+[[Correctifs de Sécurité]]
+
+- [[PrintNightmare]]
 [[Firewall]]
 
 [[Processus]] / services
@@ -49,8 +52,6 @@ set
 [[Services]]
 
 [[Partages]]
-
-[[Correctifs de Sécurité
 
 [[Services en écoute]]
 
