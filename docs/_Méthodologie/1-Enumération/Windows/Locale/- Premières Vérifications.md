@@ -39,7 +39,7 @@ net accounts
 
 [[Correctifs de Sécurité]]
 
-- [[PrintNightmare]]
+- [[PrintNightmare (CVE-2021-1675)]]
 [[Firewall]]
 
 [[Processus]] / services
