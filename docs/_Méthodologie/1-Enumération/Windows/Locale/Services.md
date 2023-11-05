@@ -4,7 +4,7 @@ public: true # set to true to make the article publishable
 
 ```
 # Rechercher des chemins d'accès atypiques 
-get-wmiobject win32_service | select name,state, startmode,pathname |?{$_.State -like 'Running'}
+get-wmiobject win32_service | select name,state, startmode,pathname,StartName |?{$_.State -like 'Running'}|Sort StartName | ft
 
 # Liste des services sans ceux dans c:\windows :
 get-wmiobject win32_service | select name,state,pathname |?{$_.State -like 'Running'} |? {$_.Pathname -notmatch 'c:\\Windows\\.*' }
