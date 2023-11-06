@@ -130,11 +130,11 @@ Files such as pass.txt, passwords.docx, passwords.xlsx found on user systems, sh
 
 ```
 
-## Configuration IIS
+### Configuration IIS
 
 Fichier `C:\inetpub\wwwroot\web.config`
 
-## Recherche de unattend.xml
+### Recherche de unattend.xml
 
 Script a définir (voir emplacements)
 
@@ -182,7 +182,11 @@ Version Powershell (**Nécessite d'être Administrateur local**)
 Get-WinEvent -LogName security | where { $_.ID -eq 4688 -and $_.Properties[8].Value -like '*/user*'} | Select-Object @{name='CommandLine';expression={ $_.Properties[8].Value }}
 ```
 
-## Snaffler
+## Email
+
+If we gain access to a domain-joined system in the context of a domain user with a Microsoft Exchange inbox, we can attempt to search the user's email for terms such as "pass," "creds," "credentials," etc. using the tool [MailSniper](https://github.com/dafthack/MailSniper).
+
+## Recherche de fichier automatisée : Snaffler
 
 <https://github.com/SnaffCon/Snaffler/releases/download/1.0.132/Snaffler.exe>
 
