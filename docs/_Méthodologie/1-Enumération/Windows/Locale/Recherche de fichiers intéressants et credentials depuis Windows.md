@@ -139,6 +139,19 @@ Login
 Credentials
 ```
 
+## Contenus de fichiers intéressants
+
+
+```
+REM 
+dir n:\*cred* /s /b 
+dir n:\*secret* /s /b
+
+REM Recherche de mot intéressants dans des fichiers
+findstr /s /i cred n:\*.*
+
+n:\Contracts\private\secret.txt
+```
 
 ## Observateur d'évènement
 
