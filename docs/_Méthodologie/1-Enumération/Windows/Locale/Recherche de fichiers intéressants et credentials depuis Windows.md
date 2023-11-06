@@ -2,6 +2,7 @@
 public: true
 ---
 ## Dossiers intéressants
+
 ```shell
 dir c:\
 dir "%USERPROFILE%"
@@ -13,10 +14,19 @@ dir "%USERPROFILE%\Desktop"
 
 ## Findstr
 
+
 ```shell
-# recherche du terme "password" : affiche 
-findstr /SI /M "password" *.xml *.ini *.txt
+# /S : recherche dans les sous dossiers
+# /I : insenssible à la casse
+# /M : affiche seulement le nom du fichier (pas la ligne )
+# recherche du terme "password" : liste le nom des fichiers contenant "password" (sans afficher le contenu trouvé)
+findstr /SIM "password" *.xml *.ini *.txt
+
+# recherche du terme "password" : liste le nom des fichiers et la ligne qui a matché
+findstr /SI  "password" *.xml *.ini *.txt
+
 ```
+
 ### Historiques Powershell
 
 On peut vérifier l'emplacement de l'historique via : `(Get-PSReadLineOption).HistorySavePath`
@@ -32,8 +42,8 @@ Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppDa
 ```powershell
 Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppData\Local\Google\Chrome\User Data\Default\Custom Dictionary.txt" -ErrorAction SilentlyContinue | Select-String password }
 ```
-### Autres
 
+### Autres
 
 ```powershell
 # Passwords in scripts in different shares :  SYSVOL, IT shares
@@ -162,4 +172,3 @@ Local admin:
 Domain user:
 # cme smb 10.0.5.1 -u bkpadmin -p P@ss123 -d target.corp -M gpp_password
 ```
-
