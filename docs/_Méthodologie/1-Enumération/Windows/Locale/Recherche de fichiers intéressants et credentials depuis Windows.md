@@ -10,6 +10,13 @@ dir "%USERPROFILE%\Desktop"
 ```
 
 ## Fichiers Intéressants
+
+## Findstr
+
+```shell
+# recherche du terme "password" : affiche 
+findstr /SI /M "password" *.xml *.ini *.txt
+```
 ### Historiques Powershell
 
 On peut vérifier l'emplacement de l'historique via : `(Get-PSReadLineOption).HistorySavePath`
