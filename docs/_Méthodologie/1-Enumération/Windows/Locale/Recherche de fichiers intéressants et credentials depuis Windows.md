@@ -31,7 +31,7 @@ findstr /SIM "password" *.xml *.ini *.txt *.config
 findstr /SPIN  "password" *.xml *.ini *.txt *.config
 
 # Recherche de différents fichiers en même temps
-dir /S /B *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config*
+dir /S /B *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config* == *.rdp == *.vnc == *.cred
 ```
 
 #### Powershell
@@ -41,7 +41,7 @@ dir /S /B *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config*
 Get-ChildItem *.xml, *.ini, *.txt, *.config -Recurse | Select-String "pass"| ft Path, LineNumber, Line -AutoSize
 
 # Fichiers avec des noms de la forme 
-Get-ChildItem C:\ -Recurse -Include *.rdp, *.config, *.vnc, *.cred -ErrorAction Ignore
+Get-ChildItem  -Recurse -Include *pass*.txt, *pass*.xml, *pass*.ini, *cred*, *vnc*, *.config, *.rdp, *.vnc, *.cred -ErrorAction Ignore | Select -ExpandProperty FullName
 ```
 
 ### Historiques Powershell
