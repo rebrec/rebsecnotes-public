@@ -7,8 +7,11 @@ public: true
 - `%USERPROFILE%\Documents`
 - `%USERPROFILE%\Desktop`
 
+# Historiques Powershell
 
-# Historiques Powershell 
+On peut vérifier l'emplacement de l'historique via : `(Get-PSReadLineOption).HistorySavePath`
+
+Collecte des historiques (emplacement par défaut)
 
 ```powershell
 Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppData\Roaming\Microsoft\Windows\Powershell\PSReadline\ConsoleHost_history.txt" -ErrorAction SilentlyContinue}
@@ -17,9 +20,13 @@ Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppDa
 ## Dictionnaire Google Chrome
 
 ```powershell-session
-Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppData\Roaming\Microsoft\Windows\Powershell\PSReadline\ConsoleHost_history.txt" -ErrorAction SilentlyContinue}
+Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppData\Local\Google\Chrome\User Data\Default\Custom Dictionary.txt' | Select-String password -ErrorAction SilentlyContinue}
 
 ```
+
+## Recherche de unattend.xml
+
+Script a définir (voir emplacements)
 
 ## Barre de recherche Windows
 
