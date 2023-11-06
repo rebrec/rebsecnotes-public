@@ -52,7 +52,7 @@ findstr /SIM "password cred" *.xml *.yml *.ini *.txt *.config *.cfg *.git *.ps1 
 findstr /SPIN  "password cred" *.xml *.yml *.ini *.txt *.config *.cfg *.git *.ps1 *.vbs *.cmd *.bat 
 
 # Recherche de différents fichiers en même temps
-dir /S /B *secret* == *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config* == *.rdp == *.vnc == *.cred
+dir /S /B *secret* == *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config* == *.rdp == *.vnc == *.cred == *.kdbx *.vhd* == *.vmdk
 ```
 
 #### Powershell
@@ -62,7 +62,7 @@ dir /S /B *secret* == *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* 
 Get-ChildItem *.xml, *.yml, *.ini, *.txt, *.config, *.cfg, *.git, *.ps1, *.vbs, *.cmd, *.bat  -Recurse -ErrorAction SilentlyContinue | ? { $_.Path -notlike '*\windows\*' } | Select-String "password"| ft Path, LineNumber, Line -AutoSize
 
 # Fichiers avec des noms intéressants
-Get-ChildItem  -Recurse -Include *secret*, *pass*.txt, *pass*.xml, *pass*.ini, *cred*, *vnc*, *.config, *.rdp, *.vnc, *.cred -ErrorAction Ignore | Select -ExpandProperty FullName
+Get-ChildItem  -Recurse -Include *secret*, *pass*.txt, *pass*.xml, *pass*.ini, *cred*, *vnc*, *.config, *.rdp, *.vnc, *.cred, *.kdbx, *.vhd*, *.vmdk -ErrorAction Ignore | Select -ExpandProperty FullName
 ```
 
 ### Historiques Powershell
