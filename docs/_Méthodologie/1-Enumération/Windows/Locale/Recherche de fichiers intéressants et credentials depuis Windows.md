@@ -60,6 +60,15 @@ Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppDa
 Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppData\Local\Google\Chrome\User Data\Default\Custom Dictionary.txt" -ErrorAction SilentlyContinue | Select-String password }
 ```
 
+### Pense bête (sticky notes)
+
+```powershell
+Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\plum.sqlite" -ErrorAction SilentlyContinue }
+ 
+```
+
+#### Lecture du contenu
+
 ### Autres
 
 ```powershell
