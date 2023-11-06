@@ -14,26 +14,34 @@ dir "%USERPROFILE%\Desktop"
 
 ### Recherche de fichiers
 
-#### Findstr
+#### CMD
 
 ```shell
+# FINDSTR
 # /S : recherche dans les sous dossiers
 # /P : ignore les fichiers ne contenant pas de caractères affichables
 # /I : insenssible à la casse
 # /N : affiche le numéro des lignes correspondant
 # /M : affiche seulement le nom du fichier (pas la ligne correspondant au texte cherché)
+
 # recherche du terme "password" : liste le nom des fichiers contenant "password" (sans afficher le contenu trouvé)
 findstr /SIM "password" *.xml *.ini *.txt *.config
 
 # recherche du terme "password" : liste le nom des fichiers et la ligne qui a matché
 findstr /SPIN  "password" *.xml *.ini *.txt *.config
 
+# Recherche de différents fichiers en même temps
+dir /S /B *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config*
 ```
 
 #### Powershell
 
 ```powershell
+# Terme "Password" dans plusieures extensions
 Get-ChildItem *.xml, *.ini, *.txt, *.config -Recurse | Select-String "pass"| ft Path, LineNumber, Line -AutoSize
+
+# Fichiers avec des noms de la forme 
+Get-ChildItem C:\ -Recurse -Include *.rdp, *.config, *.vnc, *.cred -ErrorAction Ignore
 ```
 
 ### Historiques Powershell
