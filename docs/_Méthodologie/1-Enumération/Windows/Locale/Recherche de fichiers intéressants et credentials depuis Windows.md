@@ -12,19 +12,28 @@ dir "%USERPROFILE%\Desktop"
 
 ## Fichiers Intéressants
 
-## Findstr
+### Recherche de fichiers
 
+#### Findstr
 
 ```shell
 # /S : recherche dans les sous dossiers
+# /P : ignore les fichiers ne contenant pas de caractères affichables
 # /I : insenssible à la casse
-# /M : affiche seulement le nom du fichier (pas la ligne )
+# /N : affiche le numéro des lignes correspondant
+# /M : affiche seulement le nom du fichier (pas la ligne correspondant au texte cherché)
 # recherche du terme "password" : liste le nom des fichiers contenant "password" (sans afficher le contenu trouvé)
-findstr /SIM "password" *.xml *.ini *.txt
+findstr /SIM "password" *.xml *.ini *.txt *.config
 
 # recherche du terme "password" : liste le nom des fichiers et la ligne qui a matché
-findstr /SI  "password" *.xml *.ini *.txt
+findstr /SPIN  "password" *.xml *.ini *.txt *.config
 
+```
+
+#### Powershell
+
+```powershell
+select-string -Path C:\Users\htb-student\Documents\*.txt -Pattern "password"
 ```
 
 ### Historiques Powershell
