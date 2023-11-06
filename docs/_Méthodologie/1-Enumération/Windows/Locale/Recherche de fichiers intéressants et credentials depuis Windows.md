@@ -19,9 +19,8 @@ Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppDa
 
 ## Dictionnaire Google Chrome
 
-```powershell-session
-Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppData\Local\Google\Chrome\User Data\Default\Custom Dictionary.txt' | Select-String password -ErrorAction SilentlyContinue}
-
+```powershell
+Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppData\Local\Google\Chrome\User Data\Default\Custom Dictionary.txt" -ErrorAction SilentlyContinue | Select-String password }
 ```
 
 ## Recherche de unattend.xml
@@ -50,12 +49,6 @@ Login
 Credentials
 ```
 
-## Findstr
-
-```
-findstr /SIM /C:"password" *.txt *.ini *.cfg *.config *.xml *.git *.ps1 *.yml
-```
-
 ## Noms de fichiers intéressants
 
 ```batch
@@ -69,7 +62,9 @@ Get-ChildItem -Recurse -Path C:\ -Include *cred* -File
 
 ## Contenus de fichiers intéressants
 
-```
+```shell
+findstr /SIM /C:"password" *.txt *.ini *.cfg *.config *.xml *.git *.ps1 *.yml
+
 findstr /s /i cred c:\*.*
 ```
 
