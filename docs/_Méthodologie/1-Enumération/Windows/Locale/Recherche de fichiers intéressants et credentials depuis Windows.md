@@ -68,14 +68,35 @@ Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppDa
 ```
 
 #### Lecture du contenu
-
+- Copier les fichiers  `plum.sqlite*`
+- Lire :
+	- depuis Windows :
+		- graphiquement avec  [DB Browser for SQLite](https://sqlitebrowser.org/dl/) : utiliser la requête `select Text from Note;`
+		- via powershell avec le module <https://github.com/RamblingCookieMonster/PSSQLite>
+	- depuis Linux :
+		- `strings plum.sqlite-wal`
 ### Autres
 
 ```powershell
 # Passwords in scripts in different shares :  SYSVOL, IT shares
-
-Passwords in web.config files on dev machines and IT shares
-
+%SYSTEMDRIVE%\pagefile.sys
+%WINDIR%\debug\NetSetup.log
+%WINDIR%\repair\sam
+%WINDIR%\repair\system
+%WINDIR%\repair\software, %WINDIR%\repair\security
+%WINDIR%\iis6.log
+%WINDIR%\system32\config\AppEvent.Evt
+%WINDIR%\system32\config\SecEvent.Evt
+%WINDIR%\system32\config\default.sav
+%WINDIR%\system32\config\security.sav
+%WINDIR%\system32\config\software.sav
+%WINDIR%\system32\config\system.sav
+%WINDIR%\system32\CCM\logs\*.log
+%USERPROFILE%\ntuser.dat
+%USERPROFILE%\LocalS~1\Tempor~1\Content.IE5\index.dat
+%WINDIR%\System32\drivers\etc\hosts
+C:\ProgramData\Configs\*
+C:\Program Files\Windows PowerShell\*
 unattend.xml
 
 Passwords in the AD user or computer description fields
