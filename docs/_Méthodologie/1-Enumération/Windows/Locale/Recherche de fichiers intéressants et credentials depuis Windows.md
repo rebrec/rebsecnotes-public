@@ -23,6 +23,10 @@ Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppDa
 Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppData\Local\Google\Chrome\User Data\Default\Custom Dictionary.txt" -ErrorAction SilentlyContinue | Select-String password }
 ```
 
+## Configuration IIS
+
+Fichier `C:\inetpub\wwwroot\web.config`
+
 ## Recherche de unattend.xml
 
 Script a définir (voir emplacements)
