@@ -25,23 +25,23 @@ dir "%USERPROFILE%\Desktop"
 # /M : affiche seulement le nom du fichier (pas la ligne correspondant au texte cherché)
 
 # recherche du terme "password" : liste le nom des fichiers contenant "password" (sans afficher le contenu trouvé)
-findstr /SIM "password" *.xml *.ini *.txt *.config
+findstr /SIM "password" *.xml *.yml *.ini *.txt *.config *.cfg *.git *.ps1 *.vbs *.cmd *.bat 
 
 # recherche du terme "password" : liste le nom des fichiers et la ligne qui a matché
-findstr /SPIN  "password" *.xml *.ini *.txt *.config
+findstr /SPIN  "password" *.xml *.yml *.ini *.txt *.config *.cfg *.git *.ps1 *.vbs *.cmd *.bat 
 
 # Recherche de différents fichiers en même temps
-dir /S /B *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config* == *.rdp == *.vnc == *.cred
+dir /S /B *secret* == *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config* == *.rdp == *.vnc == *.cred
 ```
 
 #### Powershell
 
 ```powershell
 # Terme "Password" dans plusieures extensions
-Get-ChildItem *.xml, *.ini, *.txt, *.config -Recurse | Select-String "pass"| ft Path, LineNumber, Line -AutoSize
+Get-ChildItem *.xml *.yml *.ini *.txt *.config *.cfg *.git *.ps1 *.vbs *.cmd *.bat  -Recurse | Select-String "password"| ft Path, LineNumber, Line -AutoSize
 
 # Fichiers avec des noms de la forme 
-Get-ChildItem  -Recurse -Include *pass*.txt, *pass*.xml, *pass*.ini, *cred*, *vnc*, *.config, *.rdp, *.vnc, *.cred -ErrorAction Ignore | Select -ExpandProperty FullName
+Get-ChildItem  -Recurse -Include *secret*, *pass*.txt, *pass*.xml, *pass*.ini, *cred*, *vnc*, *.config, *.rdp, *.vnc, *.cred -ErrorAction Ignore | Select -ExpandProperty FullName
 ```
 
 ### Historiques Powershell
@@ -139,39 +139,6 @@ Login
 Credentials
 ```
 
-## Noms de fichiers intéressants
-
-```batch
-dir c:\*cred* /s /b 
-dir c:\*secret* /s /b
-```
-
-```powershell
-Get-ChildItem -Recurse -Path C:\ -Include *cred* -File
-```
-
-## Contenus de fichiers intéressants
-
-```shell
-findstr /SIM /C:"password" *.txt *.ini *.cfg *.config *.xml *.git *.ps1 *.yml
-
-findstr /s /i cred c:\*.*
-```
-
-```powershell
-Get-ChildItem -Recurse -Path C:\ | Select-String "cred" -List
-```
-
-```
-REM 
-dir n:\*cred* /s /b 
-dir n:\*secret* /s /b
-
-REM Recherche de mot intéressants dans des fichiers
-findstr /s /i cred n:\*.*
-
-n:\Contracts\private\secret.txt
-```
 
 ## Observateur d'évènement
 
