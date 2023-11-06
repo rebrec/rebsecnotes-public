@@ -2,12 +2,15 @@
 public: true
 ---
 ## Dossiers intéressants
-- `c:\`
-- `%USERPROFILE%\`
-- `%USERPROFILE%\Documents`
-- `%USERPROFILE%\Desktop`
+```shell
+dir c:\
+dir "%USERPROFILE%"
+dir "%USERPROFILE%\Documents"
+dir "%USERPROFILE%\Desktop"
+```
 
-# Historiques Powershell
+## Fichiers Intéressants
+### Historiques Powershell
 
 On peut vérifier l'emplacement de l'historique via : `(Get-PSReadLineOption).HistorySavePath`
 
@@ -17,10 +20,29 @@ Collecte des historiques (emplacement par défaut)
 Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppData\Roaming\Microsoft\Windows\Powershell\PSReadline\ConsoleHost_history.txt" -ErrorAction SilentlyContinue}
 ```
 
-## Dictionnaire Google Chrome
+### Dictionnaire Google Chrome
 
 ```powershell
 Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppData\Local\Google\Chrome\User Data\Default\Custom Dictionary.txt" -ErrorAction SilentlyContinue | Select-String password }
+```
+### Autres
+
+
+```powershell
+# Passwords in scripts in different shares :  SYSVOL, IT shares
+
+Passwords in web.config files on dev machines and IT shares
+
+unattend.xml
+
+Passwords in the AD user or computer description fields
+
+KeePass databases --> pull hash, crack and get loads of access.
+
+Found on user systems and shares
+
+Files such as pass.txt, passwords.docx, passwords.xlsx found on user systems, shares, Sharepoint
+
 ```
 
 ## Configuration IIS
@@ -134,21 +156,3 @@ Domain user:
 # cme smb 10.0.5.1 -u bkpadmin -p P@ss123 -d target.corp -M gpp_password
 ```
 
-## Autre
-
-Passwords in scripts in different shares :
-
-- SYSVOL
-- IT shares
-
-Passwords in web.config files on dev machines and IT shares
-
-unattend.xml
-
-Passwords in the AD user or computer description fields
-
-KeePass databases --> pull hash, crack and get loads of access.
-
-Found on user systems and shares
-
-Files such as pass.txt, passwords.docx, passwords.xlsx found on user systems, shares, Sharepoint
