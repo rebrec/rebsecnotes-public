@@ -57,8 +57,22 @@ reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlo
 ### Putty
 
 ```shell
-reg query HKEY_CURRENT_USER\SOFTWARE\SimonTatham\PuTTY\Sessions\kali%20ssh
+# Liste des sessions enregistrées
+reg query HKEY_CURRENT_USER\SOFTWARE\SimonTatham\PuTTY\Sessions
+# Interrogation d'une session
+reg query HKEY_CURRENT_USER\SOFTWARE\SimonTatham\PuTTY\Sessions\Server1 | findstr /i "User Pass"
 ```
+
+### Mots de passe Wifi
+
+```shell
+# Liste des profiles
+netsh wlan show profile
+
+# Affichage de la clé wifi du profile "Profile1"
+netsh wlan show profile Profile1 key=clear
+```
+
 ## Fichiers Intéressants
 
 ## Recherche de fichier automatisée : Snaffler
