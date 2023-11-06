@@ -38,7 +38,7 @@ dir /S /B *secret* == *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* 
 
 ```powershell
 # Terme intéressants dans des fichiers
-Get-ChildItem *.xml, *.yml, *.ini, *.txt, *.config, *.cfg, *.git, *.ps1, *.vbs, *.cmd, *.bat  -Recurse -ErrorAction SilentlyContinue | Select-String "password"| ft Path, LineNumber, Line -AutoSize
+Get-ChildItem *.xml, *.yml, *.ini, *.txt, *.config, *.cfg, *.git, *.ps1, *.vbs, *.cmd, *.bat  -Recurse -ErrorAction SilentlyContinue | ? { $_.Path -notlike '*\windows\*' } | Select-String "password"| ft Path, LineNumber, Line -AutoSize
 
 # Fichiers avec des noms intéressants
 Get-ChildItem  -Recurse -Include *secret*, *pass*.txt, *pass*.xml, *pass*.ini, *cred*, *vnc*, *.config, *.rdp, *.vnc, *.cred -ErrorAction Ignore | Select -ExpandProperty FullName
