@@ -7,6 +7,20 @@ public: true
 - `%USERPROFILE%\Documents`
 - `%USERPROFILE%\Desktop`
 
+
+# Historiques Powershell 
+
+```powershell
+Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppData\Roaming\Microsoft\Windows\Powershell\PSReadline\ConsoleHost_history.txt" -ErrorAction SilentlyContinue}
+```
+
+## Dictionnaire Google Chrome
+
+```powershell-session
+Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppData\Roaming\Microsoft\Windows\Powershell\PSReadline\ConsoleHost_history.txt" -ErrorAction SilentlyContinue}
+
+```
+
 ## Barre de recherche Windows
 
 Mots à tenter dans la barre de recherche du menu Démarrer
