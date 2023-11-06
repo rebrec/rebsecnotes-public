@@ -33,7 +33,7 @@ findstr /SPIN  "password" *.xml *.ini *.txt *.config
 #### Powershell
 
 ```powershell
-select-string -Path C:\Users\htb-student\Documents\*.txt -Pattern "password"
+Get-ChildItem *.xml, *.ini, *.txt, *.config -Recurse | Select-String "pass"| ft Path, LineNumber, Line -AutoSize
 ```
 
 ### Historiques Powershell
