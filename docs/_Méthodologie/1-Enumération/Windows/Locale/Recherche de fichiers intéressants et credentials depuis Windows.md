@@ -95,7 +95,7 @@ netsh wlan show profile Profile1 key=clear
 findstr /SIM "password cred" *.xml *.yml *.ini *.txt *.config *.cfg *.git *.ps1 *.vbs *.cmd *.bat 
 
 # recherche du terme "password" ou "cred" : liste le nom des fichiers et la ligne qui a matché
-findstr /SPIN  "password cred" *.xml *.yml *.ini *.txt *.config *.cfg *.git *.ps1 *.vbs *.cmd *.bat 
+findstr /SPIN  "password cred" *.xml *.yml *.ini *.txt *.config *.cfg *.git *.ps1 *.cmd *.bat  # *.vbs
 
 # Recherche de différents fichiers en même temps
 dir /S /B *secret* == *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config* == *.rdp == *.vnc == *.cred == *.kdbx *.vhd* == *.vmdk
