@@ -72,6 +72,14 @@ regarder les descriptions des utilisateurs AD
  Get-DomainUser * | Select-Object samaccountname,description |Where-Object {$_.Description -ne $null}
 ```
 
+## Privesc
+
+[Winpeas](https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS) 
+
+[PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1)
+
+Seatbelt
+
 Références :
 
 - <https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands>
