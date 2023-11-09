@@ -86,6 +86,8 @@ Invoke-AllCheck
 
 Seatbelt
 
+[[Interactions avec des utilisateurs]]
+
 Références :
 
 - <https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands>
