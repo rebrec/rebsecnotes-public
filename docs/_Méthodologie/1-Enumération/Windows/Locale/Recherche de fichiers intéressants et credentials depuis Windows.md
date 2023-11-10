@@ -172,7 +172,7 @@ KeePass databases --> pull hash, crack and get loads of access.
 
 Found on user systems and shares
 
-Files such as pass.txt, passwords.docx, passwords.xlsx found on user systems, shares, Sharepoint
+# Files such as pass.txt, passwords.docx, passwords.xlsx found on user systems, shares, Sharepoint
 
 ```
 
