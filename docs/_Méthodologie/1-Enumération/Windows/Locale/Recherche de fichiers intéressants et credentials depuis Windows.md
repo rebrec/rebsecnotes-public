@@ -288,3 +288,9 @@ Local admin:
 Domain user:
 # cme smb 10.0.5.1 -u bkpadmin -p P@ss123 -d target.corp -M gpp_password
 ```
+
+## Cookies
+
+Si on trouve des cookies de session dans les profils utilisateurs, on pourra potentiellement accéder à des ressources web sans avoir à s'authentifier.
+
+Voir [[Réutilisation de cookies de session]]

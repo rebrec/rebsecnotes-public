@@ -21,4 +21,4 @@ $INSTALLED | ?{ $_.DisplayName -ne $null } | sort-object -Property DisplayName -
 On peut ensuite voir :
 
 - si les versions sont récentes ou non, (indice de maturité de l'entreprise en terme de sécurité) et cherchercher si les version sont anciennes si des CVE existent.
-- si elles peuvent conteni des identifiants / mots de passe que l'on pourrait collecter ([[Recherche de fichiers intéressants et credentials depuis Windows]])
+- si elles peuvent contenir des identifiants / mots de passe que l'on pourrait collecter ([[Recherche de fichiers intéressants et credentials depuis Windows]])
