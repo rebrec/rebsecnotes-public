@@ -7,6 +7,7 @@ public: true
 accesschk.exe -uws "Tout le monde" "C:\Program Files"
 accesschk.exe -uws "Everyone" "C:\Program Files"
 accesschk.exe -uws "Users" "C:\Program Files"
+accesschk64.exe -nobanner -wus "BUILTIN\Users" "c:\Department Shares"
 # -u : supprimer les erreur
 # -w : droit en écriture
 # -s : récursif
