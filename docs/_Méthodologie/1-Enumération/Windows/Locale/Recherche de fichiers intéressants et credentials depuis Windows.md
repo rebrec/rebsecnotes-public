@@ -38,7 +38,7 @@ Les fichiers de configuration sont stockés dans  `%USERPROFILE%\APPDATA\Roamin
 
 ```shell
 # Identification des fichiers de configuration d'mRemoteNG
-Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\APPDATA\Roaming\mRemoteNG\confCons.xml" -ErrorAction SilentlyContinue}
+(Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\APPDATA\Roaming\mRemoteNG\confCons.xml" -ErrorAction SilentlyContinue} ) -split ' ' | Select-String -List "pass", "user"
 ```
 
 Les fichiers ont la forme suivante :
