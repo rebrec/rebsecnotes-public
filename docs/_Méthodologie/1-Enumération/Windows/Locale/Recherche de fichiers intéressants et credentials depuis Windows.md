@@ -33,6 +33,10 @@ runas /savecred /user:inlanefreight\bob "COMMAND HERE | REVERSE SHELL etc"
 
 ## Lazagne
 
+Collecte de nombreux mots de passe stockés dans diverses endroits du système
+
+Liste des applicatifs supportés : <https://github.com/AlessandroZ/LaZagne#supported-software>
+
 <https://github.com/AlessandroZ/LaZagne/releases/download/v2.4.5/LaZagne.exe>
 
 ```
