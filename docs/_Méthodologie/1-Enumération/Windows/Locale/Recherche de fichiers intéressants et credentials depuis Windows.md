@@ -119,7 +119,7 @@ Invoke-SessionGopher -Target SRV1 # si privilèges suffisants. Sinon, on peut ch
 
 ## Fichiers Intéressants
 
-## Recherche de fichier automatisée : Snaffler
+### Recherche de fichier automatisée : Snaffler
 
 <https://github.com/SnaffCon/Snaffler/releases/download/1.0.132/Snaffler.exe>
 
