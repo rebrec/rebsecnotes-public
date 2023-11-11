@@ -45,7 +45,9 @@ lazagne.exe all
 
 ### SessionGopher
 
- [SessionGopher](https://github.com/Arvanaghi/SessionGopher)
+D'après la documentation du projet, décrypte les mots de passes stockés dans les configuration des applications suivantes : PuTTY, WinSCP, FileZilla, SuperPuTTY, et RDP.
+
+[SessionGopher](https://github.com/Arvanaghi/SessionGopher)
 
 ```powershell
 Import-Module .\SessionGopher.ps1
