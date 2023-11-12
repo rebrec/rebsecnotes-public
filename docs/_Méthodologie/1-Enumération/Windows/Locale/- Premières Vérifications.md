@@ -15,14 +15,6 @@ arp -a
 whoami /priv
 whoami /groups
 net user Compromised_Account
-```
-
-Selon les groupes et privilèges dont on dispose, on pourra potentiellement exploiter certains d'entre eux :
-
-- [[Exploitation des privilèges Windows]]
-- [[Exploitation des groupes Windows]]
-
-```shell
 
 # liste des utilisateurs
 net user
@@ -32,6 +24,11 @@ net localgroup
 # politique de mot de passe
 net accounts
 ```
+
+Selon les groupes et privilèges dont on dispose, on pourra potentiellement exploiter certains d'entre eux :
+
+- [[Exploitation des privilèges Windows]]
+- [[Exploitation des groupes Windows]]
 
 [[Elements de protections]]
 
