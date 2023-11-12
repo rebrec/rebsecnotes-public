@@ -123,6 +123,10 @@ Invoke-SessionGopher -Target SRV1 # si privilèges suffisants. Sinon, on peut ch
 
 <https://github.com/SnaffCon/Snaffler/releases/download/1.0.132/Snaffler.exe>
 
+```shell
+ .\snaffler.exe -s -i c:\
+```
+
 ### Recherche de fichiers manuelle
 
 #### CMD
