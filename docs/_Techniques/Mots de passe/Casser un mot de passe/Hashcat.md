@@ -43,11 +43,11 @@ hashcat -m 1800 -a 0 /tmp/unshadowed.hashes rockyou.txt -o /tmp/unshadowed.crack
 
 #                                 |             ICI                |
 # Hash LM       (Administrator:500:aad3b435b51404eeaad3b435b51404ee:7796ee39fd3a9c3a1844556115ae1a54:::)
-hashcat -m 5600 hash.txt rockyou.txt
+hashcat -m 3000 hash.txt rockyou.txt
 
 #                                                                  |             ICI                |
 # Hash NT       (Administrator:500:aad3b435b51404eeaad3b435b51404ee:7796ee39fd3a9c3a1844556115ae1a54:::)
-hashcat -m 5600 hash.txt rockyou.txt
+hashcat -m 1000 hash.txt rockyou.txt
 
 
 # Hash NetNTLMv2
