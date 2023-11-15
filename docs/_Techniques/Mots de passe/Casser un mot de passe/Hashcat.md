@@ -40,6 +40,16 @@ hashcat -m 1000 -a 0 hashes rockyou.txt
 # Hash SHA-512 ($6$ commun dans /etc/passwd)
 hashcat -m 1800 -a 0 /tmp/unshadowed.hashes rockyou.txt -o /tmp/unshadowed.cracked
 
+
+#                                 |             ICI                |
+# Hash LM       (Administrator:500:aad3b435b51404eeaad3b435b51404ee:7796ee39fd3a9c3a1844556115ae1a54:::)
+hashcat -m 5600 hash.txt rockyou.txt
+
+#                                                                  |             ICI                |
+# Hash NT       (Administrator:500:aad3b435b51404eeaad3b435b51404ee:7796ee39fd3a9c3a1844556115ae1a54:::)
+hashcat -m 5600 hash.txt rockyou.txt
+
+
 # Hash NetNTLMv2
 hashcat -m 5600 hash.txt rockyou.txt
 
@@ -47,4 +57,4 @@ hashcat -m 5600 hash.txt rockyou.txt
 hashcat -m 13100 hash.txt rockyou.txt
 ```
 
-La liste des hash est disponible ici : <https://hashcat.net/wiki/doku.php?id=example_hashes>
+**En cas de format de fichier Hash incorrecte, se référer à**  la liste des hash qui disponible ici : <https://hashcat.net/wiki/doku.php?id=example_hashes>
