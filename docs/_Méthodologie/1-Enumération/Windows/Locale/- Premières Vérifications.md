@@ -81,6 +81,8 @@ Invoke-AllCheck
 
 ```
 
+SharpUp.exe audit
+
 Seatbelt
 
 [[Interactions avec des utilisateurs]]
