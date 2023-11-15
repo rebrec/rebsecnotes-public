@@ -215,6 +215,7 @@ Gci c:\Users -Directory | Select -ExpandProperty Name | %{ gc "C:\Users\$_\AppDa
 C:\ProgramData\Configs\*
 C:\Program Files\Windows PowerShell\*
 unattend.xml
+c:\windows\panther\unattend.xml
 
 Passwords in the AD user or computer description fields
 
