@@ -77,7 +77,7 @@ windapsearch.py --dc-ip $TARGET_IP -u $AD_USER@$AD_DOMAIN -p $AD_PASSWORD --PU
 
 #### Bruteforce
 
-On pourra utiliser la liste des noms d'utilisateurs les plus communs provenant de <https://github.com/insidetrust/statistically-likely-usernames>
+Sans identifiants préalables, on pourra utiliser la liste des noms d'utilisateurs les plus communs provenant de <https://github.com/insidetrust/statistically-likely-usernames> et vérifier quels comptes existent dans l'AD cible.
 
 Par exemple le fichier : <https://raw.githubusercontent.com/insidetrust/statistically-likely-usernames/master/jsmith.txt>
 
@@ -86,10 +86,10 @@ Par exemple le fichier : <https://raw.githubusercontent.com/insidetrust/statisti
 kerbrute userenum -d DOMAIN.LOCAL --dc $TARGET_IP --safe jsmith.txt -o valid_user_output.txt
 kerbrute userenum -d DOMAIN.LOCAL --dc $TARGET_IP jsmith.txt -o valid_user_output.txt
 
+# creation d'une liste d'utilisateurs valides :
+cat valid_user_output.txt | tr -d " \t" | cut -d ':' -f4 | tee users_found_kerbrute.txt
 
 ```
-
-Cet utilitaire tente très rapidement tous les mots de passes de la liste.
 
 Cet utilitaire tente très rapidement tous les utilisateurs de la liste.
 
