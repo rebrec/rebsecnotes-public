@@ -1,7 +1,8 @@
 ---
 public: true # set to true to make the article publishable
 ---
-
+Obtention de la liste des utilisateurs n'ayant pas besoin de préauthentifaction
+## 
 ```powershell
 cme ldap  $TARGET -u users.lst -p '' --asreproast asrep.txt
 
