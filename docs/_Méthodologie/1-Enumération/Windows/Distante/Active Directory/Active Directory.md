@@ -88,6 +88,8 @@ kerbrute userenum -d DOMAIN.LOCAL --dc $TARGET_IP userbiglist.Txt
 
 Cet utilitaire tente très rapidement tous les mots de passes de la liste.
 
+Cet utilitaire tente très rapidement tous les utilisateurs de la liste.
+
 Il ne génère par d'évènement dans un AD configuré avec les options par défaut.
 
 #### Attaques
