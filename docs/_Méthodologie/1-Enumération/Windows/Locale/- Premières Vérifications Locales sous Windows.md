@@ -23,6 +23,9 @@ net localgroup
 
 # politique de mot de passe
 net accounts
+
+# utilisateurs connectés
+qwinsta
 ```
 
 Selon les groupes et privilèges dont on dispose, on pourra potentiellement exploiter certains d'entre eux :
