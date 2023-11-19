@@ -12,6 +12,12 @@ public: true # set to true to make the article publishable
 
 ## Méthodologie
 
+- A Distance : [[GetUserSPNs.py]]
+- Localement
+	- [[Manuel]]
+	- [[docs/_Techniques/Windows/AD/Kerberos/Kerberoasting/Locale/Powerview]]
+	- [[Rubeus]]
+
 ##### Cracker les hash (bruteforce)
 
 ```
