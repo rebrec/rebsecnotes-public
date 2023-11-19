@@ -82,8 +82,11 @@ On pourra utiliser la liste des noms d'utilisateurs les plus communs provenant d
 Par exemple le fichier : <https://raw.githubusercontent.com/insidetrust/statistically-likely-usernames/master/jsmith.txt>
 
 ```shell
-# kerbrute
-kerbrute userenum -d DOMAIN.LOCAL --dc $TARGET_IP userbiglist.Txt
+# kerbrute (VERSION SAFE qui s'arrête si un compte se retrouve verouillé (pour éviter le drame))
+kerbrute userenum -d DOMAIN.LOCAL --dc $TARGET_IP --safe jsmith.txt -o valid_user_output.txt
+kerbrute userenum -d DOMAIN.LOCAL --dc $TARGET_IP jsmith.txt -o valid_user_output.txt
+
+
 ```
 
 Cet utilitaire tente très rapidement tous les mots de passes de la liste.
