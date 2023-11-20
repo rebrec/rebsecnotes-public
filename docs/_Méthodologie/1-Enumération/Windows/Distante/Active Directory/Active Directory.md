@@ -268,6 +268,8 @@ SCShell
 
 ## Bloodhound
 
+**Remarque** : Il semble que bloodhound-python collecte moins d'informations que SharpHound ou d'autres ingestors. Il est donc **recommandé** de pas se fier uniquement à ses résultats.
+
 Bloodhound python injector available as a docker image (python2)
 
 sudo docker run --rm -v ${PWD}:/bloodhound-data -it bloodhound
