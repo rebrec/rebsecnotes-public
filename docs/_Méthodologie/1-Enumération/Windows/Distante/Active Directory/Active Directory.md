@@ -268,7 +268,7 @@ SCShell
 
 ## Bloodhound
 
-**Remarque** : Il semble que bloodhound-python collecte moins d'informations que SharpHound ou d'autres ingestors. Il est donc **recommandé** de pas se fier uniquement à ses résultats.
+**Remarque** : Il semble que bloodhound-python collecte moins d'informations que SharpHound ou d'autres ingestors. Il est donc **recommandé** de pas se fier uniquement à ses résultats et à les comparer aux résultats fournis par SharpHound ou autre une fois qu'une machine Windows membre du domains est compromise.
 
 Bloodhound python injector available as a docker image (python2)
 
