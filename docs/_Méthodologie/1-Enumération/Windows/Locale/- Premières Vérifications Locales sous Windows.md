@@ -37,6 +37,10 @@ Selon les groupes et privilèges dont on dispose, on pourra potentiellement expl
 
 [[Système d'exploitation]]
 
+Version du net framework installée (utile utiliser des outils compilés pour la bonne version) :
+
+- `Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP'`
+
 [[Correctifs de Sécurité]]
 
 ==> [[PrintNightmare (CVE-2021-1675)]]
