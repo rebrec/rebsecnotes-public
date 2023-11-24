@@ -48,7 +48,7 @@ $ dig any inlanefreight.htb @$TARGET_IP
 ### Transfert de zone
 
 ```shell-session
-dig axfr inlanefreight.htb @$TARGET_IP
+dig axfr $DOMAIN @$TARGET_IP
 ```
 
 ### Bruteforce des sous domaines
