@@ -49,6 +49,8 @@ $ dig any inlanefreight.htb @$TARGET_IP
 
 ```shell-session
 dig axfr $DOMAIN @$TARGET_IP | tee axfr_$DOMAIN
+# create hostlist
+cat axfr_$DOMAIN | grep -v ';' | tr "\t" " " | cut -d ' ' -f1 | sed 's/\.$//g' | tee found_axfr_subdomains.txt
 ```
 
 ### Bruteforce des sous domaines
