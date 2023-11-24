@@ -8,7 +8,7 @@ Ports par défaut : 21, 20
 ## Méthodes de connexion
 
 ```
-$ nc -nv $TARGET_IP$ 21
+$ nc -nv $TARGET_IP 21
 $ telnet $TARGET_IP 21
 $ openssl s_client -connect "$TARGET_IP":21 -starttls ftp
 ```
