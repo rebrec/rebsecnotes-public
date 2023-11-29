@@ -1,6 +1,5 @@
 ---
-public: true 
-#Tags: tag1, tag2
+public: true
 ---
 
 Ports : 111 (RPC), 2049 (NFS)
@@ -8,6 +7,13 @@ Ports : 111 (RPC), 2049 (NFS)
 ## Remarque
 
 Si des partages sont découvert et que l'option `no_root_squash` a été utilisée, on pourra en tant que root, uploader des binaires setuid root ! Cela ne fonctionne pas si `root_squash` a été paramétré
+
+## rpc info
+
+```shell
+rpcinfo inlanefreight.htb
+nmap -sSUC -p111 192.168.10.1
+```
 
 ## nmap
 
