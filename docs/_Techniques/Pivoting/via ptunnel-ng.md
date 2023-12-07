@@ -4,7 +4,7 @@ public: true # set to true to make the article publishable
 
 Cet outil utilise des requêtes ICMP echo et reply pour établir un tunnel entre le client et le serveur.
 
-Il expose un port locale du serveur au travers du tunnel.
+Il expose un port local du serveur au travers du tunnel.
 
 Si l'on souhaite disposer d'un proxy socks, il faudra d'abord exposer un service ssh par exemple, puis s'y connecter au travers du tunnel avec l'option `-D`
 
