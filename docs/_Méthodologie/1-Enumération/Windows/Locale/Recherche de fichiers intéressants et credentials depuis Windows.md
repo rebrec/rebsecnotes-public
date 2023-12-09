@@ -24,6 +24,12 @@ Si la commande `cmdkey /list` affiche des comptes, on pourra :
 runas /savecred /user:inlanefreight\bob "COMMAND HERE | REVERSE SHELL etc"
 ```
 
+```shell
+Get-ChildItem -Hidden 'C:\Users\' -Directory
+username\AppData\Local\Microsoft\Credentials\
+```
+
+
 #### Google Chrome
 
 [SharpChrome](https://github.com/GhostPack/SharpDPAPI) peut extraire les identifiants mot de passe stockés.
