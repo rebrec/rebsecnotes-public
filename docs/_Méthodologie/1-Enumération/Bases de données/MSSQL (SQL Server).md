@@ -86,6 +86,8 @@ USE master;
 
 -- Get table names
 SELECT table_name FROM <databaseName>.INFORMATION_SCHEMA.TABLES;
+-- Get columns for table
+SELECT table_name, COLUMNS FROM <databaseName>.INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'MYTABLE';
 ```
 
 ## Outils utiles
