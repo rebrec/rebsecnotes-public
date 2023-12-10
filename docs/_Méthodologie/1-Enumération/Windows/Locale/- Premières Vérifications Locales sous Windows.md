@@ -64,7 +64,7 @@ set
 
 [[Canaux nommés (Named Pipes)]]
 
-[[Logiciels installés]]]]
+[[Logiciels installés]]
 
 [[Recherche de fichiers intéressants et credentials depuis Windows]]
 
