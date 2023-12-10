@@ -21,7 +21,7 @@ Si la commande `cmdkey /list` affiche des comptes, on pourra :
 - Executer une fenêtre DOS en tant que :
 
 ```shell
-runas /savecred /user:inlanefreight\bob "COMMAND HERE | REVERSE SHELL etc"
+ inlanefreight\bob "COMMAND HERE | REVERSE SHELL etc"
 ```
 
 ```shell
