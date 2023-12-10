@@ -9,7 +9,8 @@ tasklist /SVC
 ```
 
 
-```shell
+```powershell
+# liste des processus avec utilisateur et chemin d'accès
 Get-WmiObject Win32_Process |  
 >> Select Name, @{Name="UserName";Expression={$_.GetOwner().Domain+"\"+$_.GetOwner().User}},@{Name="Path";E={$_.Path}} |
 >> Sort-Object UserName, Name
