@@ -1,5 +1,5 @@
 ---
-public: true # set to true to make the article publishable
+public: true
 ---
 
 Il réalise les opérations suivantes :
@@ -25,3 +25,14 @@ Il réalise les opérations suivantes :
 ```
 
 [[Cassage de mots de passes Kerberos]]
+
+## Affichage de tous les tickets kerberos 
+De l'utilisateur courant ou de tous ce qui est sur le système (si admin)
+
+```shell
+.\Rubeus.exe triage
+```
+
+## Références
+- https://specterops.gitbook.io/ghostpack/rubeus/ticket-extraction-and-harvesting3
+- https://www.hackingarticles.in/a-detailed-guide-on-rubeus/
