@@ -13,11 +13,11 @@ Get-ScheduledTask | ?{$_.TaskPath -eq "\"} | % {
 	Write-Host "#"
 	Write-Host "###### ACTIONS"
 	Write-Host "#"
-	$_.Actions | ConvertTo-Json -Depth 3
+	$_.Actions | ConvertTo-Json -Depth 10
 	Write-Host "#"
 	Write-Host "###### TRIGGERS"
 	Write-Host "#"
-	$_.Triggers | ConvertTo-Json -Depth 3
+	$_.Triggers | ConvertTo-Json -Depth 10
 	Write-Host "#"
 	Write-Host "#"
 	Write-Host "#"
