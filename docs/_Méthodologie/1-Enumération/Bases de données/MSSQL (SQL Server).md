@@ -275,6 +275,7 @@ Get-SQLServerPasswordHash -username sa -Password Password@1 -instance WIN-P83OS7
 ```shell
 john --format=mssql12 --wordlist=pass hash
 
+hashcat -m 1731 hash pass.list # TODO : confirme the syntax
 ```
 
 
