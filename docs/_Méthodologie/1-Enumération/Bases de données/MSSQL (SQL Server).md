@@ -103,7 +103,8 @@ Il faudra ajouter le mot clé `GO` à chaque requête afin qu'elle soit exécut�
 ```shell
 # -y 30 -Y 30 augmentent la visibilité des résultat (attention aux performances)
 sqlcmd -S SRVMSSQL -U julio -P 'MyPassword!' -y 30 -Y 30
-
+# port non standard
+sqlcmd -S "127.0.0.1,49730" -U MyDNNUser -P 'MyDNNS3cure'
 # ATTENTION : cet utilitaire nécessite la saisie du mot GO à la ligne terminant chaque requête ! (pas besoin de ';' dans cet outil)
 ```
 
