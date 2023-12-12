@@ -251,6 +251,7 @@ There are other methods to get command execution, such as adding [extended stor
 ## Pillage : collecte de hash
 
 ### Client MSSql
+
 Les hash des comptes utilisateurs peuvent être extraits via :
 
 ```sql
@@ -278,12 +279,10 @@ john --format=mssql12 --wordlist=pass hash
 hashcat -m 1731 hash pass.list # TODO : confirme the syntax
 ```
 
-
 ## Voir aussi
 
 <https://github.com/NetSPI/PowerUpSQL/wiki/PowerUpSQL-Cheat-Sheet>
 
-
 ## Références
 
-- https://www.hackingarticles.in/mssql-for-pentester-hashing/
+- <https://www.hackingarticles.in/mssql-for-pentester-hashing/>
