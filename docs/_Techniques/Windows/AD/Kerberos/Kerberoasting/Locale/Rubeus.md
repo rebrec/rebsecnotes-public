@@ -34,8 +34,6 @@ De l'utilisateur courant ou de tous ce qui est sur le système (si admin)
 .\Rubeus.exe triage
 ```
 
-
-
 ## Références
 - <https://specterops.gitbook.io/ghostpack/rubeus/ticket-extraction-and-harvesting3>
 - <https://www.hackingarticles.in/a-detailed-guide-on-rubeus/>
