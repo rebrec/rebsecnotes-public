@@ -44,10 +44,11 @@ Windows
 ```powershell
 # Utilisation de credentials alternatifs
 $PrivilegedUserPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force
-$Cred = New-Object System.Management.Automation.PSCredential('TESTLAB\dfm.a', $PrivilegedUserPassword)
-# Réinitialisation du password
+$PrivilegedCreds = New-Object System.Management.Automation.PSCredential('TESTLAB\dfm.a', $PrivilegedUserPassword)
+# Nouveau mot de passe a appliquer
 $newPassword = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
-Set-DomainUserPassword -Identity Target_AD_User -Password $newPassword
+# Modification du mot de passe
+Set-DomainUserPassword -Identity Target_AD_User -Password $newPassword -Credential $PrivilegedCreds
 ```
 
 ### GenericWrite
