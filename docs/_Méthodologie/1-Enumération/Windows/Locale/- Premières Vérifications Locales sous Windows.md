@@ -28,20 +28,17 @@ net accounts
 qwinsta
 ```
 
-Selon les groupes et privilèges dont on dispose, on pourra potentiellement exploiter certains d'entre eux :
+- [[Elements de protections]]
+- [[Système d'exploitation]]
+- Version du net framework installée (utile utiliser des outils compilés pour la bonne version) :
+	- `Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP'`
+- [[Correctifs de Sécurité]]
 
-- [[Exploitation des privilèges Windows]]
-- [[Exploitation des groupes Windows]]
-
-[[Elements de protections]]
-
-[[Système d'exploitation]]
-
-Version du net framework installée (utile utiliser des outils compilés pour la bonne version) :
-
-- `Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP'`
-
-[[Correctifs de Sécurité]]
+- Quick wins :
+	- Selon les groupes et privilèges dont on dispose, on pourra potentiellement exploiter certains d'entre eux :
+		- [[Exploitation des privilèges Windows]]
+		- [[Exploitation des groupes Windows]]
+	- Vulnérabilités ([[Quick Wins]])
 
 ==> [[PrintNightmare (CVE-2021-1675)]]
 
