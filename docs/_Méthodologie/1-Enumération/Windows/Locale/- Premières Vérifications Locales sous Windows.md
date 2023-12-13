@@ -31,7 +31,11 @@ qwinsta
 - [[Elements de protections]]
 - [[Système d'exploitation]]
 - Version du net framework installée (utile utiliser des outils compilés pour la bonne version) :
-	- `Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP'`
+
+```powershell
+Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -Recurse
+```
+
 - [[Correctifs de Sécurité]]
 
 - Quick wins :
