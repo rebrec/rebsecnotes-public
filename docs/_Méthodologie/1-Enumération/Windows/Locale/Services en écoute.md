@@ -1,5 +1,5 @@
 ---
-public: true # set to true to make the article publishable
+public: true
 ---
 
 Pour les commandes suivantes, privilégier les services écoutant sur 127.0.0.1 car ils sont rarement sécurisés correctement.
