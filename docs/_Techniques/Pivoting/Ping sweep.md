@@ -14,7 +14,7 @@ for i in {1..254} ;do (ping -c 1 172.16.5.$i | grep "bytes from" &) ;done
 
 1..254 | % {"172.16.9.$($_): $(Test-Connection -count 1 -comp 172.15.9.$($_) -quiet)"}
 
-# fast : GetPingSweep -Subnet 1.2.3   
+# fast : Get-PingSweep -Subnet 1.2.3   
 # ATTENTION : on perd parfois des paquets : relancer plusieurs fois pour être sûr
 function Get-PingSweep {
     [CmdletBinding()]
@@ -25,7 +25,7 @@ function Get-PingSweep {
     )
     $ips = 1..254 | ForEach-Object {"$($SubNet).$_"}
     $ps = foreach ($ip in $ips) {
-        (New-Object Net.NetworkInformation.Ping).SendPingAsync($ip, 1000)
+        (New-Object Net.NetworkInformation.Ping).SendPingAsync($ip, 4000)
         #(New-Object Net.NetworkInformation.Ping).SendPingAsync($ip, 250)
         #[Net.NetworkInformation.Ping]::New().SendPingAsync($ip, 250) # or if on PowerShell v5
     }
@@ -42,5 +42,5 @@ function Get-PingSweep {
         }
     }
 }
-GetPingSweep -Subnet 172.16.9  
+Get-PingSweep -Subnet 172.16.9  
 ```
