@@ -57,6 +57,8 @@ robocopy /B E:\Windows\NTDS .\ntds ntds.dit
 Copy-FileSeBackupPrivilege E:\Windows\NTDS\ntds.dit C:\Tools\ntds.dit
 ```
 
+#### Création d'une sauvegarde via ntdsutil (non testé)
+Le fichier créé dans ce format pourra par la suite être exploité pour fournir des métriques sur différents éléments liés aux mots de passe et leur robuster via l'outil D
 ### A distance
 
 ```
