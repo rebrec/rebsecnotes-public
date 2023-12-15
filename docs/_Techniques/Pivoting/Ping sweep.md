@@ -42,5 +42,5 @@ function Get-PingSweep {
         }
     }
 }
-
+GetPingSweep -Subnet 172.16.9  
 ```
