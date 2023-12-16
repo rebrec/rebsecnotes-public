@@ -44,3 +44,8 @@ function Get-PingSweep {
 }
 Get-PingSweep -Subnet 172.16.9  
 ```
+
+
+## Nimscan
+
+Pas vraiment utilisé pour du simple pingsweep, mais se scanner de port est portable est assez pratique pour énumérer depuis une machine Windows
