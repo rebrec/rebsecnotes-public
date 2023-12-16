@@ -1,5 +1,5 @@
 ---
-public: true # set to true to make the article publishable
+public: true
 ---
 ## Linux ping
 
@@ -49,3 +49,45 @@ Get-PingSweep -Subnet 172.16.9
 ## Nimscan
 
 Pas vraiment utilisé pour du simple pingsweep, mais se scanner de port est portable est assez pratique pour énumérer depuis une machine Windows
+
+```shell
+PS C:\temp> .\nimscan.exe  172.16.9.0/24
+    )              (
+ ( /(              )\ )
+ )\()) (      )   (()/(         )
+((_)\  )\    (     /(_)) (   ( /(   (
+ _((_)((_)   )\  '(_))   )\  )(_))  )\ )
+| \| | (_) _((_)) / __| ((_)((_)_  _(_/(  
+| .` | | || '  \()\__ \/ _| / _` || ' \))
+|_|\_| |_||_|_|_| |___/\__| \__,_||_||_|
+
+    Fast Port Scanner Written In Nim
+
+==> 172.16.9.3:636 Open
+==> 172.16.9.3:53 Open
+==> 172.16.9.3:3269 Open
+==> 172.16.9.3:445 Open
+==> 172.16.9.3:139 Open
+==> 172.16.9.3:593 Open
+==> 172.16.9.3:3268 Open
+==> 172.16.9.3:389 Open
+==> 172.16.9.3:464 Open
+==> 172.16.9.3:88 Open
+==> 172.16.9.3:135 Open
+==> 172.16.9.3:5985 Open
+==> 172.16.9.3:9389 Open
+==> 172.16.9.3:49677 Open
+==> 172.16.9.3:49676 Open
+==> 172.16.9.3:49664 Open
+==> 172.16.9.3:47001 Open
+==> 172.16.9.3:49698 Open
+==> 172.16.9.3:49683 Open
+==> 172.16.9.3:49668 Open
+==> 172.16.9.3:49671 Open
+==> 172.16.9.3:49665 Open
+==> 172.16.9.3:49666 Open
+==> 172.16.9.3:63953 Open
+==> 172.16.9.25:22 Open
+
+[*] NimScan finished in: 439 Seconds
+```
