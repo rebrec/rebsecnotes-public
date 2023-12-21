@@ -94,3 +94,11 @@ https://www.pentestpartners.com/security-blog/using-nfsshell-to-compromise-older
 ## Solution alternative (non testée ) :  NfSpy
 
 https://github.com/bonsaiviking/NfSpy
+
+https://malicious.link/posts/2013/2013-03-04-mounting-nfs-shares-through-meterpreter-with-nfspy/
+
+```shell
+yay -S nfspy
+
+proxychains nfspy -d -o server=172.16.2.20:/,nfsport=2049/tcp,mountport=2049/tcp,ro /mnt/DEV01
+```
