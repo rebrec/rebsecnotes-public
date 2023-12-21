@@ -13,6 +13,9 @@ Si des partages sont découvert et que l'option `no_root_squash` a été utilis�
 ```shell
 rpcinfo inlanefreight.htb
 nmap -sSUC -p111 192.168.10.1
+
+# via un pivot 
+proxychains -q nmap -n -Pn -sT -p 111 --script rpcinfo,nfs-showmount 172.16.8.20
 ```
 
 ## nmap
