@@ -89,3 +89,8 @@ https://github.com/NetDirect/nfsshell
 Tutorial : 
 https://www.pentestpartners.com/security-blog/using-nfsshell-to-compromise-older-environments/
 ```
+
+
+## Solution alternative (non testée ) :  NfSpy
+
+https://github.com/bonsaiviking/NfSpy
