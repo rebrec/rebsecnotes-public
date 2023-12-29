@@ -1,6 +1,5 @@
 ---
-public: true 
-#Tags: tag1, tag2
+public: true
 ---
 
 Ports : 135, 137, 139, 445
@@ -208,10 +207,21 @@ $ smbclient -N -L //$TARGET_IP
 $ smbclient //$TARGET_IP/notes
 ```
 
+### Téléchargement récursif d'un dossier
+
+```shell
+smbclient //$TARGET_IP/Share
+RECURSE ON
+PROMP OFF
+mget *
+```
+
 ## smbclient.py (impacket)
 
 ```
 smbclient.py "$AD_USER:$AD_PASSWORD@$TARGET_IP"
 smbclient.py "$AD_DOMAIN/$AD_USER:$AD_PASSWORD@$TARGET_IP"
+
+# Affichage de l'arborescence d'un dossier
 
 ```
