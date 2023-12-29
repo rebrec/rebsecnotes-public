@@ -223,5 +223,5 @@ smbclient.py "$AD_USER:$AD_PASSWORD@$TARGET_IP"
 smbclient.py "$AD_DOMAIN/$AD_USER:$AD_PASSWORD@$TARGET_IP"
 
 # Affichage de l'arborescence d'un dossier
-
+tree
 ```
