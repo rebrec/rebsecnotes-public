@@ -39,10 +39,10 @@ ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "*" | grep -m 1 -B 10
 ```shell
 # crackmapexec
 ## Accès guest restreint
-cme smb $TARGET_IP -u "guest" -p "" --rid-brute 10000  # Max RID a adapter
+cme smb $TARGET -u "guest" -p "" --rid-brute 10000  # Max RID a adapter
 
 ## Utilisateurs connus (AD / Station)
-cme smb $TARGET_IP -u "$AD_USER" -p "$AD_PASSWORD" --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
+cme smb $TARGET -u "$AD_USER" -p "$AD_PASSWORD" --users | tr -s ' ' | tail -n +4 | cut -d ' ' -f 5 | cut -d '\' -f 2 | tee users.txt
 ```
 
 ```shell
@@ -52,10 +52,13 @@ cme smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --loggedon-users
 
 ```shell
 # enum4linux
-enum4linux -u "$AD_USER" -p "$AD_PASSWORD" -U $TARGET_IP | grep user: | cut -d '[' -f2 | cut -d ']' -f1  | tee users.txt
+enum4linux -u "$AD_USER" -p "$AD_PASSWORD" -U $TARGET | grep user: | cut -d '[' -f2 | cut -d ']' -f1  | tee users.txt
+
+# enum4linux-ng
+enum4linux-ng -u "" -p "" -U $TARGET | grep 'username:' | tr -s ' ' | cut -d ' ' -f3 | tee users.txt
 
 # rpcclient
-rpcclient -U "" -N $TARGET_IP -c 'enumdomusers;quit' | grep user: | cut -d '[' -f2 | cut -d ']' -f1  | tee users.txt
+rpcclient -U "" -N $TARGET -c 'enumdomusers;quit' | grep user: | cut -d '[' -f2 | cut -d ']' -f1  | tee users.txt
 ```
 
 ##### LDAP
@@ -69,9 +72,9 @@ ldapsearch -h $TARGET_IP -x -b "DC=DOMAIN,DC=LOCAL" -s sub "(&(objectclass=user)
 
 # windapsearch
 # liste des administrateurs du domaine
-windapsearch.py --dc-ip $TARGET_IP -u $AD_USER@$AD_DOMAIN -p $AD_PASSWORD --da
+windapsearch.py --dc-ip $TARGET -u $AD_USER@$AD_DOMAIN -p $AD_PASSWORD --da
 # liste d'utilisateurs potentiellement à privilèges
-windapsearch.py --dc-ip $TARGET_IP -u $AD_USER@$AD_DOMAIN -p $AD_PASSWORD --PU
+windapsearch.py --dc-ip $TARGET -u $AD_USER@$AD_DOMAIN -p $AD_PASSWORD --PU
 
 ```
 
