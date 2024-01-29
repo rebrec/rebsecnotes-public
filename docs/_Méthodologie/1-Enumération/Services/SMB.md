@@ -15,7 +15,7 @@ Voir aussi : [[docs/_Méthodologie/1-Enumération/Windows/Distante/Active Direct
 Cheatsheet du SANS : <https://www.willhackforsushi.com/sec504/SMB-Access-from-Linux.pdf>
 
 ```
-$ sudo nmap $TARGET_IP  -sV -sC -p139,445
+$ sudo nmap $TARGET  -sV -sC -p139,445
 ```
 
 ## rpcclient
@@ -166,7 +166,7 @@ $ samrdump.py 10.129.14.128
 
 ```shell-session
 # Auth Null Session
-smbmap -H $TARGET_IP
+smbmap -H $TARGET
 
 # Liste des partages
 smbmap -u $AD_USER -p $AD_PASSWORD -H $TARGET_IP
