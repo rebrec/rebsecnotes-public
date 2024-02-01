@@ -53,7 +53,7 @@ hashcat -m 1000 hash.txt rockyou.txt
 # Hash NetNTLMv2
 hashcat -m 5600 hash.txt rockyou.txt
 
-# Hash de TGS    $krb5tgs$23$*user1$DOMAIN...
+# Hash de TGS  (kerberoasting)   $krb5tgs$23$*user1$DOMAIN...
 hashcat -m 13100 hash.txt rockyou.txt
 ```
 
