@@ -88,7 +88,9 @@ Par exemple le fichier : <https://raw.githubusercontent.com/insidetrust/statisti
 git clone  https://github.com/insidetrust/statistically-likely-usernames 
 cd statistically-likely-usernames 
 # kerbrute (VERSION SAFE qui s'arrête si un compte se retrouve verouillé (pour éviter le drame))
+kerbrute userenum -d $DOMAIN --dc $TARGET --safe top-formats.txt -o "/workspace/Misc Files/valid_user_output.txt"
 kerbrute userenum -d $DOMAIN --dc $TARGET --safe jsmith.txt -o valid_user_output.txt
+
 kerbrute userenum -d $DOMAIN --dc $TARGET jsmith.txt -o valid_user_output.txt
 
 ### WORD LIST interessantes :
