@@ -91,6 +91,9 @@ cd statistically-likely-usernames
 kerbrute userenum -d $DOMAIN --dc $TARGET --safe jsmith.txt -o valid_user_output.txt
 kerbrute userenum -d $DOMAIN --dc $TARGET jsmith.txt -o valid_user_output.txt
 
+### WORD LIST interessantes :
+#  top-formats.txt : mix des différents formats avec les noms les plus communs en premier
+
 # creation d'une liste d'utilisateurs valides :
 cat valid_user_output.txt | tr -d " \t" | cut -d ':' -f4 | tee users_found_kerbrute.txt
 
