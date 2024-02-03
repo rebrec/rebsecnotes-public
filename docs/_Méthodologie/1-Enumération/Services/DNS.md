@@ -12,7 +12,7 @@ Popular types of DNS attacks : <https://securitytrails.com/blog/most-popular-typ
 ## Enumeration
 
 ```
-nmap -p53 -Pn -sV -sC $TARGET_IP
+nmap -p53 -Pn -sV -sC $TARGET
 ```
 
 ### Version
@@ -20,13 +20,13 @@ nmap -p53 -Pn -sV -sC $TARGET_IP
 En plus de l'énumération classique nmap ou l'usage du script NSE dns-id, on peut parfois utiliser dig
 
 ```shell-session
-dig CH TXT version.bind $TARGET_IP
+dig CH TXT version.bind $TARGET
 ```
 
 ou `host`
 
 ```
-host -c CH -t TXT version.bind $TARGET_IP
+host -c CH -t TXT version.bind $TARGET
 ```
 
 ### Liste des serveurs DNS d'une Zone
@@ -34,13 +34,13 @@ host -c CH -t TXT version.bind $TARGET_IP
 ```shell-session
 # récupère la liste des nameserver depuis le serveur DNS $TARGET_IP
 dig ns inlanefreight.htb @$TARGET_IP
-nslookup -query=NS inlanefreight.htb $TARGET_IP
+nslookup -query=NS inlanefreight.htb $TARGET
 ```
 
 ### Liste des enregistrements disponibles
 
 ```shell-session
-$ dig any inlanefreight.htb @$TARGET_IP
+$ dig any inlanefreight.htb @$TARGET
 ```
 
 ## Attaques / Exploitations
@@ -48,7 +48,7 @@ $ dig any inlanefreight.htb @$TARGET_IP
 ### Transfert de zone
 
 ```shell-session
-dig axfr $DOMAIN @$TARGET_IP | tee axfr_$DOMAIN
+dig axfr $DOMAIN @$TARGET | tee axfr_$DOMAIN
 # create hostlist
 cat axfr_$DOMAIN | grep -v ';' | tr "\t" " " | cut -d ' ' -f1 | sed 's/\.$//g' | tee found_axfr_subdomains.txt
 ```
@@ -58,7 +58,7 @@ cat axfr_$DOMAIN | grep -v ';' | tr "\t" " " | cut -d ' ' -f1 | sed 's/\.$//g' |
 #### Manuelle
 
 ```shell-session
-$ for sub in $(cat /usr/share/secLists/Discovery/DNS/subdomains-top1million-110000.txt);do dig $sub.inlanefreight.htb @10.129.14.128 | grep -v ';\|SOA' | sed -r '/^\s*$/d' | grep $sub | tee -a subdomains.txt;done
+for sub in $(cat /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt);do dig $sub.$DOMAIN @$TARGET | grep -v ';\|SOA' | sed -r '/^\s*$/d' | grep $sub | tee -a subdomains.txt;done
 ```
 
 ##### dnsenum
