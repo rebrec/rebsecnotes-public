@@ -5,14 +5,6 @@ public: true # set to true to make the article publishable
 
 <https://www.thehacker.recipes/ad/movement/mitm-and-coerced-authentications/ms-rprn>
 
-### MS14-068
-
-Possibilité de passer de simple user à administrateur du domaine grace à cette vulnérabilité.
-
-Outil permettant de l'exploiter <https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS14-068/pykek>
-
-Box HTB qui illustre cette technique :  [Mantis](https://app.hackthebox.com/machines/98)
-
 ### Sniffer des identifiants LDAP
 
 On peut parfois accéder à des équipements ayant une configuration ldap (par exemple un photocopieur avec la fonction scan to mail.
