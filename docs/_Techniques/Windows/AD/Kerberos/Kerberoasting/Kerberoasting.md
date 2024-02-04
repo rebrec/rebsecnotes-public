@@ -7,7 +7,7 @@ public: true # set to true to make the article publishable
 
 ## Objectifs
 - Obtenir une liste de compte utilisateurs disposant d'un SPN
-- Collecter les TGS associés à ces SPNs (chiffrés en RC4)
+- Collecter les ST (tickets de service) associés à ces SPNs (chiffrés en RC4)
 - Tenter de cracker les mots de passe des comptes utilisateurs à partir des TGS récupérés (qui sont chiffrés avec les hash de comptes utilisateurs respectifs)
 
 ## Méthodologie
