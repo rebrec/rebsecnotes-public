@@ -100,6 +100,7 @@ SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'MYTABLE';
 Utilitaire installer avec SQLServer
 
 Il faudra ajouter le mot clé `GO` à chaque requête afin qu'elle soit exécutée.
+**Attention** il peut peyt être utils d'utiliser le parametre `-y 0` pour obtenir des enregistrements complets lors de l'exécution des requête. Sinon on n'obtient des résultats qui semblent "tronqués"
 
 ```shell
 # -y 30 -Y 30 augmentent la visibilité des résultat (attention aux performances)
