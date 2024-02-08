@@ -2,6 +2,8 @@
 public: true # set to true to make the article publishable
 ---
 
+Nécessite une authentification LDAP valide
+
 Obtention de la liste des utilisateurs n'ayant pas besoin de préauthentifaction.
 
 Après obtention de cette liste, on pourra tenter de casser les mots de passe des utilisateurs.
