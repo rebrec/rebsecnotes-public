@@ -57,7 +57,6 @@ diskshadow.exe
  DELETE SHADOWS SET {446f7942-bd76-41a9-aff7-d7c854abe93f}
 ```
 
-
 ##### Copier à partir du cliché instantanné
 
 **Remarque** :  Si le fichier n'est pas accessible et que l'on est membre du groupe *Backup Operator*, on pourra y accéder via le privilège **SeBackupPrivilege** (voir [[Exploitation des privilèges Windows]])
