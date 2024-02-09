@@ -2,6 +2,12 @@
 public: true
 ---
 
+On peut utiliser `Seatbelt.exe` pour chercher les processus non standards
+
+```
+.\Seatbelt.exe NonstandardProcesses
+```
+
 Liste des processus avec le nom du service associé lorsqu'il est disponible
 
 ```
