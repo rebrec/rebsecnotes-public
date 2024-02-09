@@ -45,6 +45,15 @@ diskshadow.exe
  exit
 ```
 
+Effacer ses traces : après avoir copié ntds.dit (ou autre) on pourra supprimer le cliché instantané ainsi que son exposition via le lecteur E:
+
+```shell
+diskshadow.exe
+ unexpose e: 
+ list shadows all# affiche la liste des snapshots si on n'a pas noté l'ID lors de sa création
+```
+
+
 ##### Copier à partir du cliché instantanné
 
 **Remarque** :  Si le fichier n'est pas accessible et que l'on est membre du groupe *Backup Operator*, on pourra y accéder via le privilège **SeBackupPrivilege** (voir [[Exploitation des privilèges Windows]])
