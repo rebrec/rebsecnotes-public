@@ -51,6 +51,10 @@ Effacer ses traces : après avoir copié ntds.dit (ou autre) on pourra supprimer
 diskshadow.exe
  unexpose e: 
  list shadows all# affiche la liste des snapshots si on n'a pas noté l'ID lors de sa création
+ 
+ DELETE SHADOWS Exposed E: 
+ # ou 
+ DELETE SHADOWS SET {446f7942-bd76-41a9-aff7-d7c854abe93f}
 ```
 
 
