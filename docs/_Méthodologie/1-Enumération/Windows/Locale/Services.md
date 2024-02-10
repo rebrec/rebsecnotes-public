@@ -4,8 +4,9 @@ public: true # set to true to make the article publishable
 
 Recherche de vecteur d'escalade via des services : [[Weak Permissions]]
 
+### Services en dehors de c:\windows\system32
 ```powershell
-# Services démarrés ou non en dehors de c:\windows\system32
+# démarrés ou non
 get-wmiobject win32_service | select name,state, startmode,pathname,StartName | ?{$_.StartName -eq "LocalSystem" -and $_.pathname -notlike "c:\Windows\System32\*" }|ft
 
 

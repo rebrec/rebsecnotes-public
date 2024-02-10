@@ -2,7 +2,7 @@
 public: true
 ---
 
-On peut utiliser `Seatbelt.exe` pour chercher les processus non standards
+On peut utiliser `Seatbelt.exe` pour chercher les processus non standards (semble a première vue lister les path qui ne sont pas dans program files ou windows)
 
 ```
 .\Seatbelt.exe NonstandardProcesses
