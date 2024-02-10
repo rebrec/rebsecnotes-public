@@ -104,7 +104,7 @@ net start unquotedsvc
 
 #### Manuelle
 ```shell
-
+accesschk.exe /accepteula -uvwqk HKLM\System\CurrentControlSet\Services\regsvc
 ```
 
 #### Automatique
