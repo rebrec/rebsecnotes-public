@@ -104,6 +104,7 @@ net start unquotedsvc
 
 #### Manuelle
 ```shell
+# trouver un groupe dont on est membre dans la liste fournie par la commande :
 accesschk.exe /accepteula -uvwqk HKLM\System\CurrentControlSet\Services\regsvc
 ```
 
