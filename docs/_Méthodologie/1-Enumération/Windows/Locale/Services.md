@@ -1,12 +1,20 @@
 ---
-public: true # set to true to make the article publishable
+public: true
 ---
 
 ## Services mal configurés
+
 Détails de Recherche de vecteur d'escalade via des services : [[Weak Permissions]]
 
 ### Lister les services "non standards" (hors `c:\windows`)
 
+```powershell
+get-wmiobject win32_service | select name,state, startmode,pathname,StartName | ?{$_.StartName -eq "LocalSystem" -and $_.pathname -notlike "c:\Windows\System32\*" }|ft
+```
+
+### Trouver un service vulnérable
+
+#### Unquoted service path
 
 
 ### Services en dehors de c:\windows\system32
