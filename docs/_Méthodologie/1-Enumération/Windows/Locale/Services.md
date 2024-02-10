@@ -16,6 +16,11 @@ Hors du dossier `c:\windows`
 get-wmiobject win32_service | select name,state, startmode,pathname,StartName | ?{$_.StartName -eq "LocalSystem" -and $_.pathname -notlike "c:\Windows\*" }| Sort PathName |ft
 ```
 
+```shell
+wmic service get name,displayname,startmode,pathname | findstr /i /v "C:\Windows\\" |findstr /i /v """
+```
+
+
 Tous les services
 
 ```powershell
