@@ -100,7 +100,27 @@ net start unquotedsvc
 
 ## Weak registry permissions
 
-#
+### Detection
+
+#### Manuelle
+```shell
+
+```
+
+#### Automatique
+```shell
+==============(Services Information)===============
+[...]
+ LOOKS LIKE YOU CAN MODIFY SOME SERVICE/s:
+ daclsvc: WriteData/CreateFiles
+```
+
+### Exploitation
+
+```shell
+
+```
+
 ## Trouver un service vulnérable (manuel)
 
 ### Lister les services
