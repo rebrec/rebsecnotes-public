@@ -7,9 +7,11 @@ public: true
 ## Trouver un service vulnérable (manuel)
 
 ### Lister les services
+
 Lorsqu'on liste les service, on recherche en priorité des **chemins d'accès atypiques** qui potentiellement  seront moins bien conçus que les services natif au système d'exploitation :
 
 Hors du dossier `c:\windows`
+
 ```powershell
 get-wmiobject win32_service | select name,state, startmode,pathname,StartName | ?{$_.StartName -eq "LocalSystem" -and $_.pathname -notlike "c:\Windows\*" }| Sort PathName |ft
 ```
@@ -27,8 +29,6 @@ get-wmiobject win32_service | select name,state, startmode,pathname,StartName | 
 ```shell
 icacls 'C:\Program Files\Ext2Fsd\Ext2Srv.exe'
 ```
-
-
 
 #### Unquoted service path
 ### Services en dehors de c:\windows\system32
