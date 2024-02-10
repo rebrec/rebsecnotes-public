@@ -2,17 +2,11 @@
 public: true
 ---
 
-## Services mal configurés
+**Détails de Recherche de vecteur d'escalade via des services : [[Weak Permissions]]**
 
-Détails de Recherche de vecteur d'escalade via des services : [[Weak Permissions]]
+## Trouver un service vulnérable (manuel)
 
-### Lister les services "non standards" (hors `c:\windows`)
-
-
-
-### Trouver un service vulnérable
-
-##### Lister les services
+### Lister les services
 Lorsqu'on liste les service, on recherche en priorité des **chemins d'accès atypiques** qui potentiellement  seront moins bien conçus que les services natif au système d'exploitation :
 
 Hors du dossier `c:\windows`
@@ -26,7 +20,16 @@ Tous les services
 get-wmiobject win32_service | select name,state, startmode,pathname,StartName | ?{$_.StartName -eq "LocalSystem" -and $_.pathname -notlike "C:\Windows\system32\svchost.exe *" }| Sort PathName |ft
 ```
 
-####
+### Regardes les permissions
+
+#### Droits de modification d'éléments dans le path
+
+```shell
+icacls 'C:\Program Files\Ext2Fsd\Ext2Srv.exe'
+```
+
+
+
 #### Unquoted service path
 ### Services en dehors de c:\windows\system32
 
