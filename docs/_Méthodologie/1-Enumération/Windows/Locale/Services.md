@@ -44,11 +44,23 @@ On cherchera si on peut créer les exécutables suivants :
 On vérifie donc les permission sur les dossiers parents de ces fichier potentiels :
 
 ```shell
-icacls 'C:\Program Files\My App\My Product\superservice.exe'
-icacls 'C:\Program Files\My App\My Product\superservice.exe'
-icacls 'C:\Program Files\My App\My Product\superservice.exe'
-CREATOR OWNER:(OI)(CI)(IO)(F)
+# REMARQUE : pour les dossiers, il ne faut pas ajouter de "\" à la fin !
+icacls "C:\Program Files\Super Vendor"
+icacls "C:\Program Files"
+icacls "C:\"
 ```
+
+Exemple de permissions :
+
+```shell
+# peut créer des Dossiers MAIS PAS des fichiers
+CREATOR OWNER:(OI)(CI)(IO)(F) 
+# peut créer des dossiers ET des fichiers !! (exploitable)
+
+CREATOR OWNER:(I)(OI)(CI)(IO)(F)
+
+```
+
 
 #### Unquoted service path
 
