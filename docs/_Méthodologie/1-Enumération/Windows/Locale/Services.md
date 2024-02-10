@@ -31,8 +31,23 @@ get-wmiobject win32_service | select name,state, startmode,pathname,StartName | 
 
 #### Droits de modification d'éléments dans le path
 
+Prenons l'exemple du service suivant :
+```
+C:\Program Files\Super Vendor\Great Product\superservice.exe
+```
+
+On cherchera si on peut créer les exécutables suivants :
+- `C:\Program Files\Super Vendor\Great.exe`
+- `C:\Program Files\Super.exe`
+- `C:\Program.exe`
+
+On vérifie donc les permission sur les dossiers parents de ces fichier potentiels :
+
 ```shell
-icacls 'C:\Program Files\Ext2Fsd\Ext2Srv.exe'
+icacls 'C:\Program Files\My App\My Product\superservice.exe'
+icacls 'C:\Program Files\My App\My Product\superservice.exe'
+icacls 'C:\Program Files\My App\My Product\superservice.exe'
+CREATOR OWNER:(OI)(CI)(IO)(F)
 ```
 
 #### Unquoted service path
