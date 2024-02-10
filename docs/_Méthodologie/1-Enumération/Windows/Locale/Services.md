@@ -8,14 +8,15 @@ Détails de Recherche de vecteur d'escalade via des services : [[Weak Permission
 
 ### Lister les services "non standards" (hors `c:\windows`)
 
-```powershell
-get-wmiobject win32_service | select name,state, startmode,pathname,StartName | ?{$_.StartName -eq "LocalSystem" -and $_.pathname -notlike "c:\Windows\System32\*" }|ft
-```
+
 
 ### Trouver un service vulnérable
 
 #### Unquoted service path
-
+##### Services hors du dossiers windows
+```powershell
+get-wmiobject win32_service | select name,state, startmode,pathname,StartName | ?{$_.StartName -eq "LocalSystem" -and $_.pathname -notlike "c:\Windows\*" }| Sort PathName |ft
+```
 
 ### Services en dehors de c:\windows\system32
 
