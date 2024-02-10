@@ -33,6 +33,7 @@ icacls 'C:\Program Files\Ext2Fsd\Ext2Srv.exe'
 #### Unquoted service path
 
 Pour ce type de mauvaise configuration, on cherchera des services dont le chemin d'accès :
+
 - n'est pas entouré de "doubles quotes" (guillemets)
 - contient des dossier contenant des espaces dans leur nom
 
