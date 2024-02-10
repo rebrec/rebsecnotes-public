@@ -12,12 +12,22 @@ Détails de Recherche de vecteur d'escalade via des services : [[Weak Permission
 
 ### Trouver un service vulnérable
 
-#### Unquoted service path
-##### Services hors du dossiers windows
+##### Lister les services
+Lorsqu'on liste les service, on recherche en priorité des **chemins d'accès atypiques** qui potentiellement  seront moins bien conçus que les services natif au système d'exploitation :
+
+Hors du dossier `c:\windows`
 ```powershell
 get-wmiobject win32_service | select name,state, startmode,pathname,StartName | ?{$_.StartName -eq "LocalSystem" -and $_.pathname -notlike "c:\Windows\*" }| Sort PathName |ft
 ```
 
+Tous les services
+
+```powershell
+get-wmiobject win32_service | select name,state, startmode,pathname,StartName | ?{$_.StartName -eq "LocalSystem" -and $_.pathname -notlike "C:\Windows\system32\svchost.exe *" }| Sort PathName |ft
+```
+
+####
+#### Unquoted service path
 ### Services en dehors de c:\windows\system32
 
 ```powershell
