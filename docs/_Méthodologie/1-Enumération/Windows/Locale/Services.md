@@ -4,6 +4,20 @@ public: true
 
 **Détails de Recherche de vecteur d'escalade via des services : [[Weak Permissions]]**
 
+## Trouver un service vulnérable (automatique)
+
+`WinPeas` identifie tous les services vulnérables.
+
+Il faut regarder les sections suivantes :
+
+```shell
+# Information sur les services
+===============(Services Information)=============
+
+# Information sur les Applications (à recouper avec les chemin d'accès des services)
+===========(Applications Information)================
+```
+
 ## Trouver un service vulnérable (manuel)
 
 ### Lister les services
@@ -20,7 +34,6 @@ get-wmiobject win32_service | select name,state, startmode,pathname,StartName | 
 wmic service get name,displayname,startmode,pathname | findstr /i /v "C:\Windows\\" |findstr /i /v """
 ```
 
-
 Tous les services
 
 ```powershell
@@ -32,11 +45,13 @@ get-wmiobject win32_service | select name,state, startmode,pathname,StartName | 
 #### Droits de modification d'éléments dans le path
 
 Prenons l'exemple du service suivant :
+
 ```
 C:\Program Files\Super Vendor\Great Product\superservice.exe
 ```
 
 On cherchera si on peut créer les exécutables suivants :
+
 - `C:\Program Files\Super Vendor\Great.exe`
 - `C:\Program Files\Super.exe`
 - `C:\Program.exe`
@@ -60,7 +75,6 @@ CREATOR OWNER:(OI)(CI)(IO)(F)
 CREATOR OWNER:(I)(OI)(CI)(IO)(F)
 
 ```
-
 
 #### Unquoted service path
 
