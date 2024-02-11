@@ -8,7 +8,7 @@ public: true
 # le paramètre :     --proxy http://127.0.0.1:8080
 
 # Recherche de dossiers intéressant :
-gobuster dir -u http://$TARGET_VHOST:80/ -w "/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt" -t 50 --add-slash
+gobuster dir -u http://$TARGET:80/ -w "/usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt" -t 50 --add-slash      
 # extensions spécifiques
 
 
