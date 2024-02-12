@@ -6,6 +6,8 @@ public: true # set to true to make the article publishable
 ```title=configuration du serveur 
 pip3 install uploadserver
 python3 -m uploadserver
+
+
 ```
 
 ### PsUpload.ps1
