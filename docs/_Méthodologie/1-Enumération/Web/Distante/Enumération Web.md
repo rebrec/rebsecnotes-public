@@ -2,11 +2,6 @@
 public: true 
 #Tags: tag1, tag2
 ---
-## Découverte de la banière
-
-```shell
-curl -IL https://$TARGET_VHOST
-```
 
 ## Certificats
 
