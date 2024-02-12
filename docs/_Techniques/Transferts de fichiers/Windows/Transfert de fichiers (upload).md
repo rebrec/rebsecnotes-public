@@ -7,6 +7,8 @@ public: true # set to true to make the article publishable
 pip3 install uploadserver
 python3 -m uploadserver
 
+#  Upload depuis linux
+curl -X POST http://10.10.14.181/upload --F 'files=@16162020_backup.zip'
 
 ```
 
