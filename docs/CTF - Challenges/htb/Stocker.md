@@ -50,7 +50,7 @@ Content-Type: application/json
 Content-Length: 54
 Origin: http://dev.stocker.htb
 Connection: close
-Referer: http://dev.stocker.htb/login
+Referer: http://dev.stocker.htb/login 
 Cookie: connect.sid=s%3AFhbvDc7SEo_kF1-Bq2JuLGxucLWMeG5V.8UeivYzWZ%2BTMk30M8JbOTskUP1MWxYSf6%2BW3My5HcCo
 Upgrade-Insecure-Requests: 1
 
