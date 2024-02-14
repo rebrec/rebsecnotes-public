@@ -11,7 +11,7 @@ Ports
 ## Brute force de la communauté SNMP
 
 ```
-onesixtyone -c dict.txt $TARGET_IP
+onesixtyone -c /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings-onesixtyone.txt $TARGET
 ```
 
 ## Parcours d'une partie de l'arborescence
