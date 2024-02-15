@@ -12,7 +12,7 @@ Si des partages sont découvert et que l'option `no_root_squash` a été utilis�
 
 ```shell
 rpcinfo inlanefreight.htb
-nmap -sSUC -p111 192.168.10.1
+nmap -sSUC -p111 $TARGET
 
 # via un pivot 
 proxychains -q nmap -n -Pn -sT -p 111 --script rpcinfo,nfs-showmount 172.16.8.20
@@ -22,7 +22,7 @@ proxychains -q nmap -n -Pn -sT -p 111 --script rpcinfo,nfs-showmount 172.16.8.20
 
 ```
 # enumeration de la version et du script rpcinfo
-sudo nmap -Pn $TARGET_IP -p111,2049 -sV -sC
+sudo nmap -Pn $TARGET -p111,2049 -sV -sC
 
 # usage de tous les scripts NFS (nfs-ls, nfs-showmount, nfs-statfs, rpcinfo)
 sudo nmap --script nfs* $TARGET_IP -sV -p111,2049
