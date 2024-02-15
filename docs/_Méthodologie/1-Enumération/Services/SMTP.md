@@ -11,8 +11,8 @@ Ports :
 ## Enumeration
 
 ```
-sudo nmap -Pn -sV -sC -p25,465 $TARGET_IP
-sudo nmap -Pn -sC -p25 --script smtp-open-relay $TARGET_IP
+sudo nmap -Pn -sV -sC -p25,465 $TARGET
+sudo nmap -Pn -sC -p25 --script smtp-open-relay $TARGET
 ```
 
 ## Exploitation
