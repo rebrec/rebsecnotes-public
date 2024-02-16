@@ -33,7 +33,7 @@ host -c CH -t TXT version.bind $TARGET
 
 ```shell-session
 # récupère la liste des nameserver depuis le serveur DNS $TARGET_IP
-dig ns inlanefreight.htb @$TARGET_IP
+dig ns $DOMAIN @$TARGET_IP
 nslookup -query=NS inlanefreight.htb $TARGET
 ```
 
