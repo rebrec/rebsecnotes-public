@@ -1,6 +1,5 @@
 ---
-public: true 
-#Tags: tag1, tag2
+public: true
 ---
 
 Ports :  53 (tcp/udp)
@@ -70,7 +69,13 @@ dnsenum --dnsserver $TARGET --enum -p 0 -s 0 -o /workspace/Scans/Service/DNS-SUB
 
 ##### gobuster
 
-On peut brute forcer des sous domaines selon un motif (pattern)
+Bruteforce classique
+
+```shell
+dns -q -c -i -d "$DOMAIN" -w "/usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt" --resolver $TARGET 
+```
+
+Bruteforce des sous domaines selon un motif (pattern) spécifique
 
 ```title="patterns.txt"
 lert-api-shv-{GOBUSTER}-sin6
