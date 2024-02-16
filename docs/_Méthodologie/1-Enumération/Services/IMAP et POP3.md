@@ -15,7 +15,7 @@ Ports :
 ### Via NMAP
 
 ```shell-session
-sudo nmap $TARGET_IP -sV -p110,143,993,995 -sC
+sudo nmap $TARGET -sV -p110,143,993,995 -sC
 ```
 
 ### Via cURL
