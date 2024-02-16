@@ -33,9 +33,15 @@ RCPT TO:aze@maildomain.com  <== /!\ message lorsqu'on précise le domaine de l'e
 550 Unknown user   <== la méthode RCPT TO fonctionne donc
 ```
 
-```
+```shell
 # https://github.com/pentestmonkey/smtp-user-enum
-smtp-user-enum -M RCPT -U userlist.txt -D maildomain.com -t $TARGET_IP
+/tools/smtp-user-enum/smtp-user-enum.pl -M RCPT -U userlist.txt -D maildomain.com -t $TARGET_IP
+
+# without domain
+smtp-user-enum -m VRFY -l rebrec -U /usr/share/seclists/Usernames/top-usernames-shortlist.txt  $TARGET 25  
+
+# with domain
+
 ```
 
 ## Office 365
