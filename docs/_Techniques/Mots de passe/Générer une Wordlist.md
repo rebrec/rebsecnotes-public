@@ -1,5 +1,5 @@
 ---
-public: true # set to true to make the article publishable
+public: true
 ---
 ## Générer un dictionnaire à partir de permutations d'une dictionnaire existant
 
@@ -19,7 +19,11 @@ On pourra générer, à partir de nom / prénoms collectés une liste de compte 
 
 L'outil [Username Anarchy](https://github.com/urbanadventurer/username-anarchy) offre notamment cette possibilité
 
+```shell
 ./username-anarchy John doe > .txt
+username-anarchy -i ./osint_users.txt
+```
+
 
 ## Créer une wordlist personnalisée
 
