@@ -33,14 +33,14 @@ host -c CH -t TXT version.bind $TARGET
 
 ```shell-session
 # récupère la liste des nameserver depuis le serveur DNS $TARGET_IP
-dig ns $DOMAIN @$TARGET_IP
-nslookup -query=NS inlanefreight.htb $TARGET
+dig ns $DOMAIN @$TARGET
+nslookup -query=NS $DOMAIN $TARGET
 ```
 
 ### Liste des enregistrements disponibles
 
 ```shell-session
-$ dig any inlanefreight.htb @$TARGET
+dig any $DOMAIN @$TARGET
 ```
 
 ## Attaques / Exploitations
@@ -107,7 +107,7 @@ fierce --domain $DOMAIN --dns-servers $TARGET_IP --subdomain-file names.txt
 
 ##### subbrute
 
-On peut utiliser subbrute pour trouver des sous domaines qui pourront ensuite reservir à trouver d'autres sous domaines.
+On peut utiliser subbrute pour trouver des sous domaines qui pourront ensuite resservir à trouver d'autres sous domaines.
 
 Au lancement, subbrute essaie de faire une requête `ANY`. Si elle ne fonctionne pas, on obtiens une message : `Warning: No nameservers found, trying fallback list.`
 
