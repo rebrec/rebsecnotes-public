@@ -20,10 +20,9 @@ On pourra générer, à partir de nom / prénoms collectés une liste de compte 
 L'outil [Username Anarchy](https://github.com/urbanadventurer/username-anarchy) offre notamment cette possibilité
 
 ```shell
-./username-anarchy John doe > .txt
-username-anarchy -i ./osint_users.txt
+./username-anarchy John doe  # genere une liste pour cette utilisateur
+username-anarchy -i ./osint_users.txt # meme chose pour une liste de users
 ```
-
 
 ## Créer une wordlist personnalisée
 
