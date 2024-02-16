@@ -64,7 +64,8 @@ for sub in $(cat /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000
 ##### dnsenum
 
 ```
-$ dnsenum --dnsserver $TARGET_IP --enum -p 0 -s 0 -o subdomains.txt -f /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-110000.txt $DOMAIN
+# Google scrapping désactivé (-s 0 -p 0)
+dnsenum --dnsserver $TARGET --enum -p 0 -s 0 -o /workspace/Scans/Service/DNS-SUBDOMAINS-$DOMAIN.txt -f /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-110000.txt $DOMAIN
 ```
 
 ##### gobuster
