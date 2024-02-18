@@ -196,8 +196,8 @@ $ crackmapexec smb $TARGET_IP --shares -u '' -p ''
 
 ```shell-session
 # lots of output
-$ enum4linux $TARGET_IP -A
-$ ./enum4linux-ng.py $TARGET_IP -A
+$ enum4linux $TARGET -A
+$ enum4linux-ng $TARGET -A
 ```
 
 ## smbclient
