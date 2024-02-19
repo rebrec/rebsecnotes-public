@@ -98,8 +98,8 @@ netsh wlan show profile Profile1 key=clear
 ```
 
 ### Outils ciblant plusieures applicatifs
-#### Lazagne
-
+## Lazagne
+** PENSER A RELANCER EN TANT QUE SYSTEM **
 Collecte de nombreux mots de passe stockés dans diverses endroits du système
 
 Liste des applicatifs supportés : <https://github.com/AlessandroZ/LaZagne#supported-software>
