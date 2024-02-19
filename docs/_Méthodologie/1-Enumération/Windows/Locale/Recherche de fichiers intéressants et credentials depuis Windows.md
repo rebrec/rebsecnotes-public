@@ -166,7 +166,7 @@ Get-ChildItem *.xml, *.yml, *.ini, *.txt, *.config, *.cfg, *.git, *.ps1, *.vbs, 
 
 
 # Fichiers avec des noms intéressants
-Get-ChildItem  -Recurse -Include "*secret*", "*pass*.txt", "*pass*.xml", "*pass*.ini", "*cred*", "*vnc*", "*.config", "*.rdp", "*.vnc", "*.cred", "*.kdbx", "*.vhd*", "*.vmdk" -ErrorAction Ignore | Select -ExpandProperty FullName
+Get-ChildItem  -Recurse -Include "*secret*", "*pass*.txt", "*pass*.xml", "*pass*.ini", "*cred*", "*vnc*", "*.config", "*.rdp", "*.vnc", "*.cred", "*.kdbx","*.kdb", "*.vhd*", "*.vmdk" -ErrorAction Ignore | Select -ExpandProperty FullName
 ```
 
 ### Historiques Powershell
