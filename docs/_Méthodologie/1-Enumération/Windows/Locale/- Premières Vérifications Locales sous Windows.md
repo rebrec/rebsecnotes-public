@@ -85,7 +85,7 @@ regarder les descriptions des utilisateurs AD
 
 ```powershell
 Import-Module PowerUp.ps1
-Invoke-AllCheck
+Invoke-AllChecks
 
 ```
 
