@@ -10,7 +10,7 @@ ssh -L 1234:localhost:3306 user@$TARGET_IP
 # Redirection SOCKS 5 : on pourra utiliser proxychain sur le port 1080 locale de l'attaquant pour transmettre tout notre traffic comme s'il était émis de la cible
 ssh -D 1080 user@$TARGET_IP
 
-# Redirection inverse : on expose notre listener local écoutant sur le port 1234 sur le port 8080 de la Cible
+# Redirection inverse : on expose notre listener local écoutant sur le port 1234 sur le port 8080 de la Cible  Peut nécessiter d'avoir    GatewayPorts yes    dans le fichier /etc/sshd_config
 ssh -R $PIVOT_IP_IN_INTERNAL_NETWORK:8080:0.0.0.0:1234  user@$TARGET_IP -vN
 
 # -v : verbeux, on verra les tunnels
