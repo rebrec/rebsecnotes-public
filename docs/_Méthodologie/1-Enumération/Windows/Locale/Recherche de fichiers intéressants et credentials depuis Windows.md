@@ -148,13 +148,13 @@ Invoke-SessionGopher -Target SRV1 # si privilèges suffisants. Sinon, on peut ch
 # /M : affiche seulement le nom du fichier (pas la ligne correspondant au texte cherché)
 
 # recherche du terme "password" ou "cred" : liste le nom des fichiers contenant "password" (sans afficher le contenu trouvé)
-findstr /SIM "password cred" *.xml *.yml *.ini *.txt *.config *.cfg *.git *.ps1 *.vbs *.cmd *.bat 
+findstr /SIM "password cred" *.xml *.yml *.ini *.txt *.config *.cfg *.git *.ps1 *.vbs *.cmd *.bat *.sh
 
 # recherche du terme "password" ou "cred" : liste le nom des fichiers et la ligne qui a matché
-findstr /SPIN  "password cred" *.xml *.yml *.ini *.txt *.config *.cfg *.git *.ps1 *.cmd *.bat  # *.vbs
+findstr /SPIN  "password cred" *.xml *.yml *.ini *.txt *.config *.cfg *.git *.ps1 *.cmd *.bat *.sh* # *.vbs
 
 # Recherche de différents fichiers en même temps
-dir /S /B *secret* == *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config* == *.rdp == *.vnc == *.cred == *.kdbx *.vhd* == *.vmdk
+dir /S /B *secret* == *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config* == *.rdp == *.vnc == *.cred == *.kdbx *.vhd* == *.vmdk *.sh
 ```
 
 #### Powershell
