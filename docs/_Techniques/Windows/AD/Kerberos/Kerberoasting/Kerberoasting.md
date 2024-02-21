@@ -24,4 +24,10 @@ public: true # set to true to make the article publishable
 john --wordlist=/path/to/rockyou.txt hashes.txt
 ```
 
+#### Cassage avec hashcat
+
+Hash de TGS  (kerberoasting)   $krb5tgs$23$*user1$DOMAIN...
+
+hashcat -m 13100 hash.txt rockyou.txt
+
 [[_Techniques/Mots de passe/Casser un mot de passe/Hashcat]]
